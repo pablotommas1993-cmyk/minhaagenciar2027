@@ -16,15 +16,15 @@ const differentiators = [
 const values = [
   {
     label: 'Excelência',
-    text: 'Entregamos apenas o que é extraordinário. Nenhum projeto sai sem passar pelo nosso padrão de qualidade internalizado.',
+    text: 'Entregamos o extraordinário. Nenhum projeto é concluído sem passar pelo nosso mais alto padrão técnico.',
   },
   {
     label: 'Transparência',
-    text: 'Comunicação clara em cada etapa. Você sempre sabe o que está sendo feito, por quê e quais resultados esperar.',
+    text: 'Comunicação direta em cada etapa. Você sabe exatamente o que está sendo construído e quais resultados esperar.',
   },
   {
     label: 'Impacto',
-    text: 'Cada decisão é guiada por dados e orientada a resultados reais. Estética sem performance não faz parte do nosso vocabulário.',
+    text: 'Decisões guiadas por dados. Estética sem performance não faz parte do nosso vocabulário.',
   },
 ];
 
@@ -36,7 +36,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="relative bg-[#050505] py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -74,20 +74,16 @@ export default function AboutSection() {
 
             <div className="space-y-5 text-[#BDBDBD] text-sm leading-relaxed">
               <p>
-                A ELEVARE Studio nasceu da convicção de que o mercado brasileiro merecia uma agência
-                digital à altura das melhores do mundo. Não uma agência que entrega templates e
-                promete resultados vagos — mas uma que constrói soluções únicas com impacto
-                mensurável.
+                Nascemos da convicção de que o mercado merece agências à altura das melhores do mundo.
+                Sem templates e sem promessas vagas — construímos soluções exclusivas com impacto mensurável.
               </p>
               <p>
-                Trabalhamos com um número selecionado de clientes por vez. Isso não é escassez
-                artificial — é comprometimento real. Quando assumimos um projeto, ele recebe
-                atenção total da nossa equipe sênior do início ao fim.
+                Atendemos um número seleto de clientes simultâneos. Isso não é escassez — é comprometimento.
+                Todo projeto recebe foco integral da nossa equipe sênior.
               </p>
               <p>
-                Nossos clientes são empresas que entendem que um website ou estratégia digital de
-                R$5.000 e uma de R$80.000 não são versões do mesmo produto. São produtos diferentes,
-                com resultados radicalmente diferentes.
+                Nossos clientes entendem que produtos digitais acessíveis e premium não são o mesmo serviço.
+                São soluções distintas que entregam resultados radicalmente diferentes.
               </p>
             </div>
 

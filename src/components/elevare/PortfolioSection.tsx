@@ -6,44 +6,44 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const projects = [
   {
-    category: 'Website Premium',
-    title: 'Advocacia Castellano',
+    category: 'Projeto Conceitual',
+    title: 'Advocacia Premium',
     description:
-      'Website institucional de alto impacto para escritório de advocacia. Design editorial, performance máxima e posicionamento de autoridade no mercado jurídico.',
-    result: '+340% leads qualificados',
+      'Website institucional de alto impacto. Design editorial, performance máxima e posicionamento de autoridade.',
+    result: 'Performance Maximizada',
     tags: ['Next.js', 'Design', 'SEO'],
     color: '#1a1a1a',
     accent: '#D4AF37',
     size: 'large',
   },
   {
-    category: 'E-commerce',
+    category: 'Projeto Conceitual',
     title: 'Maison Beauté',
     description:
-      'Plataforma de e-commerce premium para marca de cosméticos de luxo. UX focada em conversão com integração completa de pagamentos e logística.',
-    result: '+280% taxa de conversão',
+      'E-commerce premium focado em conversão, com integração completa de pagamentos e logística.',
+    result: 'Otimização de Conversão',
     tags: ['React', 'Stripe', 'Analytics'],
     color: '#111111',
     accent: '#C5A028',
     size: 'small',
   },
   {
-    category: 'Automação & IA',
+    category: 'Projeto Conceitual',
     title: 'TechFlow Consultoria',
     description:
-      'Ecossistema completo de automações com IA para empresa de consultoria. Atendimento automatizado, qualificação de leads e CRM integrado.',
-    result: '87% redução em tarefas manuais',
+      'Automações com IA. Atendimento escalável, qualificação de leads e CRM inteligente.',
+    result: 'Atendimento Inteligente',
     tags: ['n8n', 'GPT-4', 'CRM'],
     color: '#0d0d0d',
     accent: '#D4AF37',
     size: 'small',
   },
   {
-    category: 'Google Ads + SEO',
+    category: 'Projeto Conceitual',
     title: 'Clínica Renovare',
     description:
-      'Estratégia integrada de Google Ads e SEO para clínica médica premium. Posicionamento top 3 nas principais palavras-chave e campanhas de alta performance.',
-    result: 'ROI de 890% em 6 meses',
+      'Estratégia integrada de Ads e SEO. Posicionamento líder nas buscas e campanhas de alta performance.',
+    result: 'SEO Local Estratégico',
     tags: ['Google Ads', 'SEO', 'Analytics'],
     color: '#0f0f0f',
     accent: '#C5A028',
@@ -72,7 +72,7 @@ export default function PortfolioSection() {
     <section
       id="portfolio"
       ref={ref}
-      className="relative py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}

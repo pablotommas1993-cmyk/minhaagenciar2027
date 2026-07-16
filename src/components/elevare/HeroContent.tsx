@@ -75,9 +75,9 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         variants={trustAnim}
         className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] tracking-wide text-white/70"
       >
-        <span className="text-[#D4AF37] tracking-[0.2em] text-sm">★★★★★</span>
+        <span className="text-[#D4AF37] tracking-[0.1em] text-xs font-medium uppercase">Design Premium</span>
         <span className="text-white/20">•</span>
-        <span>Empresas atendidas</span>
+        <span>Foco em Resultados</span>
         <span className="text-white/20">•</span>
         <span>Performance</span>
         <span className="text-white/20">•</span>

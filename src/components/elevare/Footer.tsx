@@ -50,6 +50,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
+                  onClick={(e) => e.preventDefault()}
                   className="w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center text-[10px] text-white/50 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/5 luxury-transition"
                   aria-label={s}
                 >
@@ -70,6 +71,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
+                      onClick={(e) => e.preventDefault()}
                       className="text-white/50 text-sm hover:text-white luxury-transition"
                     >
                       {link}

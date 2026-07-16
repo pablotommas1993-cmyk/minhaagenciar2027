@@ -14,8 +14,8 @@ const contactItems = [
   {
     icon: Phone,
     label: 'WhatsApp',
-    value: '+55 (11) 99999-0000',
-    href: 'https://wa.me/5511999990000',
+    value: '+55 11 97999-1680',
+    href: 'https://wa.me/5511979991680',
   },
   {
     icon: MessageSquare,
@@ -56,15 +56,35 @@ export default function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Partial<FormState>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errors[e.target.name as keyof FormState]) {
+      setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors: Partial<FormState> = {};
+    if (!form.name.trim()) newErrors.name = 'O nome é obrigatório.';
+    if (!form.email.trim()) {
+      newErrors.email = 'O e-mail é obrigatório.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = 'Insira um endereço de e-mail válido.';
+    }
+    if (!form.message.trim() || form.message.trim().length < 10) {
+      newErrors.message = 'A mensagem deve ter pelo menos 10 caracteres.';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     setLoading(true);
     // Simulate async submission
     await new Promise((r) => setTimeout(r, 1200));
@@ -72,8 +92,10 @@ export default function ContactSection() {
     setSubmitted(true);
   };
 
-  const inputClass =
-    'w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-5 py-4 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#D4AF37]/40 focus:bg-white/[0.04] focus:shadow-[0_0_20px_rgba(212,175,55,0.05)] luxury-transition';
+  const getInputClass = (hasError?: boolean) =>
+    `w-full bg-white/[0.02] border ${
+      hasError ? 'border-red-500/50' : 'border-white/[0.06]'
+    } rounded-xl px-5 py-4 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#D4AF37]/40 focus:bg-white/[0.04] focus:shadow-[0_0_20px_rgba(212,175,55,0.05)] luxury-transition`;
 
   return (
     <section
@@ -147,58 +169,66 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    <label htmlFor="name" className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       Nome *
                     </label>
                     <input
+                      id="name"
                       type="text"
                       name="name"
-                      required
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Seu nome completo"
-                      className={inputClass}
+                      className={getInputClass(!!errors.name)}
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
                     />
+                    {errors.name && <p id="name-error" className="text-red-400 text-xs mt-2">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    <label htmlFor="email" className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       E-mail *
                     </label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
-                      required
                       value={form.email}
                       onChange={handleChange}
                       placeholder="seu@email.com"
-                      className={inputClass}
+                      className={getInputClass(!!errors.email)}
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                     />
+                    {errors.email && <p id="email-error" className="text-red-400 text-xs mt-2">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    <label htmlFor="company" className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       Empresa
                     </label>
                     <input
+                      id="company"
                       type="text"
                       name="company"
                       value={form.company}
                       onChange={handleChange}
                       placeholder="Nome da empresa"
-                      className={inputClass}
+                      className={getInputClass()}
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    <label htmlFor="service" className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       Serviço de interesse
                     </label>
                     <select
+                      id="service"
                       name="service"
                       value={form.service}
                       onChange={handleChange}
-                      className={`${inputClass} cursor-pointer`}
+                      className={`${getInputClass()} cursor-pointer`}
                       style={{ colorScheme: 'dark' }}
                     >
                       <option value="" className="bg-[#0a0a0a]">
@@ -214,17 +244,21 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
-                    Mensagem
+                  <label htmlFor="message" className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    Mensagem *
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Conte-nos sobre seu projeto, objetivos e desafios..."
                     rows={5}
-                    className={`${inputClass} resize-none`}
+                    className={`${getInputClass(!!errors.message)} resize-none`}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                   />
+                  {errors.message && <p id="message-error" className="text-red-400 text-xs mt-2">{errors.message}</p>}
                 </div>
 
                 <motion.button

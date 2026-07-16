@@ -8,28 +8,28 @@ const steps = [
     number: '01',
     title: 'Diagnóstico Estratégico',
     description:
-      'Analisamos seu negócio, mercado e concorrência em profundidade. Identificamos oportunidades únicas e definimos a estratégia que vai posicioná-lo como referência.',
+      'Analisamos mercado e concorrência. Identificamos oportunidades e definimos a estratégia para posicioná-lo como referência.',
     duration: '1–2 dias',
   },
   {
     number: '02',
     title: 'Arquitetura & Design',
     description:
-      'Construímos a arquitetura da solução e o design do projeto. Cada decisão de interface é guiada por dados de comportamento e melhores práticas de conversão.',
+      'Desenvolvemos a arquitetura e design. Cada decisão é guiada por dados e focada em conversão.',
     duration: '5–10 dias',
   },
   {
     number: '03',
     title: 'Desenvolvimento Premium',
     description:
-      'Engenharia de alta performance com código limpo e escalável. Integrações, automações e todas as funcionalidades são entregues com qualidade de produção.',
+      'Engenharia de alta performance. Código limpo, automações e integrações com padrão de produção.',
     duration: '2–6 semanas',
   },
   {
     number: '04',
     title: 'Lançamento & Crescimento',
     description:
-      'Lançamento estratégico com acompanhamento de métricas em tempo real. Otimizamos continuamente para garantir crescimento sustentável e retorno sobre investimento.',
+      'Lançamento com acompanhamento em tempo real. Otimização contínua para crescimento e retorno previsível.',
     duration: 'Contínuo',
   },
 ];

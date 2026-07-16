@@ -6,23 +6,23 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const testimonials = [
   {
     quote:
-      'A ELEVARE entregou muito além do que esperávamos. O site novo aumentou nossa taxa de conversão em mais de três vezes nos primeiros três meses. É a melhor decisão de investimento que tomamos neste ano.',
-    name: 'Ricardo Mendonça',
-    role: 'CEO, Castellano Advocacia',
+      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
+    name: 'Nome do Cliente',
+    role: 'Empresa Parceira',
     stars: 5,
   },
   {
     quote:
-      'Trabalhar com a ELEVARE foi uma experiência diferente de tudo que já tivemos com agências. Eles entenderam nosso posicionamento de luxo e traduziram isso em uma plataforma que nossos clientes adoram.',
-    name: 'Isabella Ferreira',
-    role: 'Diretora, Maison Beauté',
+      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
+    name: 'Nome do Cliente',
+    role: 'Empresa Parceira',
     stars: 5,
   },
   {
     quote:
-      'As automações que implementaram economizaram mais de 40 horas por semana da nossa equipe. O ROI foi imediato e o suporte é impecável. Não consigo imaginar nosso negócio sem essas soluções.',
-    name: 'Marcelo Santos',
-    role: 'COO, TechFlow Consultoria',
+      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
+    name: 'Nome do Cliente',
+    role: 'Empresa Parceira',
     stars: 5,
   },
 ];

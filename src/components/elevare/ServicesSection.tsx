@@ -9,7 +9,7 @@ const services = [
     icon: Globe,
     title: 'Websites Premium',
     description:
-      'Desenvolvemos presença digital de nível mundial. Sites com arquitetura sólida, performance máxima e design que transforma visitantes em clientes.',
+      'Presença digital de nível mundial. Arquitetura sólida, performance máxima e design focado em conversão.',
     detail: 'Next.js · React · TypeScript · Headless CMS',
     highlight: true,
   },
@@ -17,7 +17,7 @@ const services = [
     icon: Cpu,
     title: 'Inteligência Artificial',
     description:
-      'Integramos IA nos seus processos de negócio. Chatbots inteligentes, automação de atendimento, análise preditiva e personalização em escala.',
+      'Integramos IA ao seu negócio. Chatbots, automação de atendimento e análise preditiva em escala.',
     detail: 'GPT-4 · Claude · Automação · Machine Learning',
     highlight: false,
   },
@@ -25,7 +25,7 @@ const services = [
     icon: Zap,
     title: 'Automações',
     description:
-      'Eliminamos tarefas repetitivas e construímos fluxos de trabalho inteligentes. Sua equipe foca no que realmente importa enquanto a tecnologia trabalha.',
+      'Eliminamos tarefas repetitivas. Sua equipe foca no essencial enquanto a tecnologia trabalha.',
     detail: 'n8n · Make · Zapier · APIs · Webhooks',
     highlight: false,
   },
@@ -33,7 +33,7 @@ const services = [
     icon: Search,
     title: 'SEO Avançado',
     description:
-      'Posicionamos sua empresa nas primeiras posições do Google com estratégias técnicas e de conteúdo que geram tráfego qualificado consistente.',
+      'Posicionamos sua empresa no topo do Google com estratégias técnicas para tráfego qualificado e consistente.',
     detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
     highlight: false,
   },
@@ -41,7 +41,7 @@ const services = [
     icon: BarChart2,
     title: 'Google Ads',
     description:
-      'Gerenciamos campanhas de performance com foco total em ROI. Cada real investido é rastreado e otimizado para o máximo retorno.',
+      'Campanhas de performance focadas em ROI. Cada centavo é rastreado e otimizado para o máximo retorno.',
     detail: 'Search · Display · YouTube · Remarketing · Shopping',
     highlight: false,
   },
@@ -49,7 +49,7 @@ const services = [
     icon: Layers,
     title: 'Estratégia Digital',
     description:
-      'Desenvolvemos a estratégia completa do seu negócio digital. Posicionamento, identidade, funis de conversão e ecossistema de crescimento integrado.',
+      'A estratégia completa do seu negócio. Posicionamento, identidade e ecossistema integrado de crescimento.',
     detail: 'Branding · Funis · Analytics · Growth Hacking',
     highlight: false,
   },
@@ -90,7 +90,7 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={ref}
-      className="relative bg-[#050505] py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Background texture */}
       <div
