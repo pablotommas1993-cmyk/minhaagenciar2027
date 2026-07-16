@@ -1,0 +1,323 @@
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
+
+const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const contactItems = [
+  {
+    icon: Mail,
+    label: 'E-mail',
+    value: 'contato@elevarestudio.com.br',
+    href: 'mailto:contato@elevarestudio.com.br',
+  },
+  {
+    icon: Phone,
+    label: 'WhatsApp',
+    value: '+55 (11) 99999-0000',
+    href: 'https://wa.me/5511999990000',
+  },
+  {
+    icon: MessageSquare,
+    label: 'Resposta em',
+    value: 'Até 24 horas úteis',
+    href: null,
+  },
+];
+
+type FormState = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+  service: string;
+};
+
+const services = [
+  'Website Premium',
+  'Inteligência Artificial',
+  'Automações',
+  'SEO Avançado',
+  'Google Ads',
+  'Estratégia Digital',
+  'Múltiplos Serviços',
+];
+
+export default function ContactSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const [form, setForm] = useState<FormState>({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+    service: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Simulate async submission
+    await new Promise((r) => setTimeout(r, 1200));
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  const inputClass =
+    'w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3.5 text-white text-sm placeholder-[#BDBDBD]/40 focus:outline-none focus:border-[#D4AF37]/30 focus:bg-white/[0.05] transition-all duration-300';
+
+  return (
+    <section
+      id="contact"
+      ref={ref}
+      className="relative bg-[#050505] py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+    >
+      {/* Top border */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
+      {/* Background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 60% at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, ease: easeOut }}
+          className="mb-16 md:mb-20 max-w-[640px]"
+        >
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+            <span className="text-[11px] tracking-[0.35em] uppercase text-[#D4AF37] font-medium">
+              Contato
+            </span>
+          </div>
+          <h2
+            className="font-display font-medium text-white tracking-[-0.02em] mb-6"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
+          >
+            Pronto para elevar{' '}
+            <span className="text-[#BDBDBD]">seu negócio?</span>
+          </h2>
+          <p className="text-[#BDBDBD] text-sm leading-relaxed">
+            Agende uma conversa estratégica gratuita. Vamos analisar seu negócio e apresentar como
+            podemos transformá-lo em uma referência digital no seu mercado.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Form — takes 3 of 5 cols */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -24 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: easeOut }}
+            className="lg:col-span-3"
+          >
+            {submitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-16 rounded-2xl border border-[#D4AF37]/20 bg-[#D4AF37]/[0.03]">
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-6"
+                  style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E0A1)' }}
+                >
+                  <ArrowRight size={20} className="text-[#050505]" />
+                </div>
+                <h3 className="font-display text-white text-xl font-medium mb-3">
+                  Mensagem enviada!
+                </h3>
+                <p className="text-[#BDBDBD] text-sm max-w-[320px] leading-relaxed">
+                  Recebemos sua solicitação. Nossa equipe entrará em contato em até 24 horas úteis.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                      Nome *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Seu nome completo"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                      E-mail *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="seu@email.com"
+                      className={inputClass}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                      Empresa
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      placeholder="Nome da empresa"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                      Serviço de interesse
+                    </label>
+                    <select
+                      name="service"
+                      value={form.service}
+                      onChange={handleChange}
+                      className={`${inputClass} cursor-pointer`}
+                      style={{ colorScheme: 'dark' }}
+                    >
+                      <option value="" className="bg-[#0a0a0a]">
+                        Selecione...
+                      </option>
+                      {services.map((s) => (
+                        <option key={s} value={s} className="bg-[#0a0a0a]">
+                          {s}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
+                    Mensagem
+                  </label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Conte-nos sobre seu projeto, objetivos e desafios..."
+                    rows={5}
+                    className={`${inputClass} resize-none`}
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={loading}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full rounded-xl py-4 font-medium text-[#050505] text-sm flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-70 cursor-pointer border-none"
+                  style={{
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                    boxShadow: '0 8px 30px rgba(212,175,55,0.15)',
+                  }}
+                >
+                  {loading ? (
+                    <span className="flex items-center gap-2">
+                      <span
+                        className="w-4 h-4 border-2 border-[#050505]/30 border-t-[#050505] rounded-full"
+                        style={{ animation: 'spin 0.7s linear infinite' }}
+                      />
+                      Enviando...
+                    </span>
+                  ) : (
+                    <>
+                      Solicitar Diagnóstico Gratuito
+                      <ArrowRight size={16} />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            )}
+          </motion.div>
+
+          {/* Contact info — takes 2 of 5 cols */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: easeOut }}
+            className="lg:col-span-2 space-y-6"
+          >
+            {contactItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={i}
+                  className="group flex items-start gap-4 p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-400"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center group-hover:border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/[0.05] transition-all duration-400">
+                    <Icon size={16} className="text-[#BDBDBD] group-hover:text-[#D4AF37] transition-colors duration-300" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-[#BDBDBD]/50 font-medium mb-1">
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel="noopener noreferrer"
+                        className="text-white text-sm hover:text-[#F4E0A1] transition-colors duration-300"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-white text-sm">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Promise box */}
+            <div
+              className="relative p-6 rounded-2xl border border-[#D4AF37]/10 overflow-hidden"
+              style={{ background: 'rgba(212,175,55,0.03)' }}
+            >
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse 80% 80% at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 100%)',
+                }}
+              />
+              <div className="relative z-10">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#D4AF37] font-medium mb-3">
+                  Nossa promessa
+                </p>
+                <p className="text-[#BDBDBD] text-sm leading-relaxed">
+                  A primeira conversa é sempre estratégica e gratuita. Sem obrigação. Sem pressão.
+                  Só valor real para o seu negócio.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
