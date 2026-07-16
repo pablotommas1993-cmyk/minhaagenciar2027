@@ -131,7 +131,7 @@ export default function PortfolioSection() {
               variants={cardVariants}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className={`group relative rounded-2xl border border-white/[0.06] overflow-hidden cursor-default luxury-transition hover:scale-[1.02] ${
+              className={`group relative rounded-2xl border border-white/[0.06] shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden cursor-default luxury-transition hover:scale-[1.02] ${
                 project.size === 'large' ? 'md:row-span-1' : ''
               }`}
               style={{
@@ -145,10 +145,10 @@ export default function PortfolioSection() {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 luxury-transition"
+                  className="w-full h-full object-cover opacity-50 group-hover:opacity-[0.65] group-hover:scale-105 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/90 via-[#060606]/70 to-[#060606] mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/95 via-[#060606]/70 to-[#060606]/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/30 to-transparent" />
               </div>
 
               {/* Inner glow on hover */}

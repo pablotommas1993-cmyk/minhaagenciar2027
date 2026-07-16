@@ -118,7 +118,7 @@ export default function AboutSection() {
             {values.map((value, i) => (
               <div
                 key={i}
-                className="group relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-500"
+                className="group relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] shadow-[0_20px_40px_rgba(0,0,0,0.4)] luxury-transition"
               >
                 {/* Accent top line */}
                 <div
@@ -140,9 +140,9 @@ export default function AboutSection() {
                   src="https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?auto=format&fit=crop&w=800&q=80"
                   alt="Premium Creative Studio"
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 luxury-transition"
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-75 group-hover:scale-105 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-[#050505]/70 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-[#050505]/50" />
                 <div
                   className="absolute inset-0"
                   style={{

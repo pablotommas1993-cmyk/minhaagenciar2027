@@ -79,7 +79,7 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
               transition={{ duration: 0.9, delay: i * 0.15, ease: easeOut }}
-              className="group relative p-10 rounded-2xl premium-glass hover:bg-white/[0.03] luxury-transition"
+              className="group relative p-10 rounded-2xl premium-glass hover:bg-white/[0.03] shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/[0.06] hover:border-white/[0.12] luxury-transition"
             >
               {/* Accent top line */}
               <div

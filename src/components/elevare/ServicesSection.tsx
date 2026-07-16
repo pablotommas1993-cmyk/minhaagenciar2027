@@ -138,7 +138,7 @@ export default function ServicesSection() {
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px premium-glass rounded-2xl overflow-hidden"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 overflow-hidden"
       >
         {services.map((service, i) => {
           const Icon = service.icon;
@@ -146,7 +146,7 @@ export default function ServicesSection() {
             <motion.div
               key={i}
               variants={cardVariants}
-              className={`group relative p-8 md:p-10 bg-transparent luxury-transition cursor-default overflow-hidden`}
+              className={`group relative p-8 md:p-10 premium-glass rounded-2xl border border-white/[0.06] shadow-[0_20px_40px_rgba(0,0,0,0.4)] luxury-transition cursor-default overflow-hidden`}
             >
               {/* Background Image (Desaturated & Darkened) */}
               <div className="absolute inset-0 z-0">
@@ -154,9 +154,9 @@ export default function ServicesSection() {
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-[0.03] grayscale group-hover:opacity-[0.08] group-hover:grayscale-0 luxury-transition"
+                  className="w-full h-full object-cover opacity-15 grayscale group-hover:opacity-25 group-hover:grayscale-0 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-[#050505]/80 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/70 to-[#050505]/40" />
               </div>
 
               {/* Hover glow */}
