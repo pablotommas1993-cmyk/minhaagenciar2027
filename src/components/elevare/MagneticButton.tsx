@@ -3,12 +3,16 @@ import { ArrowRight } from 'lucide-react';
 
 interface MagneticButtonProps {
   children?: React.ReactNode;
-  onClick?: () => void;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function MagneticButton({
   children = 'Solicitar Diagnóstico Gratuito',
-  onClick,
+  href = 'https://wa.me/5511979991680',
+  target = '_blank',
+  rel = 'noopener noreferrer',
 }: MagneticButtonProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -27,18 +31,20 @@ export default function MagneticButton({
   };
 
   return (
-    <motion.button
+    <motion.a
+      href={href}
+      target={target}
+      rel={rel}
       style={{
         x,
         y,
         background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
       }}
-      onMouseMove={handleMouseMove}
+      onMouseMove={handleMouseMove as any}
       onMouseLeave={handleMouseLeave}
       whileTap={{ scale: 0.97 }}
-      onClick={onClick}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="group relative overflow-hidden rounded-full px-8 py-4 font-medium text-[#050505] luxury-transition cursor-pointer border-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)]"
+      className="group relative overflow-hidden rounded-full px-8 py-4 font-medium text-[#050505] luxury-transition cursor-pointer border-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)] inline-flex justify-center no-underline"
     >
       <span className="relative z-10 flex items-center gap-2 text-sm font-semibold">
         {children}
@@ -48,6 +54,6 @@ export default function MagneticButton({
         className="absolute inset-0 opacity-0 group-hover:opacity-100 luxury-transition pointer-events-none"
         style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%)' }}
       />
-    </motion.button>
+    </motion.a>
   );
 }

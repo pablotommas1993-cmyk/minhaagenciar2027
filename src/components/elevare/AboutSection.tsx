@@ -137,7 +137,7 @@ export default function AboutSection() {
             <div className="relative p-8 rounded-2xl border border-white/[0.05] overflow-hidden min-h-[200px] flex items-center justify-center group luxury-transition hover:border-white/[0.1]">
               <div className="absolute inset-0 z-0">
                 <img
-                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?auto=format&fit=crop&w=800&q=80"
                   alt="Premium Creative Studio"
                   loading="lazy"
                   className="w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 luxury-transition"

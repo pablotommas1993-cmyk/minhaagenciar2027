@@ -85,12 +85,14 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
             />
           </button>
         ))}
-        <button
-          onClick={() => handleNavClick('Contato')}
-          className="ml-2 rounded-full border border-[#D4AF37]/30 px-5 py-2 text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 transition-all duration-300 cursor-pointer"
+        <a
+          href="https://wa.me/5511979991680"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 rounded-full border border-[#D4AF37]/30 px-5 py-2 text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 transition-all duration-300 cursor-pointer text-center no-underline"
         >
           Agendar Chamada Estratégica
-        </button>
+        </a>
       </div>
 
       {/* Mobile Toggle */}
@@ -127,13 +129,15 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
                   {item}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavClick('Contato')}
-                className="mt-2 rounded-full px-5 py-3 text-sm font-medium text-[#050505] cursor-pointer border-none"
+              <a
+                href="https://wa.me/5511979991680"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 rounded-full px-5 py-3 text-sm font-medium text-[#050505] cursor-pointer border-none text-center no-underline inline-block"
                 style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E0A1, #D4AF37)' }}
               >
                 Agendar Chamada Estratégica
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

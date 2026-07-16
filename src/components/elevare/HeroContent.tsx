@@ -66,7 +66,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         variants={btnAnim}
         className="mt-10 flex flex-col sm:flex-row gap-4 items-start"
       >
-        <MagneticButton onClick={onCTAClick} />
+        <MagneticButton />
         <GhostButton onClick={onPortfolioClick} />
       </motion.div>
 
