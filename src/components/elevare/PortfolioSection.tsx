@@ -12,6 +12,7 @@ const projects = [
       'Website institucional de alto impacto. Design editorial, performance máxima e posicionamento de autoridade.',
     result: 'Performance Maximizada',
     tags: ['Next.js', 'Design', 'SEO'],
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
     color: '#1a1a1a',
     accent: '#D4AF37',
     size: 'large',
@@ -23,6 +24,7 @@ const projects = [
       'E-commerce premium focado em conversão, com integração completa de pagamentos e logística.',
     result: 'Otimização de Conversão',
     tags: ['React', 'Stripe', 'Analytics'],
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80',
     color: '#111111',
     accent: '#C5A028',
     size: 'small',
@@ -34,6 +36,7 @@ const projects = [
       'Automações com IA. Atendimento escalável, qualificação de leads e CRM inteligente.',
     result: 'Atendimento Inteligente',
     tags: ['n8n', 'GPT-4', 'CRM'],
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
     color: '#0d0d0d',
     accent: '#D4AF37',
     size: 'small',
@@ -45,6 +48,7 @@ const projects = [
       'Estratégia integrada de Ads e SEO. Posicionamento líder nas buscas e campanhas de alta performance.',
     result: 'SEO Local Estratégico',
     tags: ['Google Ads', 'SEO', 'Analytics'],
+    image: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=800&q=80',
     color: '#0f0f0f',
     accent: '#C5A028',
     size: 'large',
@@ -135,6 +139,18 @@ export default function PortfolioSection() {
                 borderColor: hovered === i ? 'rgba(212,175,55,0.15)' : 'rgba(255,255,255,0.06)',
               }}
             >
+              {/* Background Mockup Image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 luxury-transition"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/90 via-[#060606]/70 to-[#060606] mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-transparent" />
+              </div>
+
               {/* Inner glow on hover */}
               <AnimatePresence>
                 {hovered === i && (
@@ -143,15 +159,15 @@ export default function PortfolioSection() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 pointer-events-none"
+                    className="absolute inset-0 pointer-events-none z-10"
                     style={{
-                      background: `radial-gradient(ellipse 60% 50% at 50% 0%, ${project.accent}08 0%, transparent 70%)`,
+                      background: `radial-gradient(ellipse 60% 50% at 50% 0%, ${project.accent}15 0%, transparent 70%)`,
                     }}
                   />
                 )}
               </AnimatePresence>
 
-              <div className="relative p-8 md:p-10 h-full flex flex-col min-h-[280px]">
+              <div className="relative z-20 p-8 md:p-10 h-full flex flex-col min-h-[280px]">
                 {/* Category */}
                 <div className="flex items-center justify-between mb-auto">
                   <span

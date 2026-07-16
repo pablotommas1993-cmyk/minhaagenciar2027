@@ -133,20 +133,30 @@ export default function AboutSection() {
               </div>
             ))}
 
-            {/* Decorative element */}
-            <div className="relative p-8 rounded-2xl border border-[#D4AF37]/10 overflow-hidden">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 100%)',
-                }}
-              />
+            {/* Decorative image element */}
+            <div className="relative p-8 rounded-2xl border border-white/[0.05] overflow-hidden min-h-[200px] flex items-center justify-center group luxury-transition hover:border-white/[0.1]">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+                  alt="Premium Creative Studio"
+                  loading="lazy"
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 luxury-transition"
+                />
+                <div className="absolute inset-0 bg-[#050505]/70 mix-blend-multiply" />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 100%)',
+                  }}
+                />
+              </div>
+
               <div className="relative z-10 text-center">
-                <p className="font-display text-[3rem] font-semibold gold-shimmer leading-none mb-2">
+                <p className="font-display text-[3rem] font-semibold gold-shimmer leading-none mb-2 drop-shadow-2xl">
                   Top 1%
                 </p>
-                <p className="text-[#BDBDBD] text-sm">
-                  das agências digitais em entrega de qualidade e performance
+                <p className="text-[#BDBDBD] text-sm font-medium tracking-wide">
+                  Qualidade global de engenharia e design.
                 </p>
               </div>
             </div>

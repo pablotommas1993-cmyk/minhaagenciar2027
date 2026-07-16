@@ -11,6 +11,7 @@ const services = [
     description:
       'Presença digital de nível mundial. Arquitetura sólida, performance máxima e design focado em conversão.',
     detail: 'Next.js · React · TypeScript · Headless CMS',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
     highlight: true,
   },
   {
@@ -19,6 +20,7 @@ const services = [
     description:
       'Integramos IA ao seu negócio. Chatbots, automação de atendimento e análise preditiva em escala.',
     detail: 'GPT-4 · Claude · Automação · Machine Learning',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
     highlight: false,
   },
   {
@@ -27,6 +29,7 @@ const services = [
     description:
       'Eliminamos tarefas repetitivas. Sua equipe foca no essencial enquanto a tecnologia trabalha.',
     detail: 'n8n · Make · Zapier · APIs · Webhooks',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     highlight: false,
   },
   {
@@ -35,6 +38,7 @@ const services = [
     description:
       'Posicionamos sua empresa no topo do Google com estratégias técnicas para tráfego qualificado e consistente.',
     detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     highlight: false,
   },
   {
@@ -43,6 +47,7 @@ const services = [
     description:
       'Campanhas de performance focadas em ROI. Cada centavo é rastreado e otimizado para o máximo retorno.',
     detail: 'Search · Display · YouTube · Remarketing · Shopping',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
     highlight: false,
   },
   {
@@ -51,6 +56,7 @@ const services = [
     description:
       'A estratégia completa do seu negócio. Posicionamento, identidade e ecossistema integrado de crescimento.',
     detail: 'Branding · Funis · Analytics · Growth Hacking',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
     highlight: false,
   },
 ];
@@ -140,17 +146,28 @@ export default function ServicesSection() {
             <motion.div
               key={i}
               variants={cardVariants}
-              className={`group relative p-8 md:p-10 bg-transparent hover:bg-white/[0.02] luxury-transition cursor-default`}
+              className={`group relative p-8 md:p-10 bg-transparent luxury-transition cursor-default overflow-hidden`}
             >
+              {/* Background Image (Desaturated & Darkened) */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover opacity-[0.03] grayscale group-hover:opacity-[0.08] group-hover:grayscale-0 luxury-transition"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-[#050505]/80 mix-blend-multiply" />
+              </div>
+
               {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-none"
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-none z-10"
                 style={{
-                  background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 100%)',
+                  background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 100%)',
                 }}
               />
 
               {/* Icon */}
-              <div className="mb-8 inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.05] bg-white/[0.02] group-hover:border-[#D4AF37]/30 group-hover:bg-[#D4AF37]/[0.05] luxury-transition">
+              <div className="relative z-20 mb-8 inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.05] bg-white/[0.02] group-hover:border-[#D4AF37]/30 group-hover:bg-[#D4AF37]/[0.05] luxury-transition">
                 <Icon
                   size={20}
                   className="text-white/60 group-hover:text-[#D4AF37] luxury-transition"
@@ -159,17 +176,17 @@ export default function ServicesSection() {
               </div>
 
               {/* Title */}
-              <h3 className="font-display font-medium text-white/90 text-lg mb-4 group-hover:text-white luxury-transition">
+              <h3 className="relative z-20 font-display font-medium text-white/90 text-lg mb-4 group-hover:text-white luxury-transition">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-white/60 text-sm leading-relaxed mb-8 luxury-transition group-hover:text-white/70">
+              <p className="relative z-20 text-white/60 text-sm leading-relaxed mb-8 luxury-transition group-hover:text-white/70">
                 {service.description}
               </p>
 
               {/* Tech detail */}
-              <p className="text-[10px] tracking-[0.2em] text-[#D4AF37]/60 uppercase font-medium group-hover:text-[#D4AF37]/80 transition-colors duration-300">
+              <p className="relative z-20 text-[10px] tracking-[0.2em] text-[#D4AF37]/60 uppercase font-medium group-hover:text-[#D4AF37]/80 transition-colors duration-300">
                 {service.detail}
               </p>
 

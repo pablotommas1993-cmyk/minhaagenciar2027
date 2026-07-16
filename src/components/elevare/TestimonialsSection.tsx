@@ -6,23 +6,23 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const testimonials = [
   {
     quote:
-      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
-    name: 'Nome do Cliente',
-    role: 'Empresa Parceira',
+      'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
+    name: 'Novas Parcerias',
+    role: 'Em breve',
     stars: 5,
   },
   {
     quote:
-      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
-    name: 'Nome do Cliente',
-    role: 'Empresa Parceira',
+      'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
+    name: 'Novas Parcerias',
+    role: 'Em breve',
     stars: 5,
   },
   {
     quote:
-      'Espaço reservado para o depoimento real de um cliente satisfeito, destacando o impacto positivo e a qualidade excepcional gerada pelo nosso trabalho em parceria.',
-    name: 'Nome do Cliente',
-    role: 'Empresa Parceira',
+      'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
+    name: 'Novas Parcerias',
+    role: 'Em breve',
     stars: 5,
   },
 ];
