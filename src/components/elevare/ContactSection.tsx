@@ -73,13 +73,13 @@ export default function ContactSection() {
   };
 
   const inputClass =
-    'w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3.5 text-white text-sm placeholder-[#BDBDBD]/40 focus:outline-none focus:border-[#D4AF37]/30 focus:bg-white/[0.05] transition-all duration-300';
+    'w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-5 py-4 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#D4AF37]/40 focus:bg-white/[0.04] focus:shadow-[0_0_20px_rgba(212,175,55,0.05)] luxury-transition';
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="relative bg-[#050505] py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -144,8 +144,8 @@ export default function ContactSection() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       Nome *
@@ -176,7 +176,7 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[11px] tracking-[0.2em] uppercase text-[#BDBDBD]/60 mb-2 font-medium">
                       Empresa
@@ -231,12 +231,15 @@ export default function ContactSection() {
                   type="submit"
                   disabled={loading}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full rounded-xl py-4 font-medium text-[#050505] text-sm flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-70 cursor-pointer border-none"
+                  className="w-full rounded-xl py-4 font-medium text-[#050505] text-sm flex items-center justify-center gap-2 luxury-transition disabled:opacity-70 cursor-pointer border-none relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)]"
                   style={{
                     background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
-                    boxShadow: '0 8px 30px rgba(212,175,55,0.15)',
                   }}
                 >
+                  <span
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 luxury-transition pointer-events-none"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%)' }}
+                  />
                   {loading ? (
                     <span className="flex items-center gap-2">
                       <span
@@ -268,10 +271,10 @@ export default function ContactSection() {
               return (
                 <div
                   key={i}
-                  className="group flex items-start gap-4 p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-400"
+                  className="group flex items-start gap-5 p-8 rounded-2xl premium-glass hover:bg-white/[0.03] luxury-transition"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center group-hover:border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/[0.05] transition-all duration-400">
-                    <Icon size={16} className="text-[#BDBDBD] group-hover:text-[#D4AF37] transition-colors duration-300" strokeWidth={1.5} />
+                  <div className="flex-shrink-0 w-11 h-11 rounded-xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center group-hover:border-[#D4AF37]/30 group-hover:bg-[#D4AF37]/[0.05] luxury-transition">
+                    <Icon size={18} className="text-[#BDBDBD] group-hover:text-[#D4AF37] luxury-transition" strokeWidth={1.5} />
                   </div>
                   <div>
                     <p className="text-[10px] tracking-[0.2em] uppercase text-[#BDBDBD]/50 font-medium mb-1">

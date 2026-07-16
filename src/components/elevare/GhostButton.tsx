@@ -14,11 +14,12 @@ export default function GhostButton({
   return (
     <button
       onClick={onClick}
-      className="group rounded-full border border-white/15 bg-white/[0.03] backdrop-blur-md px-8 py-4 font-medium text-white hover:bg-white/[0.08] hover:border-white/25 transition-all duration-300 cursor-pointer"
+      className="group relative overflow-hidden rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md px-8 py-4 font-medium text-white hover:border-white/20 luxury-transition cursor-pointer"
     >
-      <span className="flex items-center gap-2 text-sm">
+      <span className="absolute inset-0 brushed-metal opacity-0 group-hover:opacity-100 luxury-transition pointer-events-none" />
+      <span className="relative z-10 flex items-center gap-2 text-sm">
         {icon || (
-          <Play size={14} className="text-[#D4AF37] transition-transform duration-300 group-hover:scale-110" />
+          <Play size={14} className="text-[#D4AF37] luxury-transition group-hover:scale-110" />
         )}
         {children}
       </span>

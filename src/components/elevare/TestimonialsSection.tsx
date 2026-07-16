@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}
@@ -78,13 +78,13 @@ export default function TestimonialsSection() {
               key={i}
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: easeOut }}
-              className="group relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-500"
+              transition={{ duration: 0.9, delay: i * 0.15, ease: easeOut }}
+              className="group relative p-10 rounded-2xl premium-glass hover:bg-white/[0.03] luxury-transition"
             >
               {/* Accent top line */}
               <div
-                className="absolute top-0 left-8 right-8 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                style={{ background: 'linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent)' }}
+                className="absolute top-0 left-10 right-10 h-px opacity-0 group-hover:opacity-100 luxury-transition"
+                style={{ background: 'linear-gradient(to right, transparent, rgba(212,175,55,0.5), transparent)' }}
               />
 
               {/* Stars */}
@@ -95,7 +95,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Quote */}
-              <p className="text-[#BDBDBD] text-sm leading-relaxed mb-8 italic">
+              <p className="text-white/80 text-sm leading-[1.8] mb-10 italic luxury-transition group-hover:text-white/95">
                 "{t.quote}"
               </p>
 
@@ -108,8 +108,8 @@ export default function TestimonialsSection() {
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-white text-sm font-medium">{t.name}</p>
-                  <p className="text-[#BDBDBD] text-xs">{t.role}</p>
+                  <p className="text-white/90 text-sm font-medium">{t.name}</p>
+                  <p className="text-white/50 text-xs tracking-wide">{t.role}</p>
                 </div>
               </div>
             </motion.div>

@@ -119,7 +119,7 @@ export default function PortfolioSection() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
         >
           {projects.map((project, i) => (
             <motion.div
@@ -127,7 +127,7 @@ export default function PortfolioSection() {
               variants={cardVariants}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className={`group relative rounded-2xl border border-white/[0.06] overflow-hidden cursor-default transition-all duration-500 ${
+              className={`group relative rounded-2xl border border-white/[0.06] overflow-hidden cursor-default luxury-transition hover:scale-[1.02] ${
                 project.size === 'large' ? 'md:row-span-1' : ''
               }`}
               style={{
@@ -227,7 +227,7 @@ export default function PortfolioSection() {
               const el = document.getElementById('contact');
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#F4E0A1] border border-[#D4AF37]/20 rounded-full px-6 py-3 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/40 transition-all duration-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#F4E0A1] border border-[#D4AF37]/20 rounded-full px-6 py-3 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/40 luxury-transition cursor-pointer"
           >
             Iniciar um Projeto
             <ArrowUpRight size={14} />

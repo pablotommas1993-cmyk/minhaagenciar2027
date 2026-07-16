@@ -38,15 +38,15 @@ export default function MagneticButton({
       whileTap={{ scale: 0.97 }}
       onClick={onClick}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="group relative overflow-hidden rounded-full px-8 py-4 font-medium text-[#050505] shadow-[0_8px_30px_rgba(212,175,55,0.12)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.22)] transition-shadow duration-500 cursor-pointer border-none"
+      className="group relative overflow-hidden rounded-full px-8 py-4 font-medium text-[#050505] luxury-transition cursor-pointer border-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)]"
     >
       <span className="relative z-10 flex items-center gap-2 text-sm font-semibold">
         {children}
-        <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight size={16} className="luxury-transition group-hover:translate-x-1" />
       </span>
       <span
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: 'linear-gradient(135deg, #F4E0A1 0%, #FFF8E0 50%, #F4E0A1 100%)' }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 luxury-transition pointer-events-none"
+        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%)' }}
       />
     </motion.button>
   );

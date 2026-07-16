@@ -132,7 +132,7 @@ export default function ServicesSection() {
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.06]"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px premium-glass rounded-2xl overflow-hidden"
       >
         {services.map((service, i) => {
           const Icon = service.icon;
@@ -140,7 +140,7 @@ export default function ServicesSection() {
             <motion.div
               key={i}
               variants={cardVariants}
-              className={`group relative p-8 md:p-10 bg-[#050505] hover:bg-[#0a0a0a] transition-colors duration-500 cursor-default`}
+              className={`group relative p-8 md:p-10 bg-transparent hover:bg-white/[0.02] luxury-transition cursor-default`}
             >
               {/* Hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-none"
@@ -150,21 +150,21 @@ export default function ServicesSection() {
               />
 
               {/* Icon */}
-              <div className="mb-6 inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.08] bg-white/[0.03] group-hover:border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/[0.05] transition-all duration-500">
+              <div className="mb-8 inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.05] bg-white/[0.02] group-hover:border-[#D4AF37]/30 group-hover:bg-[#D4AF37]/[0.05] luxury-transition">
                 <Icon
                   size={20}
-                  className="text-[#BDBDBD] group-hover:text-[#D4AF37] transition-colors duration-500"
+                  className="text-white/60 group-hover:text-[#D4AF37] luxury-transition"
                   strokeWidth={1.5}
                 />
               </div>
 
               {/* Title */}
-              <h3 className="font-display font-medium text-white text-lg mb-3 group-hover:text-white transition-colors">
+              <h3 className="font-display font-medium text-white/90 text-lg mb-4 group-hover:text-white luxury-transition">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[#BDBDBD] text-sm leading-relaxed mb-6">
+              <p className="text-white/60 text-sm leading-relaxed mb-8 luxury-transition group-hover:text-white/70">
                 {service.description}
               </p>
 

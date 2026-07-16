@@ -15,7 +15,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#030303] px-[5%] lg:px-[8%] pt-16 md:pt-20 pb-8 overflow-hidden">
+    <footer className="relative bg-[#030303] px-[5%] lg:px-[8%] pt-24 md:pt-32 pb-10 overflow-hidden">
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
@@ -40,7 +40,7 @@ export default function Footer() {
                 Studio
               </span>
             </div>
-            <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[300px] mb-6">
+            <p className="text-white/60 text-sm leading-relaxed max-w-[300px] mb-8">
               Transformamos empresas em negócios digitais de alta performance. Websites premium,
               IA, automações e estratégia digital para empresas que querem crescer com autoridade.
             </p>
@@ -50,7 +50,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-full border border-white/[0.08] flex items-center justify-center text-[10px] text-[#BDBDBD] hover:text-[#D4AF37] hover:border-[#D4AF37]/20 transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center text-[10px] text-white/50 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/5 luxury-transition"
                   aria-label={s}
                 >
                   {s}
@@ -70,7 +70,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-[#BDBDBD] text-sm hover:text-white transition-colors duration-300"
+                      className="text-white/50 text-sm hover:text-white luxury-transition"
                     >
                       {link}
                     </a>
@@ -82,11 +82,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.04] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#BDBDBD]/40 text-xs">
+        <div className="border-t border-white/[0.04] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
+          <p className="text-white/30 text-xs">
             © {year} ELEVARE Studio. Todos os direitos reservados.
           </p>
-          <p className="text-[#BDBDBD]/30 text-xs tracking-wide">
+          <p className="text-white/20 text-xs tracking-wide">
             Crafted with precision in Brazil
           </p>
         </div>

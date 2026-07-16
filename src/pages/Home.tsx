@@ -44,9 +44,10 @@ export default function Home() {
             <source src={VIDEO_URL} type="video/mp4" />
           </video>
           {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-black/5" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-black/10" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
 
         {/* Hero Content + Stats */}

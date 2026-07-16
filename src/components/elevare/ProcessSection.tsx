@@ -42,7 +42,7 @@ export default function ProcessSection() {
     <section
       id="process"
       ref={ref}
-      className="relative bg-[#050505] py-24 md:py-36 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Subtle top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -92,8 +92,8 @@ export default function ProcessSection() {
               key={i}
               initial={{ opacity: 0, x: -24 }}
               animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -24 }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: easeOut }}
-              className="group relative flex flex-col md:flex-row md:items-start gap-6 md:gap-12 py-10 md:py-12 border-t border-white/[0.06] hover:border-white/[0.1] transition-colors duration-500"
+              transition={{ duration: 0.9, delay: i * 0.15, ease: easeOut }}
+              className="group relative flex flex-col md:flex-row md:items-start gap-6 md:gap-12 py-12 md:py-16 border-t border-white/[0.06] hover:border-white/[0.12] luxury-transition"
             >
               {/* Step number */}
               <div className="flex-shrink-0 w-14 md:w-20">
@@ -107,15 +107,15 @@ export default function ProcessSection() {
 
               {/* Content */}
               <div className="flex-1">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-                  <h3 className="font-display font-medium text-white text-xl group-hover:text-white transition-colors">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                  <h3 className="font-display font-medium text-white/90 text-xl group-hover:text-white luxury-transition">
                     {step.title}
                   </h3>
-                  <span className="inline-flex items-center text-[10px] tracking-[0.25em] uppercase text-[#D4AF37]/60 border border-[#D4AF37]/15 rounded-full px-3 py-1 w-fit">
+                  <span className="inline-flex items-center text-[10px] tracking-[0.3em] uppercase text-[#D4AF37]/70 border border-[#D4AF37]/20 rounded-full px-4 py-1.5 w-fit">
                     {step.duration}
                   </span>
                 </div>
-                <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[520px]">
+                <p className="text-white/60 text-sm leading-relaxed max-w-[520px] group-hover:text-white/75 luxury-transition">
                   {step.description}
                 </p>
               </div>

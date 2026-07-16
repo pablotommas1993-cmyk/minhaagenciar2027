@@ -54,7 +54,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
       {/* Subheadline */}
       <motion.p
         variants={subAnim}
-        className="mt-8 text-[#BDBDBD] max-w-[580px]"
+        className="mt-8 text-white/85 text-balance max-w-[580px]"
         style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.125rem)', lineHeight: 1.7 }}
       >
         Criamos websites premium, inteligência artificial, automações, SEO, Google Ads e
@@ -73,7 +73,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
       {/* Trust Indicators */}
       <motion.div
         variants={trustAnim}
-        className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] tracking-wide text-[#BDBDBD]"
+        className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] tracking-wide text-white/70"
       >
         <span className="text-[#D4AF37] tracking-[0.2em] text-sm">★★★★★</span>
         <span className="text-white/20">•</span>
