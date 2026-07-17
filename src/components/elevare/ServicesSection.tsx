@@ -11,7 +11,7 @@ const services = [
     description:
       'Presença digital de nível mundial. Arquitetura sólida, performance máxima e design focado em conversão.',
     detail: 'Next.js · React · TypeScript · Headless CMS',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-1.webp',
     highlight: true,
   },
   {
@@ -20,7 +20,7 @@ const services = [
     description:
       'Integramos IA ao seu negócio. Chatbots, automação de atendimento e análise preditiva em escala.',
     detail: 'GPT-4 · Claude · Automação · Machine Learning',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-2.webp',
     highlight: false,
   },
   {
@@ -29,7 +29,7 @@ const services = [
     description:
       'Eliminamos tarefas repetitivas. Sua equipe foca no essencial enquanto a tecnologia trabalha.',
     detail: 'n8n · Make · Zapier · APIs · Webhooks',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-3.webp',
     highlight: false,
   },
   {
@@ -38,7 +38,7 @@ const services = [
     description:
       'Posicionamos sua empresa no topo do Google com estratégias técnicas para tráfego qualificado e consistente.',
     detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-4.webp',
     highlight: false,
   },
   {
@@ -47,7 +47,7 @@ const services = [
     description:
       'Campanhas de performance focadas em ROI. Cada centavo é rastreado e otimizado para o máximo retorno.',
     detail: 'Search · Display · YouTube · Remarketing · Shopping',
-    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-5.webp',
     highlight: false,
   },
   {
@@ -56,7 +56,7 @@ const services = [
     description:
       'A estratégia completa do seu negócio. Posicionamento, identidade e ecossistema integrado de crescimento.',
     detail: 'Branding · Funis · Analytics · Growth Hacking',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+    image: '/images/services-6.webp',
     highlight: false,
   },
 ];
