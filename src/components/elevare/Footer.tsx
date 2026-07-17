@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-baseline gap-2 mb-5">
               <span className="font-display text-xl font-semibold tracking-[0.2em] text-white">
-                NEXORA
+                ORVION
               </span>
               <span className="text-[10px] tracking-[0.3em] text-[#D4AF37] uppercase font-medium">
                 Studio
@@ -86,7 +86,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
           <p className="text-white/30 text-xs">
-            © {year} NEXORA Studio. Todos os direitos reservados.
+            © {year} ORVION Studio. Todos os direitos reservados.
           </p>
           <p className="text-white/20 text-xs tracking-wide">
             Crafted with precision in Brazil

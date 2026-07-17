@@ -8,8 +8,8 @@ const contactItems = [
   {
     icon: Mail,
     label: 'E-mail',
-    value: 'contato@nexorastudio.com.br',
-    href: 'mailto:contato@nexorastudio.com.br',
+    value: 'contato@orvionstudio.com.br',
+    href: 'mailto:contato@orvionstudio.com.br',
   },
   {
     icon: Phone,
