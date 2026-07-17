@@ -1,13 +1,15 @@
+import { lazy, Suspense } from 'react';
 import Navigation from '@/components/elevare/Navigation';
 import HeroContent from '@/components/elevare/HeroContent';
 import StatsBar from '@/components/elevare/StatsBar';
-import ServicesSection from '@/components/elevare/ServicesSection';
-import PortfolioSection from '@/components/elevare/PortfolioSection';
-import ProcessSection from '@/components/elevare/ProcessSection';
-import AboutSection from '@/components/elevare/AboutSection';
-import TestimonialsSection from '@/components/elevare/TestimonialsSection';
-import ContactSection from '@/components/elevare/ContactSection';
-import Footer from '@/components/elevare/Footer';
+
+const ServicesSection = lazy(() => import('@/components/elevare/ServicesSection'));
+const PortfolioSection = lazy(() => import('@/components/elevare/PortfolioSection'));
+const ProcessSection = lazy(() => import('@/components/elevare/ProcessSection'));
+const AboutSection = lazy(() => import('@/components/elevare/AboutSection'));
+const TestimonialsSection = lazy(() => import('@/components/elevare/TestimonialsSection'));
+const ContactSection = lazy(() => import('@/components/elevare/ContactSection'));
+const Footer = lazy(() => import('@/components/elevare/Footer'));
 
 const VIDEO_URL =
   'https://media.base44.com/videos/public/user_6a58ea6dd6dede36eda97a7c/d334bedd7_Cinematic_background_video_anima_202607161129.mp4';
@@ -38,6 +40,7 @@ export default function Home() {
             muted
             playsInline
             preload="auto"
+            poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
             className="w-full h-full object-cover object-[60%_center] md:object-center"
             aria-hidden="true"
           >
@@ -64,26 +67,28 @@ export default function Home() {
         </main>
       </div>
 
-      {/* ——— SERVICES ——— */}
-      <ServicesSection />
+      <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+        {/* ——— SERVICES ——— */}
+        <ServicesSection />
 
-      {/* ——— PORTFOLIO ——— */}
-      <PortfolioSection />
+        {/* ——— PORTFOLIO ——— */}
+        <PortfolioSection />
 
-      {/* ——— PROCESS ——— */}
-      <ProcessSection />
+        {/* ——— PROCESS ——— */}
+        <ProcessSection />
 
-      {/* ——— ABOUT ——— */}
-      <AboutSection />
+        {/* ——— ABOUT ——— */}
+        <AboutSection />
 
-      {/* ——— TESTIMONIALS ——— */}
-      <TestimonialsSection />
+        {/* ——— TESTIMONIALS ——— */}
+        <TestimonialsSection />
 
-      {/* ——— CONTACT ——— */}
-      <ContactSection />
+        {/* ——— CONTACT ——— */}
+        <ContactSection />
 
-      {/* ——— FOOTER ——— */}
-      <Footer />
+        {/* ——— FOOTER ——— */}
+        <Footer />
+      </Suspense>
     </div>
   );
 }
