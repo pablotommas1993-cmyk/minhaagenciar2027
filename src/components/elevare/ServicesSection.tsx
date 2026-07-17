@@ -96,7 +96,7 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={ref}
-      className="relative bg-[#050505] py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-16 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Background texture */}
       <div
@@ -154,9 +154,9 @@ export default function ServicesSection() {
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-15 grayscale group-hover:opacity-25 group-hover:grayscale-0 luxury-transition"
+                  className="w-full h-full object-cover opacity-25 grayscale group-hover:opacity-[0.35] group-hover:grayscale-0 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/70 to-[#050505]/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/50 to-[#050505]/20" />
               </div>
 
               {/* Hover glow */}

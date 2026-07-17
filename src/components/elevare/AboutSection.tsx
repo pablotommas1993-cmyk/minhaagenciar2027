@@ -36,7 +36,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="relative bg-[#050505] py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-16 lg:py-24 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -140,9 +140,9 @@ export default function AboutSection() {
                   src="https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?auto=format&fit=crop&w=800&q=80"
                   alt="Premium Creative Studio"
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-75 group-hover:scale-105 luxury-transition"
+                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-[#050505]/50" />
+                <div className="absolute inset-0 bg-[#050505]/30" />
                 <div
                   className="absolute inset-0"
                   style={{

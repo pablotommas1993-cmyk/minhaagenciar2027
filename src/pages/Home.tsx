@@ -38,7 +38,7 @@ export default function Home() {
             muted
             playsInline
             preload="auto"
-            className="w-full h-full object-cover object-[70%_center] md:object-center"
+            className="w-full h-full object-cover object-[60%_center] md:object-center"
             aria-hidden="true"
           >
             <source src={VIDEO_URL} type="video/mp4" />

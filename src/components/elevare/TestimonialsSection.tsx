@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={ref}
-      className="relative py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-16 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}

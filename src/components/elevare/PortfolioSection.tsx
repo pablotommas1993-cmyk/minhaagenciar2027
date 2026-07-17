@@ -76,7 +76,7 @@ export default function PortfolioSection() {
     <section
       id="portfolio"
       ref={ref}
-      className="relative py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-16 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}
@@ -145,10 +145,10 @@ export default function PortfolioSection() {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-[0.65] group-hover:scale-105 luxury-transition"
+                  className="w-full h-full object-cover opacity-[0.65] group-hover:opacity-90 group-hover:scale-105 luxury-transition"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/95 via-[#060606]/70 to-[#060606]/40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/90 via-[#060606]/50 to-[#060606]/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060606]/95 via-[#060606]/20 to-transparent" />
               </div>
 
               {/* Inner glow on hover */}

@@ -101,7 +101,7 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={ref}
-      className="relative bg-[#050505] py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-16 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
