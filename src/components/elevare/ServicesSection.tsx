@@ -96,7 +96,7 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={ref}
-      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Background texture */}
       <div

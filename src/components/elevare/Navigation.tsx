@@ -60,10 +60,10 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
         href="#"
         onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         className="flex items-baseline gap-2 cursor-pointer"
-        aria-label="ELEVARE Studio — Home"
+        aria-label="NEXORA Studio — Home"
       >
         <span className="font-display text-xl font-semibold tracking-[0.2em] text-white">
-          ELEVARE
+          NEXORA
         </span>
         <span className="text-[10px] tracking-[0.3em] text-[#D4AF37] uppercase font-medium">
           Studio

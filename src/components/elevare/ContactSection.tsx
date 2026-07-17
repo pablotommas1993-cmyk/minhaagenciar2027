@@ -8,8 +8,8 @@ const contactItems = [
   {
     icon: Mail,
     label: 'E-mail',
-    value: 'contato@elevarestudio.com.br',
-    href: 'mailto:contato@elevarestudio.com.br',
+    value: 'contato@nexorastudio.com.br',
+    href: 'mailto:contato@nexorastudio.com.br',
   },
   {
     icon: Phone,
@@ -101,7 +101,7 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={ref}
-      className="relative bg-[#050505] py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative bg-[#050505] py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -182,6 +182,7 @@ export default function ContactSection() {
                       className={getInputClass(!!errors.name)}
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? 'name-error' : undefined}
+                      required
                     />
                     {errors.name && <p id="name-error" className="text-red-400 text-xs mt-2">{errors.name}</p>}
                   </div>
@@ -199,6 +200,7 @@ export default function ContactSection() {
                       className={getInputClass(!!errors.email)}
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? 'email-error' : undefined}
+                      required
                     />
                     {errors.email && <p id="email-error" className="text-red-400 text-xs mt-2">{errors.email}</p>}
                   </div>
@@ -257,6 +259,7 @@ export default function ContactSection() {
                     className={`${getInputClass(!!errors.message)} resize-none`}
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? 'message-error' : undefined}
+                    required
                   />
                   {errors.message && <p id="message-error" className="text-red-400 text-xs mt-2">{errors.message}</p>}
                 </div>

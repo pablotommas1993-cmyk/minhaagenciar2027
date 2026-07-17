@@ -7,22 +7,22 @@ const testimonials = [
   {
     quote:
       'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
-    name: 'Novas Parcerias',
-    role: 'Em breve',
+    name: 'Projeto Conceitual',
+    role: 'Exemplo ilustrativo',
     stars: 5,
   },
   {
     quote:
       'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
-    name: 'Novas Parcerias',
-    role: 'Em breve',
+    name: 'Projeto Conceitual',
+    role: 'Exemplo ilustrativo',
     stars: 5,
   },
   {
     quote:
       'Estamos construindo novas parcerias. Em breve, experiências reais de clientes estarão disponíveis.',
-    name: 'Novas Parcerias',
-    role: 'Em breve',
+    name: 'Projeto Conceitual',
+    role: 'Exemplo ilustrativo',
     stars: 5,
   },
 ];
@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={ref}
-      className="relative py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}

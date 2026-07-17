@@ -12,7 +12,7 @@ const projects = [
       'Website institucional de alto impacto. Design editorial, performance máxima e posicionamento de autoridade.',
     result: 'Performance Maximizada',
     tags: ['Next.js', 'Design', 'SEO'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
     color: '#1a1a1a',
     accent: '#D4AF37',
     size: 'large',
@@ -24,7 +24,7 @@ const projects = [
       'E-commerce premium focado em conversão, com integração completa de pagamentos e logística.',
     result: 'Otimização de Conversão',
     tags: ['React', 'Stripe', 'Analytics'],
-    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=800&q=80',
     color: '#111111',
     accent: '#C5A028',
     size: 'small',
@@ -36,7 +36,7 @@ const projects = [
       'Automações com IA. Atendimento escalável, qualificação de leads e CRM inteligente.',
     result: 'Atendimento Inteligente',
     tags: ['n8n', 'GPT-4', 'CRM'],
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80',
     color: '#0d0d0d',
     accent: '#D4AF37',
     size: 'small',
@@ -48,7 +48,7 @@ const projects = [
       'Estratégia integrada de Ads e SEO. Posicionamento líder nas buscas e campanhas de alta performance.',
     result: 'SEO Local Estratégico',
     tags: ['Google Ads', 'SEO', 'Analytics'],
-    image: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
     color: '#0f0f0f',
     accent: '#C5A028',
     size: 'large',
@@ -76,7 +76,7 @@ export default function PortfolioSection() {
     <section
       id="portfolio"
       ref={ref}
-      className="relative py-32 md:py-40 px-[5%] lg:px-[8%] overflow-hidden"
+      className="relative py-24 lg:py-40 px-[5%] lg:px-[8%] overflow-hidden"
       style={{ background: '#060606' }}
     >
       {/* Top border */}
