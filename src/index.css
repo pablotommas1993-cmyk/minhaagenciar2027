@@ -101,6 +101,22 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
+
+  .animate-hero-1 {
+    animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  
+  .animate-hero-2 {
+    animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+  }
+  
+  .animate-hero-3 {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s backwards;
+  }
+  
+  .animate-hero-4 {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards;
+  }
 }
 
 @keyframes gold-shimmer {

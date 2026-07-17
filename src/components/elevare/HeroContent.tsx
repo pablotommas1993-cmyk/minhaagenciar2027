@@ -1,28 +1,5 @@
-import { motion } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 import GhostButton from './GhostButton';
-
-const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const headlineAnim = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: easeOut } },
-};
-
-const subAnim = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.15, ease: easeOut } },
-};
-
-const btnAnim = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.25, ease: easeOut } },
-};
-
-const trustAnim = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.35, ease: easeOut } },
-};
 
 interface HeroContentProps {
   onCTAClick?: () => void;
@@ -31,49 +8,45 @@ interface HeroContentProps {
 
 export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroContentProps) {
   return (
-    <motion.div initial="hidden" animate="visible">
+    <div>
       {/* Label */}
-      <motion.div variants={headlineAnim} className="inline-flex items-center gap-3 mb-8">
+      <div className="animate-hero-1 inline-flex items-center gap-3 mb-8">
         <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
         <span className="text-[11px] tracking-[0.35em] uppercase text-[#D4AF37] font-medium">
           Premium Digital Agency
         </span>
-      </motion.div>
+      </div>
 
       {/* Headline */}
-      <motion.h1
-        variants={headlineAnim}
-        className="font-display font-medium text-white tracking-[-0.02em]"
+      <h1
+        className="animate-hero-1 font-display font-medium text-white tracking-[-0.02em]"
         style={{ fontSize: 'clamp(2rem, 5.5vw, 5rem)', lineHeight: 1.08 }}
       >
         Transformamos empresas em{' '}
         <span className="gold-shimmer">negócios digitais</span>{' '}
         de alta performance.
-      </motion.h1>
+      </h1>
 
       {/* Subheadline */}
-      <motion.p
-        variants={subAnim}
-        className="mt-8 text-white/85 text-balance max-w-[580px]"
+      <p
+        className="animate-hero-2 mt-8 text-white/85 text-balance max-w-[580px]"
         style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.125rem)', lineHeight: 1.7 }}
       >
         Criamos websites premium, inteligência artificial, automações, SEO, Google Ads e
         experiências digitais que posicionam empresas para crescer com autoridade.
-      </motion.p>
+      </p>
 
       {/* Buttons */}
-      <motion.div
-        variants={btnAnim}
-        className="mt-10 flex flex-col sm:flex-row gap-4 items-start"
+      <div
+        className="animate-hero-3 mt-10 flex flex-col sm:flex-row gap-4 items-start"
       >
         <MagneticButton />
         <GhostButton onClick={onPortfolioClick} />
-      </motion.div>
+      </div>
 
       {/* Trust Indicators */}
-      <motion.div
-        variants={trustAnim}
-        className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] tracking-wide text-white/70"
+      <div
+        className="animate-hero-4 mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] tracking-wide text-white/70"
       >
         <span className="text-[#D4AF37] tracking-[0.1em] text-xs font-medium uppercase">Design Premium</span>
         <span className="text-white/20">•</span>
@@ -82,7 +55,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         <span>Performance</span>
         <span className="text-white/20">•</span>
         <span>Tecnologia Premium</span>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
