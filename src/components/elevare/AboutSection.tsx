@@ -5,12 +5,12 @@ import { CheckCircle2 } from 'lucide-react';
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const differentiators = [
-  'Equipe sênior com mais de 10 anos de experiência',
+  'Estratégia orientada a aquisição e conversão',
   'Metodologia exclusiva orientada a resultados',
-  'Código proprietário sem dependências de templates',
+  'Soluções desenvolvidas sob medida para cada projeto',
   'Relatórios de performance mensais detalhados',
   'Suporte prioritário com resposta em até 24h',
-  'Garantia de satisfação em todos os projetos',
+  'Decisões orientadas por dados e performance',
 ];
 
 const values = [

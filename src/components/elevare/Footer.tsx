@@ -1,14 +1,14 @@
 const footerLinks = {
   Serviços: [
-    'Websites Premium',
-    'Inteligência Artificial',
-    'Automações',
-    'SEO Avançado',
     'Google Ads',
+    'Websites Premium',
+    'Automações',
+    'SEO',
+    'Inteligência Artificial',
     'Estratégia Digital',
   ],
   Empresa: ['Sobre', 'Portfólio', 'Processo'],
-  Legal: ['Política de Privacidade', 'Termos de Uso', 'Cookies'],
+  Legal: ['Política de Privacidade'],
 };
 
 export default function Footer() {
