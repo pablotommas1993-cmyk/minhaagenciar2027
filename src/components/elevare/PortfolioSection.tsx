@@ -144,6 +144,7 @@ export default function PortfolioSection() {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover opacity-[0.65] group-hover:opacity-90 group-hover:scale-105 luxury-transition"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#060606]/90 via-[#060606]/50 to-[#060606]/20" />

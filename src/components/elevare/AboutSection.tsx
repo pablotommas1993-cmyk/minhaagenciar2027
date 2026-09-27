@@ -133,6 +133,7 @@ export default function AboutSection() {
                   src="/images/about-1.webp"
                   alt="Performance Digital"
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 luxury-transition"
                 />
                 <div className="absolute inset-0 bg-[#050505]/30" />

@@ -152,6 +152,7 @@ export default function ServicesSection() {
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover opacity-25 grayscale group-hover:opacity-[0.35] group-hover:grayscale-0 luxury-transition"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/50 to-[#050505]/20" />

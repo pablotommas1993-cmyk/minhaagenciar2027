@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import Navigation from '@/components/elevare/Navigation';
 import HeroContent from '@/components/elevare/HeroContent';
 import StatsBar from '@/components/elevare/StatsBar';
@@ -11,10 +11,29 @@ const AboutSection = lazy(() => import('@/components/elevare/AboutSection'));
 const ContactSection = lazy(() => import('@/components/elevare/ContactSection'));
 const Footer = lazy(() => import('@/components/elevare/Footer'));
 
-const VIDEO_URL =
-  'https://media.base44.com/videos/public/user_6a58ea6dd6dede36eda97a7c/d334bedd7_Cinematic_background_video_anima_202607161129.mp4';
+const VIDEO_URL = '/videos/orvion-hero.mp4';
 
 export default function Home() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    // Defer video loading until initial paint and idle to keep critical network path clear for LCP
+    if ('requestIdleCallback' in window) {
+      const handle = (window as unknown as { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(
+        () => setVideoLoaded(true),
+        { timeout: 2500 }
+      );
+      return () => {
+        if ('cancelIdleCallback' in window) {
+          (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(handle);
+        }
+      };
+    } else {
+      const timer = setTimeout(() => setVideoLoaded(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const scrollToContact = () => {
     const el = document.getElementById('contact');
     el?.scrollIntoView({ behavior: 'smooth' });
@@ -39,12 +58,12 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
             poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
             className="w-full h-full object-cover object-[60%_center] md:object-center"
             aria-hidden="true"
           >
-            <source src={VIDEO_URL} type="video/mp4" />
+            {videoLoaded && <source src={VIDEO_URL} type="video/mp4" />}
           </video>
           {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-black/15" />
