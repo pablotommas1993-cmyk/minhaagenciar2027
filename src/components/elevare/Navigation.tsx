@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { trackWhatsAppConversion } from '@/utils/gtag';
 
 const navItems = ['Serviços', 'Portfólio', 'Processo', 'Sobre', 'Contato'];
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -89,6 +90,7 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
           href="https://wa.me/5511979991680"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={trackWhatsAppConversion}
           className="ml-2 rounded-full border border-[#D4AF37]/30 px-5 py-2 text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 transition-all duration-300 cursor-pointer text-center no-underline"
         >
           Solicitar Diagnóstico
@@ -133,6 +135,7 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
                 href="https://wa.me/5511979991680"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppConversion}
                 className="mt-2 rounded-full px-5 py-3 text-sm font-medium text-[#050505] cursor-pointer border-none text-center no-underline inline-block"
                 style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E0A1, #D4AF37)' }}
               >

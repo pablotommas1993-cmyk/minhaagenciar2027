@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Navigation from '@/components/elevare/Navigation';
 import HeroContent from '@/components/elevare/HeroContent';
 import StatsBar from '@/components/elevare/StatsBar';
+import WhatsAppFloatingButton from '@/components/elevare/WhatsAppFloatingButton';
 
 const ServicesSection = lazy(() => import('@/components/elevare/ServicesSection'));
 const PortfolioSection = lazy(() => import('@/components/elevare/PortfolioSection'));
@@ -85,6 +86,9 @@ export default function Home() {
         {/* ——— FOOTER ——— */}
         <Footer />
       </Suspense>
+
+      {/* ——— FLOATING WHATSAPP ——— */}
+      <WhatsAppFloatingButton />
     </div>
   );
 }

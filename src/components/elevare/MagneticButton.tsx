@@ -1,5 +1,6 @@
 import { motion, useMotionValue } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { trackWhatsAppConversion } from '@/utils/gtag';
 
 interface MagneticButtonProps {
   children?: React.ReactNode;
@@ -35,6 +36,7 @@ export default function MagneticButton({
       href={href}
       target={target}
       rel={rel}
+      onClick={trackWhatsAppConversion}
       style={{
         x,
         y,

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
+import { trackWhatsAppConversion, openWhatsAppWithTracking } from '@/utils/gtag';
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -54,8 +55,6 @@ export default function ContactSection() {
     message: '',
     service: '',
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<FormState>>({});
 
   const handleChange = (
@@ -82,14 +81,27 @@ export default function ContactSection() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setLoading(true);
-    // Simulate async submission
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+
+    const parts = [
+      'Olá! Vim pelo site da ORVION Studio e gostaria de solicitar um diagnóstico.',
+      '',
+      `Nome: ${form.name.trim()}`,
+      `E-mail: ${form.email.trim()}`,
+    ];
+
+    if (form.company.trim()) {
+      parts.push(`Empresa: ${form.company.trim()}`);
+    }
+    if (form.service) {
+      parts.push(`Serviço de interesse: ${form.service}`);
+    }
+
+    parts.push(`Mensagem: ${form.message.trim()}`);
+
+    openWhatsAppWithTracking(parts.join('\n'));
   };
 
   const getInputClass = (hasError?: boolean) =>
@@ -150,22 +162,6 @@ export default function ContactSection() {
             transition={{ duration: 0.8, delay: 0.1, ease: easeOut }}
             className="lg:col-span-3"
           >
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-16 rounded-2xl border border-[#D4AF37]/20 bg-[#D4AF37]/[0.03]">
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-6"
-                  style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E0A1)' }}
-                >
-                  <ArrowRight size={20} className="text-[#050505]" />
-                </div>
-                <h3 className="font-display text-white text-xl font-medium mb-3">
-                  Mensagem enviada!
-                </h3>
-                <p className="text-[#BDBDBD] text-sm max-w-[320px] leading-relaxed">
-                  Recebemos sua solicitação. Nossa equipe entrará em contato em até 24 horas úteis.
-                </p>
-              </div>
-            ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
@@ -266,9 +262,8 @@ export default function ContactSection() {
 
                 <motion.button
                   type="submit"
-                  disabled={loading}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full rounded-xl py-4 font-medium text-[#050505] text-sm flex items-center justify-center gap-2 luxury-transition disabled:opacity-70 cursor-pointer border-none relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)]"
+                  className="w-full rounded-xl py-4 font-medium text-[#050505] text-sm flex items-center justify-center gap-2 luxury-transition cursor-pointer border-none relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_6px_20px_rgba(0,0,0,0.2)]"
                   style={{
                     background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
                   }}
@@ -277,23 +272,10 @@ export default function ContactSection() {
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 luxury-transition pointer-events-none"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%)' }}
                   />
-                  {loading ? (
-                    <span className="flex items-center gap-2">
-                      <span
-                        className="w-4 h-4 border-2 border-[#050505]/30 border-t-[#050505] rounded-full"
-                        style={{ animation: 'spin 0.7s linear infinite' }}
-                      />
-                      Enviando...
-                    </span>
-                  ) : (
-                    <>
-                      Solicitar Diagnóstico Gratuito
-                      <ArrowRight size={16} />
-                    </>
-                  )}
+                  Solicitar Diagnóstico Gratuito
+                  <ArrowRight size={16} />
                 </motion.button>
               </form>
-            )}
           </motion.div>
 
           {/* Contact info — takes 2 of 5 cols */}
@@ -322,6 +304,7 @@ export default function ContactSection() {
                         href={item.href}
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel="noopener noreferrer"
+                        onClick={item.href.includes('wa.me') ? trackWhatsAppConversion : undefined}
                         className="text-white text-sm hover:text-[#F4E0A1] transition-colors duration-300"
                       >
                         {item.value}
