@@ -6,13 +6,31 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const services = [
   {
+    icon: BarChart2,
+    title: 'Gestão de Google Ads',
+    description:
+      'Colocamos sua empresa diante de pessoas que já estão procurando pelos seus produtos ou serviços, com campanhas estruturadas para gerar oportunidades comerciais.',
+    detail: 'Pesquisa · Conversões · Remarketing · Otimização',
+    image: '/images/services-5.webp',
+    highlight: false,
+  },
+  {
     icon: Globe,
     title: 'Websites Premium',
     description:
-      'Presença digital de nível mundial. Arquitetura sólida, performance máxima e design focado em conversão.',
+      'Sites profissionais, rápidos e pensados para transformar visitantes em contatos, oportunidades e vendas.',
     detail: 'Next.js · React · TypeScript · Headless CMS',
     image: '/images/services-1.webp',
     highlight: true,
+  },
+  {
+    icon: Zap,
+    title: 'Automações',
+    description:
+      'Automatizamos etapas do atendimento e da operação para sua empresa responder mais rápido, organizar oportunidades e reduzir tarefas repetitivas.',
+    detail: 'n8n · Make · Zapier · APIs · Webhooks',
+    image: '/images/services-3.webp',
+    highlight: false,
   },
   {
     icon: Cpu,
@@ -24,30 +42,12 @@ const services = [
     highlight: false,
   },
   {
-    icon: Zap,
-    title: 'Automações',
-    description:
-      'Eliminamos tarefas repetitivas. Sua equipe foca no essencial enquanto a tecnologia trabalha.',
-    detail: 'n8n · Make · Zapier · APIs · Webhooks',
-    image: '/images/services-3.webp',
-    highlight: false,
-  },
-  {
     icon: Search,
     title: 'SEO Avançado',
     description:
       'Posicionamos sua empresa no topo do Google com estratégias técnicas para tráfego qualificado e consistente.',
     detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
     image: '/images/services-4.webp',
-    highlight: false,
-  },
-  {
-    icon: BarChart2,
-    title: 'Google Ads',
-    description:
-      'Campanhas de performance focadas em ROI. Cada centavo é rastreado e otimizado para o máximo retorno.',
-    detail: 'Search · Display · YouTube · Remarketing · Shopping',
-    image: '/images/services-5.webp',
     highlight: false,
   },
   {
@@ -124,12 +124,12 @@ export default function ServicesSection() {
           className="font-display font-medium text-white tracking-[-0.02em] mb-6"
           style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
         >
-          Tudo que seu negócio digital{' '}
-          <span className="text-[#BDBDBD]">precisa para crescer.</span>
+          Da aquisição do cliente à conversão:{' '}
+          <span className="text-[#BDBDBD]">construímos a estrutura para sua empresa crescer.</span>
         </h2>
         <p className="text-[#BDBDBD] text-base leading-relaxed max-w-[520px]">
-          Cada serviço é executado por especialistas com metodologia própria, entregando resultados
-          mensuráveis e sustentáveis para o seu negócio.
+          Unimos tráfego pago, websites de alta conversão e automação para transformar buscas e cliques
+          em oportunidades reais para o seu negócio.
         </p>
       </motion.div>
 

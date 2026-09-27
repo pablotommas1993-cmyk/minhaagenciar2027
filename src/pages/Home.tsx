@@ -7,7 +7,6 @@ const ServicesSection = lazy(() => import('@/components/elevare/ServicesSection'
 const PortfolioSection = lazy(() => import('@/components/elevare/PortfolioSection'));
 const ProcessSection = lazy(() => import('@/components/elevare/ProcessSection'));
 const AboutSection = lazy(() => import('@/components/elevare/AboutSection'));
-const TestimonialsSection = lazy(() => import('@/components/elevare/TestimonialsSection'));
 const ContactSection = lazy(() => import('@/components/elevare/ContactSection'));
 const Footer = lazy(() => import('@/components/elevare/Footer'));
 
@@ -20,8 +19,8 @@ export default function Home() {
     el?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToPortfolio = () => {
-    const el = document.getElementById('portfolio');
+  const scrollToServices = () => {
+    const el = document.getElementById('services');
     el?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -59,7 +58,7 @@ export default function Home() {
             <div className="max-w-[640px]">
               <HeroContent
                 onCTAClick={scrollToContact}
-                onPortfolioClick={scrollToPortfolio}
+                onServicesClick={scrollToServices}
               />
             </div>
           </div>
@@ -79,9 +78,6 @@ export default function Home() {
 
         {/* ——— ABOUT ——— */}
         <AboutSection />
-
-        {/* ——— TESTIMONIALS ——— */}
-        <TestimonialsSection />
 
         {/* ——— CONTACT ——— */}
         <ContactSection />

@@ -3,10 +3,10 @@ import GhostButton from './GhostButton';
 
 interface HeroContentProps {
   onCTAClick?: () => void;
-  onPortfolioClick?: () => void;
+  onServicesClick?: () => void;
 }
 
-export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroContentProps) {
+export default function HeroContent({ onCTAClick, onServicesClick }: HeroContentProps) {
   return (
     <div>
       {/* Label */}
@@ -22,7 +22,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         className="animate-hero-1 font-display font-medium text-white tracking-[-0.02em]"
         style={{ fontSize: 'clamp(2rem, 5.5vw, 5rem)', lineHeight: 1.08 }}
       >
-        Transformamos empresas em{' '}
+        Transformamos tráfego em clientes e empresas em{' '}
         <span className="gold-shimmer">negócios digitais</span>{' '}
         de alta performance.
       </h1>
@@ -32,8 +32,8 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         className="animate-hero-2 mt-8 text-white/85 text-balance max-w-[580px]"
         style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.125rem)', lineHeight: 1.7 }}
       >
-        Criamos websites premium, inteligência artificial, automações, SEO, Google Ads e
-        experiências digitais que posicionam empresas para crescer com autoridade.
+        Estratégia, Google Ads, websites e automações para empresas que querem gerar mais
+        oportunidades, vender mais e crescer com previsibilidade.
       </p>
 
       {/* Buttons */}
@@ -41,7 +41,7 @@ export default function HeroContent({ onCTAClick, onPortfolioClick }: HeroConten
         className="animate-hero-3 mt-10 flex flex-col sm:flex-row gap-4 items-start"
       >
         <MagneticButton />
-        <GhostButton onClick={onPortfolioClick} />
+        <GhostButton onClick={onServicesClick}>Conhecer nossas soluções</GhostButton>
       </div>
 
       {/* Trust Indicators */}

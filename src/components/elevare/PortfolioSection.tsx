@@ -109,12 +109,12 @@ export default function PortfolioSection() {
               className="font-display font-medium text-white tracking-[-0.02em]"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
             >
-              Projetos que{' '}
-              <span className="text-[#BDBDBD]">geram resultados reais.</span>
+              Projetos que mostram como{' '}
+              <span className="text-[#BDBDBD]">transformamos estratégia em experiência digital.</span>
             </h2>
           </div>
           <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[320px] lg:text-right">
-            Cada projeto é uma história de transformação. Veja como elevamos negócios reais.
+            Uma seleção de projetos conceituais desenvolvidos para demonstrar nossa abordagem em design, tecnologia, automação e performance.
           </p>
         </motion.div>
 
@@ -236,7 +236,7 @@ export default function PortfolioSection() {
           className="mt-12 text-center"
         >
           <p className="text-[#BDBDBD] text-sm mb-6">
-            Pronto para ser o próximo caso de sucesso?
+            Pronto para construir o próximo projeto?
           </p>
           <button
             onClick={() => {

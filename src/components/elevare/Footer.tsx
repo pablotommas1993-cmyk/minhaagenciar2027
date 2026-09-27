@@ -7,7 +7,7 @@ const footerLinks = {
     'Google Ads',
     'Estratégia Digital',
   ],
-  Empresa: ['Sobre', 'Portfólio', 'Processo', 'Depoimentos'],
+  Empresa: ['Sobre', 'Portfólio', 'Processo'],
   Legal: ['Política de Privacidade', 'Termos de Uso', 'Cookies'],
 };
 
