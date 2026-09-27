@@ -68,22 +68,15 @@ export default function AboutSection() {
               className="font-display font-medium text-white tracking-[-0.02em] mb-8"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
             >
-              Criados para o{' '}
-              <span className="text-[#BDBDBD]">mercado premium.</span>
+              Construímos para empresas que levam crescimento a sério.
             </h2>
 
             <div className="space-y-5 text-[#BDBDBD] text-sm leading-relaxed">
               <p>
-                Nascemos da convicção de que o mercado merece agências à altura das melhores do mundo.
-                Sem templates e sem promessas vagas — construímos soluções exclusivas com impacto mensurável.
+                A ORVION Studio une aquisição e conversão em uma mesma estratégia. Criamos campanhas de Google Ads para gerar demanda e websites de alta performance para transformar essa demanda em oportunidades comerciais.
               </p>
               <p>
-                Atendemos um número seleto de clientes simultâneos. Isso não é escassez — é comprometimento.
-                Todo projeto recebe foco integral da nossa equipe sênior.
-              </p>
-              <p>
-                Nossos clientes entendem que produtos digitais acessíveis e premium não são o mesmo serviço.
-                São soluções distintas que entregam resultados radicalmente diferentes.
+                Automação, SEO e inteligência artificial entram como extensões dessa estrutura — não como serviços desconectados.
               </p>
             </div>
 
@@ -138,7 +131,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 z-0">
                 <img
                   src="/images/about-1.webp"
-                  alt="Premium Creative Studio"
+                  alt="Performance Digital"
                   loading="lazy"
                   className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 luxury-transition"
                 />
@@ -152,11 +145,14 @@ export default function AboutSection() {
               </div>
 
               <div className="relative z-10 text-center">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#D4AF37] font-medium mb-2">
+                  Performance Digital
+                </p>
                 <p className="font-display text-[3rem] font-semibold gold-shimmer leading-none mb-2 drop-shadow-2xl">
-                  Top 1%
+                  Ads + Web
                 </p>
                 <p className="text-[#BDBDBD] text-sm font-medium tracking-wide">
-                  Qualidade global de engenharia e design.
+                  Aquisição e conversão trabalhando como uma única estratégia.
                 </p>
               </div>
             </div>

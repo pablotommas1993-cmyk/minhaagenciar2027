@@ -9,9 +9,9 @@ const projects = [
     category: 'Projeto Conceitual',
     title: 'Advocacia Premium',
     description:
-      'Website institucional de alto impacto. Design editorial, performance máxima e posicionamento de autoridade.',
+      'Website institucional desenvolvido para posicionamento de autoridade, experiência premium e alta performance técnica.',
     result: 'Performance Maximizada',
-    tags: ['Next.js', 'Design', 'SEO'],
+    tags: ['Next.js', 'Design', 'SEO', 'Performance'],
     image: '/images/portfolio-1.webp',
     color: '#1a1a1a',
     accent: '#D4AF37',
@@ -21,9 +21,9 @@ const projects = [
     category: 'Projeto Conceitual',
     title: 'Maison Beauté',
     description:
-      'E-commerce premium focado em conversão, com integração completa de pagamentos e logística.',
+      'Experiência de e-commerce criada para reduzir atrito entre descoberta, consideração e decisão de compra.',
     result: 'Otimização de Conversão',
-    tags: ['React', 'Stripe', 'Analytics'],
+    tags: ['React', 'E-commerce', 'UX', 'Analytics'],
     image: '/images/portfolio-2.webp',
     color: '#111111',
     accent: '#C5A028',
@@ -33,9 +33,9 @@ const projects = [
     category: 'Projeto Conceitual',
     title: 'TechFlow Consultoria',
     description:
-      'Automações com IA. Atendimento escalável, qualificação de leads e CRM inteligente.',
+      'Ecossistema de automação pensado para captar, qualificar e direcionar oportunidades comerciais com maior eficiência.',
     result: 'Atendimento Inteligente',
-    tags: ['n8n', 'GPT-4', 'CRM'],
+    tags: ['Automação', 'IA', 'CRM', 'Integrações'],
     image: '/images/portfolio-3.webp',
     color: '#0d0d0d',
     accent: '#D4AF37',
@@ -45,9 +45,9 @@ const projects = [
     category: 'Projeto Conceitual',
     title: 'Clínica Renovare',
     description:
-      'Estratégia integrada de Ads e SEO. Posicionamento líder nas buscas e campanhas de alta performance.',
+      'Estrutura digital preparada para aquisição local, campanhas de Google Ads e geração de oportunidades.',
     result: 'SEO Local Estratégico',
-    tags: ['Google Ads', 'SEO', 'Analytics'],
+    tags: ['Google Ads', 'Landing Pages', 'SEO Local', 'Analytics'],
     image: '/images/portfolio-4.webp',
     color: '#0f0f0f',
     accent: '#C5A028',
@@ -109,12 +109,11 @@ export default function PortfolioSection() {
               className="font-display font-medium text-white tracking-[-0.02em]"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
             >
-              Projetos que mostram como{' '}
-              <span className="text-[#BDBDBD]">transformamos estratégia em experiência digital.</span>
+              Projetos que demonstram nossa abordagem em performance digital.
             </h2>
           </div>
           <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[320px] lg:text-right">
-            Uma seleção de projetos conceituais desenvolvidos para demonstrar nossa abordagem em design, tecnologia, automação e performance.
+            Uma seleção de projetos conceituais desenvolvidos para demonstrar como aplicamos estratégia, design, tecnologia e conversão.
           </p>
         </motion.div>
 

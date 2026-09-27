@@ -145,12 +145,10 @@ export default function ContactSection() {
             className="font-display font-medium text-white tracking-[-0.02em] mb-6"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
           >
-            Pronto para elevar{' '}
-            <span className="text-[#BDBDBD]">seu negócio?</span>
+            Vamos encontrar onde sua empresa pode crescer.
           </h2>
           <p className="text-[#BDBDBD] text-sm leading-relaxed">
-            Agende uma conversa estratégica gratuita. Vamos analisar seu negócio e apresentar como
-            podemos transformá-lo em uma referência digital no seu mercado.
+            Solicite um diagnóstico gratuito. Analisamos sua presença digital, aquisição e estrutura de conversão para identificar oportunidades e próximos passos.
           </p>
         </motion.div>
 

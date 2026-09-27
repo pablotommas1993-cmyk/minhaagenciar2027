@@ -22,9 +22,8 @@ export default function HeroContent({ onCTAClick, onServicesClick }: HeroContent
         className="animate-hero-1 font-display font-medium text-white tracking-[-0.02em]"
         style={{ fontSize: 'clamp(2rem, 5.5vw, 5rem)', lineHeight: 1.08 }}
       >
-        Transformamos tráfego em clientes e empresas em{' '}
-        <span className="gold-shimmer">negócios digitais</span>{' '}
-        de alta performance.
+        Transformamos buscas em oportunidades. E{' '}
+        <span className="gold-shimmer">cliques em negócios.</span>
       </h1>
 
       {/* Subheadline */}
@@ -32,8 +31,7 @@ export default function HeroContent({ onCTAClick, onServicesClick }: HeroContent
         className="animate-hero-2 mt-8 text-white/85 text-balance max-w-[580px]"
         style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.125rem)', lineHeight: 1.7 }}
       >
-        Estratégia, Google Ads, websites e automações para empresas que querem gerar mais
-        oportunidades, vender mais e crescer com previsibilidade.
+        Google Ads e websites de alta performance construídos para empresas que querem gerar demanda, converter melhor e crescer com previsibilidade.
       </p>
 
       {/* Buttons */}

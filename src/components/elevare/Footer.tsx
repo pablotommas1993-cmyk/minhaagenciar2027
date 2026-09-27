@@ -41,8 +41,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-[300px] mb-8">
-              Transformamos empresas em negócios digitais de alta performance. Websites premium,
-              IA, automações e estratégia digital para empresas que querem crescer com autoridade.
+              Google Ads para gerar demanda. Websites para transformar demanda em negócio.
             </p>
             {/* Social links */}
             <div className="flex gap-3">
@@ -69,13 +68,28 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      onClick={(e) => e.preventDefault()}
-                      className="text-white/50 text-sm hover:text-white luxury-transition"
-                    >
-                      {link}
-                    </a>
+                    {link === 'Política de Privacidade' ? (
+                      <a
+                        href="/privacidade"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.history.pushState({}, '', '/privacidade');
+                          window.dispatchEvent(new PopStateEvent('popstate'));
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="text-white/50 text-sm hover:text-white luxury-transition cursor-pointer"
+                      >
+                        {link}
+                      </a>
+                    ) : (
+                      <a
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                        className="text-white/50 text-sm hover:text-white luxury-transition"
+                      >
+                        {link}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

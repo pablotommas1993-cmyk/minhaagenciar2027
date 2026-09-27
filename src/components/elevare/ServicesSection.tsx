@@ -9,7 +9,7 @@ const services = [
     icon: BarChart2,
     title: 'Gestão de Google Ads',
     description:
-      'Colocamos sua empresa diante de pessoas que já estão procurando pelos seus produtos ou serviços, com campanhas estruturadas para gerar oportunidades comerciais.',
+      'Transformamos intenção de busca em oportunidades comerciais. Estruturamos e otimizamos campanhas para colocar sua empresa diante de pessoas que já procuram pelos seus produtos ou serviços.',
     detail: 'Pesquisa · Conversões · Remarketing · Otimização',
     image: '/images/services-5.webp',
     highlight: false,
@@ -18,8 +18,8 @@ const services = [
     icon: Globe,
     title: 'Websites Premium',
     description:
-      'Sites profissionais, rápidos e pensados para transformar visitantes em contatos, oportunidades e vendas.',
-    detail: 'Next.js · React · TypeScript · Headless CMS',
+      'Transformamos atenção em ação. Criamos websites rápidos, sofisticados e orientados à conversão — projetados para transformar visitantes em contatos, oportunidades e vendas.',
+    detail: 'Next.js · React · TypeScript · Performance',
     image: '/images/services-1.webp',
     highlight: true,
   },
@@ -27,34 +27,34 @@ const services = [
     icon: Zap,
     title: 'Automações',
     description:
-      'Automatizamos etapas do atendimento e da operação para sua empresa responder mais rápido, organizar oportunidades e reduzir tarefas repetitivas.',
+      'Conectamos atendimento, qualificação e operação para reduzir tarefas manuais e acelerar o caminho entre o lead e sua empresa.',
     detail: 'n8n · Make · Zapier · APIs · Webhooks',
     image: '/images/services-3.webp',
+    highlight: false,
+  },
+  {
+    icon: Search,
+    title: 'SEO',
+    description:
+      'Construímos uma base técnica para ampliar a presença orgânica da empresa e capturar demanda além da mídia paga.',
+    detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
+    image: '/images/services-4.webp',
     highlight: false,
   },
   {
     icon: Cpu,
     title: 'Inteligência Artificial',
     description:
-      'Integramos IA ao seu negócio. Chatbots, automação de atendimento e análise preditiva em escala.',
+      'Aplicamos IA onde ela gera eficiência real: atendimento, qualificação, análise e automação de processos.',
     detail: 'GPT-4 · Claude · Automação · Machine Learning',
     image: '/images/services-2.webp',
-    highlight: false,
-  },
-  {
-    icon: Search,
-    title: 'SEO Avançado',
-    description:
-      'Posicionamos sua empresa no topo do Google com estratégias técnicas para tráfego qualificado e consistente.',
-    detail: 'Core Web Vitals · Schema · Link Building · Conteúdo',
-    image: '/images/services-4.webp',
     highlight: false,
   },
   {
     icon: Layers,
     title: 'Estratégia Digital',
     description:
-      'A estratégia completa do seu negócio. Posicionamento, identidade e ecossistema integrado de crescimento.',
+      'Conectamos aquisição, presença digital e tecnologia em uma estratégia coerente de crescimento.',
     detail: 'Branding · Funis · Analytics · Growth Hacking',
     image: '/images/services-6.webp',
     highlight: false,
@@ -124,12 +124,10 @@ export default function ServicesSection() {
           className="font-display font-medium text-white tracking-[-0.02em] mb-6"
           style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
         >
-          Da aquisição do cliente à conversão:{' '}
-          <span className="text-[#BDBDBD]">construímos a estrutura para sua empresa crescer.</span>
+          Da aquisição à conversão.
         </h2>
         <p className="text-[#BDBDBD] text-base leading-relaxed max-w-[520px]">
-          Unimos tráfego pago, websites de alta conversão e automação para transformar buscas e cliques
-          em oportunidades reais para o seu negócio.
+          Google Ads e desenvolvimento web são o centro da nossa estratégia. Automação, SEO e inteligência são aplicados para ampliar performance onde fazem sentido.
         </p>
       </motion.div>
 
