@@ -238,24 +238,24 @@ export default function GoogleAdsGestao() {
 
       <main>
         {/* ========================================================
-            SEÇÃO 1 — TOPO (HERO COM FUNDO VISUAL PREMIUM E LEVE)
+            SEÇÃO 1 — TOPO (HERO COM IMAGEM VISUAL INTEGRADA)
             ======================================================== */}
         <section
           id="topo"
-          className="relative pt-12 pb-20 md:pt-20 md:pb-28 px-[5%] lg:px-[8%] overflow-hidden"
+          className="relative pt-12 pb-16 md:pt-16 md:pb-24 lg:py-24 px-[5%] lg:px-[8%] overflow-hidden min-h-[580px] lg:min-h-[660px] flex items-center"
         >
-          {/* Subtle Ambient Radial Glows */}
+          {/* Subtle Ambient Radial Glow behind the composition */}
           <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[550px] pointer-events-none"
+            className="absolute top-0 right-1/4 w-full max-w-[900px] h-[550px] pointer-events-none opacity-40"
             style={{
               background:
-                'radial-gradient(ellipse 70% 50% at 50% 20%, rgba(212,175,55,0.09) 0%, rgba(197,160,40,0.03) 45%, transparent 70%)',
+                'radial-gradient(ellipse 65% 50% at 65% 30%, rgba(212,175,55,0.12) 0%, rgba(197,160,40,0.03) 50%, transparent 75%)',
             }}
             aria-hidden="true"
           />
 
-          {/* Lightweight SVG Tech Grid + Performance Growth Curves */}
-          <div className="absolute inset-0 pointer-events-none select-none opacity-45 overflow-hidden" aria-hidden="true">
+          {/* Very Subtle Background Grid Pattern (Simplified to avoid competition) */}
+          <div className="absolute inset-0 pointer-events-none select-none opacity-20 overflow-hidden" aria-hidden="true">
             <svg
               className="w-full h-full"
               xmlns="http://www.w3.org/2000/svg"
@@ -264,128 +264,127 @@ export default function GoogleAdsGestao() {
               preserveAspectRatio="xMidYMid slice"
             >
               <defs>
-                {/* Tech Grid Pattern */}
-                <pattern id="hero-grid" width="56" height="56" patternUnits="userSpaceOnUse">
+                <pattern id="hero-subtle-grid" width="48" height="48" patternUnits="userSpaceOnUse">
                   <path
-                    d="M 56 0 L 0 0 0 56"
+                    d="M 48 0 L 0 0 0 48"
                     fill="none"
-                    stroke="rgba(212, 175, 55, 0.07)"
-                    strokeWidth="0.8"
+                    stroke="rgba(212, 175, 55, 0.08)"
+                    strokeWidth="0.6"
                   />
-                  <circle cx="0" cy="0" r="1" fill="rgba(212, 175, 55, 0.2)" />
                 </pattern>
-
-                {/* Subtle Horizontal & Vertical Fade Masks */}
-                <linearGradient id="grid-fade" x1="0" y1="0" x2="0" y2="100%">
-                  <stop offset="0%" stopColor="#fff" stopOpacity="0.7" />
-                  <stop offset="60%" stopColor="#fff" stopOpacity="0.3" />
+                <linearGradient id="hero-grid-fade" x1="0" y1="0" x2="0" y2="100%">
+                  <stop offset="0%" stopColor="#fff" stopOpacity="0.4" />
+                  <stop offset="80%" stopColor="#fff" stopOpacity="0.1" />
                   <stop offset="100%" stopColor="#fff" stopOpacity="0" />
                 </linearGradient>
-
-                <linearGradient id="curve-gold" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#C5A028" stopOpacity="0.05" />
-                  <stop offset="40%" stopColor="#D4AF37" stopOpacity="0.25" />
-                  <stop offset="80%" stopColor="#F4E0A1" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.6" />
-                </linearGradient>
-
-                <mask id="hero-mask">
-                  <rect width="100%" height="100%" fill="url(#grid-fade)" />
+                <mask id="hero-grid-mask">
+                  <rect width="100%" height="100%" fill="url(#hero-grid-fade)" />
                 </mask>
               </defs>
-
-              {/* Grid Layer with Fade */}
-              <rect width="100%" height="100%" fill="url(#hero-grid)" mask="url(#hero-mask)" />
-
-              {/* Abstract Performance Growth Curve 1 */}
-              <path
-                d="M -100,500 C 250,480 450,420 700,320 C 950,220 1200,140 1600,80"
-                fill="none"
-                stroke="url(#curve-gold)"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-                className="opacity-60"
-              />
-
-              {/* Abstract Performance Growth Curve 2 (Solid Accent) */}
-              <path
-                d="M -50,540 C 300,510 550,400 800,280 C 1050,160 1300,90 1650,40"
-                fill="none"
-                stroke="url(#curve-gold)"
-                strokeWidth="1.2"
-                className="opacity-75"
-              />
-
-              {/* Growth Data Points along curve */}
-              <circle cx="550" cy="400" r="3" fill="#D4AF37" opacity="0.5" />
-              <circle cx="800" cy="280" r="3.5" fill="#F4E0A1" opacity="0.7" />
-              <circle cx="1050" cy="160" r="3.5" fill="#F4E0A1" opacity="0.8" />
-              <circle cx="1300" cy="90" r="4" fill="#D4AF37" opacity="0.9" />
+              <rect width="100%" height="100%" fill="url(#hero-subtle-grid)" mask="url(#hero-grid-mask)" />
             </svg>
           </div>
 
-          {/* Central Contrast Shield */}
+          {/* DESKTOP INTEGRATED VISUAL (Positioned on the RIGHT side, bleeding behind text with smooth fade) */}
           <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'radial-gradient(ellipse 65% 55% at 50% 45%, rgba(5,5,5,0.78) 25%, rgba(5,5,5,0.95) 75%, #050505 100%)',
-            }}
+            className="hidden lg:block absolute right-[-2%] xl:right-[1%] top-1/2 -translate-y-1/2 w-[54%] xl:w-[52%] max-w-[850px] pointer-events-none select-none z-0"
             aria-hidden="true"
-          />
-
-          <div className="relative z-10 max-w-[880px] mx-auto text-center">
-            {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/[0.05] mb-8 shadow-[0_2px_12px_rgba(212,175,55,0.08)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-              <span className="text-[11px] tracking-[0.25em] uppercase text-[#F4E0A1] font-medium">
-                Google Ads de Alta Performance
-              </span>
-            </div>
-
-            {/* Single H1 on page */}
-            <h1
-              className="font-display font-semibold text-white tracking-[-0.02em] mb-6 text-balance"
-              style={{ fontSize: 'clamp(2.1rem, 5.2vw, 3.75rem)', lineHeight: 1.15 }}
-            >
-              Gestão de Google Ads e Tráfego Pago para Empresas
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-[#D4D4D4] text-base md:text-xl leading-relaxed max-w-[760px] mx-auto mb-10 text-balance font-normal">
-              Colocamos sua empresa diante de quem já está procurando seu serviço no Google, e estruturamos a campanha para gerar contatos comerciais, não só cliques.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <a
-                href={WHATSAPP_GESTÃO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={trackWhatsAppConversion}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[50px] font-semibold text-[#050505] text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_6px_28px_rgba(212,175,55,0.45)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+          >
+            <div className="relative w-full aspect-[16/9] overflow-hidden">
+              <img
+                src="/images/hero-dashboard.webp"
+                alt=""
+                width={1024}
+                height={576}
+                loading="eager"
+                decoding="async"
+                className="w-full h-full object-cover object-right"
                 style={{
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                  maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.85) 38%, black 65%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.85) 38%, black 65%)',
                 }}
-              >
-                <Phone size={17} aria-hidden="true" />
-                <span>Falar no WhatsApp</span>
-              </a>
+              />
 
-              <a
-                href="#proposta"
-                onClick={scrollToProposal}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.2] bg-white/[0.04] px-7 py-4 min-h-[50px] font-medium text-white text-sm md:text-base hover:bg-white/[0.09] hover:border-[#D4AF37]/50 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+              {/* Seamless edge blending overlays: smooth fade top, bottom, and right to completely eliminate harsh cuts */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/75 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/35 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#050505]/25 via-transparent to-transparent pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Hero Main Content Container */}
+          <div className="relative z-10 w-full max-w-[1240px] mx-auto">
+            <div className="max-w-[680px] xl:max-w-[720px] text-center lg:text-left mx-auto lg:mx-0">
+              {/* Tagline Badge */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/[0.05] mb-6 md:mb-8 shadow-[0_2px_12px_rgba(212,175,55,0.08)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#F4E0A1] font-medium">
+                  Google Ads de Alta Performance
+                </span>
+              </div>
+
+              {/* Single H1 on page */}
+              <h1
+                className="font-display font-semibold text-white tracking-[-0.02em] mb-5 md:mb-6 text-balance"
+                style={{ fontSize: 'clamp(2.1rem, 4.8vw, 3.75rem)', lineHeight: 1.14 }}
               >
-                <span>Solicitar proposta</span>
-                <ArrowRight size={16} aria-hidden="true" />
-              </a>
+                Gestão de Google Ads e Tráfego Pago para Empresas
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-[#D4D4D4] text-base md:text-lg lg:text-xl leading-relaxed max-w-[640px] mb-8 md:mb-10 text-balance font-normal mx-auto lg:mx-0">
+                Colocamos sua empresa diante de quem já está procurando seu serviço no Google, e estruturamos a campanha para gerar contatos comerciais, não só cliques.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-5 md:mb-6">
+                <a
+                  href={WHATSAPP_GESTÃO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackWhatsAppConversion}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[50px] font-semibold text-[#050505] text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_6px_28px_rgba(212,175,55,0.45)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                  style={{
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                  }}
+                >
+                  <Phone size={17} aria-hidden="true" />
+                  <span>Falar no WhatsApp</span>
+                </a>
+
+                <a
+                  href="#proposta"
+                  onClick={scrollToProposal}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.2] bg-white/[0.04] px-7 py-4 min-h-[50px] font-medium text-white text-sm md:text-base hover:bg-white/[0.09] hover:border-[#D4AF37]/50 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                >
+                  <span>Solicitar proposta</span>
+                  <ArrowRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+
+              {/* Support Line */}
+              <p className="text-[#A3A3A3] text-xs md:text-sm font-normal">
+                Atendimento para empresas e profissionais que vendem serviços. Resposta em até 24h úteis.
+              </p>
             </div>
 
-            {/* Support Line */}
-            <p className="text-[#A3A3A3] text-xs md:text-sm font-normal">
-              Atendimento para empresas e profissionais que vendem serviços. Resposta em até 24h úteis.
-            </p>
+            {/* MOBILE VISUAL DISPLAY (Appears below text/CTAs on mobile, cleanly framed with soft fade) */}
+            <div className="mt-10 sm:mt-12 lg:hidden relative w-full max-w-[480px] mx-auto select-none">
+              <div className="relative rounded-2xl overflow-hidden border border-[#D4AF37]/25 bg-[#080808] shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
+                <img
+                  src="/images/hero-dashboard.webp"
+                  alt=""
+                  width={1024}
+                  height={576}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover object-right"
+                />
+                {/* Subtle vignette on mobile card */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.05] pointer-events-none rounded-2xl" />
+              </div>
+            </div>
           </div>
         </section>
 
