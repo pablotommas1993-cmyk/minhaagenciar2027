@@ -1,8 +1,10 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import Home from '@/pages/Home';
-import CookieBanner from '@/components/elevare/CookieBanner';
 
+import GoogleAdsGestao from '@/pages/GoogleAdsGestao';
+
+const Home = lazy(() => import('@/pages/Home'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
+const CookieBanner = lazy(() => import('@/components/elevare/CookieBanner'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(
@@ -18,6 +20,8 @@ export default function App() {
   }, []);
 
   const isPrivacy = currentPath === '/privacidade' || currentPath === '/privacidade/';
+  const isGoogleAds =
+    currentPath === '/google-ads/gestao' || currentPath === '/google-ads/gestao/';
 
   return (
     <>
@@ -25,10 +29,16 @@ export default function App() {
         <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
           <PrivacyPolicy />
         </Suspense>
+      ) : isGoogleAds ? (
+        <GoogleAdsGestao />
       ) : (
-        <Home />
+        <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+          <Home />
+        </Suspense>
       )}
-      <CookieBanner />
+      <Suspense fallback={null}>
+        <CookieBanner />
+      </Suspense>
     </>
   );
 }
