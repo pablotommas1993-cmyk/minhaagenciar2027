@@ -207,22 +207,22 @@ export default function GoogleAdsGestao() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-[#ededed] font-body selection:bg-[#D4AF37]/25 selection:text-white overflow-x-hidden antialiased">
       {/* Top Header / Studio Brand Bar */}
-      <header className="sticky top-0 inset-x-0 z-50 h-20 flex items-center justify-between px-[5%] lg:px-[8%] bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.08]">
+      <header className="sticky top-0 inset-x-0 z-50 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.08]">
         <a
           href="/"
           onClick={navigateToHome}
-          className="flex items-baseline gap-2.5 cursor-pointer no-underline focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none rounded-md py-1"
+          className="flex items-baseline gap-2 cursor-pointer no-underline focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none rounded-md py-1"
           aria-label="ORVION Studio — Ir para a página inicial"
         >
-          <span className="font-display text-xl font-bold tracking-[0.22em] text-white">
+          <span className="font-display text-lg sm:text-xl font-bold tracking-[0.22em] text-white">
             ORVION
           </span>
-          <span className="text-[10px] tracking-[0.35em] text-[#D4AF37] uppercase font-semibold">
+          <span className="text-[9px] sm:text-[10px] tracking-[0.35em] text-[#D4AF37] uppercase font-semibold">
             Studio
           </span>
         </a>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           <div className="hidden md:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#a3a3a3] font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>Capacidade Aberta Q4</span>
@@ -287,35 +287,35 @@ export default function GoogleAdsGestao() {
                 </p>
 
                 {/* CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8">
                   <a
                     href={WHATSAPP_GESTÃO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={trackWhatsAppConversion}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-5 sm:px-8 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[52px] font-semibold text-[#050505] text-xs sm:text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
                     style={{
                       background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
                     }}
                   >
-                    <Phone size={17} aria-hidden="true" />
+                    <Phone size={16} aria-hidden="true" className="shrink-0" />
                     <span>Falar no WhatsApp</span>
                   </a>
 
                   <a
                     href="#proposta"
                     onClick={scrollToProposal}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.03] px-7 py-4 min-h-[52px] font-medium text-white text-sm md:text-base hover:bg-white/[0.08] hover:border-[#D4AF37]/60 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.03] px-5 sm:px-7 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[52px] font-medium text-white text-xs sm:text-sm md:text-base hover:bg-white/[0.08] hover:border-[#D4AF37]/60 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
                   >
                     <span>Solicitar proposta estratégica</span>
-                    <ArrowRight size={16} aria-hidden="true" />
+                    <ArrowRight size={15} aria-hidden="true" className="shrink-0" />
                   </a>
                 </div>
 
                 {/* Support Line */}
-                <div className="flex items-center justify-center lg:justify-start gap-3 text-[#8a8a8a] text-xs font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/60" />
-                  <span>Atendimento consultivo para prestadores de serviços de alto valor. Resposta em até 24h úteis.</span>
+                <div className="flex items-start justify-center lg:justify-start gap-2.5 text-[11px] sm:text-xs text-[#8a8a8a] font-mono max-w-[500px] text-center lg:text-left mx-auto lg:mx-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/60 shrink-0 mt-1.5" />
+                  <span className="min-w-0 leading-relaxed">Atendimento consultivo para prestadores de serviços de alto valor. Resposta em até 24h úteis.</span>
                 </div>
               </div>
 
@@ -323,12 +323,12 @@ export default function GoogleAdsGestao() {
               <div className="lg:col-span-5 relative">
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-[#080808] shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
                   {/* Studio Top Control Strip */}
-                  <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.08] bg-[#0c0c0c] text-[10px] font-mono text-[#a3a3a3]">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                      <span className="uppercase tracking-[0.18em]">Acquisition Dashboard</span>
+                  <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b border-white/[0.08] bg-[#0c0c0c] text-[9px] sm:text-[10px] font-mono text-[#a3a3a3]">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#D4AF37] shrink-0" />
+                      <span className="uppercase tracking-[0.16em] sm:tracking-[0.18em]">Acquisition Dashboard</span>
                     </div>
-                    <span className="text-[#888]">100% MONITORADO</span>
+                    <span className="text-[#888] shrink-0">100% MONITORADO</span>
                   </div>
 
                   {/* Visual Asset */}
@@ -346,18 +346,18 @@ export default function GoogleAdsGestao() {
                   </div>
 
                   {/* Precision Metrics Bar */}
-                  <div className="grid grid-cols-3 divide-x divide-white/[0.08] border-t border-white/[0.08] bg-[#0a0a0a] text-center py-3 px-2">
-                    <div>
-                      <div className="text-[10px] uppercase font-mono text-[#8a8a8a]">Intenção</div>
-                      <div className="text-xs sm:text-sm font-semibold text-white font-display mt-0.5">Foco Comercial</div>
+                  <div className="grid grid-cols-3 divide-x divide-white/[0.08] border-t border-white/[0.08] bg-[#0a0a0a] text-center py-2.5 sm:py-3 px-1 sm:px-2">
+                    <div className="px-1 min-w-0">
+                      <div className="text-[9px] sm:text-[10px] uppercase font-mono text-[#8a8a8a]">Intenção</div>
+                      <div className="text-[11px] sm:text-sm font-semibold text-white font-display mt-0.5 truncate sm:whitespace-normal">Foco Comercial</div>
                     </div>
-                    <div>
-                      <div className="text-[10px] uppercase font-mono text-[#8a8a8a]">Tracking</div>
-                      <div className="text-xs sm:text-sm font-semibold text-[#D4AF37] font-display mt-0.5">Ponta a Ponta</div>
+                    <div className="px-1 min-w-0">
+                      <div className="text-[9px] sm:text-[10px] uppercase font-mono text-[#8a8a8a]">Tracking</div>
+                      <div className="text-[11px] sm:text-sm font-semibold text-[#D4AF37] font-display mt-0.5 truncate sm:whitespace-normal">Ponta a Ponta</div>
                     </div>
-                    <div>
-                      <div className="text-[10px] uppercase font-mono text-[#8a8a8a]">Negativação</div>
-                      <div className="text-xs sm:text-sm font-semibold text-white font-display mt-0.5">Anti-Desperdício</div>
+                    <div className="px-1 min-w-0">
+                      <div className="text-[9px] sm:text-[10px] uppercase font-mono text-[#8a8a8a]">Negativação</div>
+                      <div className="text-[11px] sm:text-sm font-semibold text-white font-display mt-0.5 truncate sm:whitespace-normal">Anti-Desperdício</div>
                     </div>
                   </div>
                 </div>
@@ -880,7 +880,7 @@ export default function GoogleAdsGestao() {
 
               {/* Right Column: Executive Form */}
               <div className="lg:col-span-7">
-                <div className="rounded-2xl border border-white/[0.12] bg-[#090909] p-7 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+                <div className="rounded-2xl border border-white/[0.12] bg-[#090909] p-5 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                   <form onSubmit={handleFormSubmit} noValidate className="space-y-6">
                     {/* Anti-spam honeypot */}
                     <div className="hidden" aria-hidden="true">
