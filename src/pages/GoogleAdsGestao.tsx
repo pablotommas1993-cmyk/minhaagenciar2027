@@ -1,21 +1,12 @@
 import { useState, useEffect, useId } from 'react';
 import {
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
-  Clock,
-  HelpCircle,
   Mail,
   Phone,
   Send,
   ShieldCheck,
-  Sparkles,
-  Target,
-  TrendingUp,
   ChevronDown,
-  Layers,
-  Activity,
-  Compass,
 } from 'lucide-react';
 import {
   WHATSAPP_BASE_URL,
