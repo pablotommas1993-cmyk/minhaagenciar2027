@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { createServer } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,6 +17,25 @@ if (!fs.existsSync(homeHtmlPath)) {
 }
 
 const homeHtml = fs.readFileSync(homeHtmlPath, 'utf-8');
+
+// ==========================================
+// Prerender /google-ads/gestao component
+// ==========================================
+let prerenderedGoogleAdsBody = '';
+try {
+  const vite = await createServer({
+    server: { middlewareMode: true },
+    appType: 'custom',
+    optimizeDeps: { noDiscovery: true },
+  });
+  const mod = await vite.ssrLoadModule('/src/pages/GoogleAdsGestao.tsx');
+  const Component = mod.default;
+  prerenderedGoogleAdsBody = renderToString(React.createElement(Component));
+  await vite.close();
+  console.log(`✓ Prerendered GoogleAdsGestao component (${prerenderedGoogleAdsBody.length} chars)`);
+} catch (err) {
+  console.error('Warning: Failed to prerender GoogleAdsGestao component:', err);
+}
 
 // ==========================================
 // 1. Route: /google-ads/gestao
@@ -73,10 +95,18 @@ googleAdsHtml = googleAdsHtml.replace(
   '<meta property="twitter:url" content="https://orvionstudio.com.br/google-ads/gestao" />'
 );
 
+// Inject prerendered component inside <div id="root">
+if (prerenderedGoogleAdsBody) {
+  googleAdsHtml = googleAdsHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">${prerenderedGoogleAdsBody}</div>`
+  );
+}
+
 fs.writeFileSync(path.join(googleAdsDir, 'index.html'), googleAdsHtml, 'utf-8');
 const googleAdsParentDir = path.join(distDir, 'google-ads');
 fs.writeFileSync(path.join(googleAdsParentDir, 'gestao.html'), googleAdsHtml, 'utf-8');
-console.log('✓ Generated dist/google-ads/gestao/index.html and dist/google-ads/gestao.html with route-specific metadata');
+console.log('✓ Generated dist/google-ads/gestao/index.html and dist/google-ads/gestao.html with route-specific metadata and prerendered content');
 
 // ==========================================
 // 2. Route: /privacidade
@@ -109,4 +139,3 @@ privacidadeHtml = privacidadeHtml.replace(
 fs.writeFileSync(path.join(privacidadeDir, 'index.html'), privacidadeHtml, 'utf-8');
 fs.writeFileSync(path.join(distDir, 'privacidade.html'), privacidadeHtml, 'utf-8');
 console.log('✓ Generated dist/privacidade/index.html and dist/privacidade.html with route-specific metadata');
-
