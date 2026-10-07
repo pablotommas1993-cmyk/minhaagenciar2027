@@ -233,9 +233,9 @@ export default function GoogleAdsGestao() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={trackWhatsAppConversion}
-            className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/[0.06] px-4 sm:px-5 py-2 min-h-[42px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/[0.06] px-3 sm:px-5 py-2 min-h-[38px] sm:min-h-[42px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
           >
-            <Phone size={14} aria-hidden="true" />
+            <Phone size={13} aria-hidden="true" className="shrink-0" />
             <span>Falar com Especialista</span>
           </a>
         </div>
@@ -247,7 +247,7 @@ export default function GoogleAdsGestao() {
             ======================================================== */}
         <section
           id="topo"
-          className="relative pt-12 pb-20 md:pt-20 md:pb-28 px-[5%] lg:px-[8%] overflow-hidden border-b border-white/[0.07]"
+          className="relative pt-10 pb-20 md:pt-20 md:pb-28 px-[5%] lg:px-[8%] overflow-hidden border-b border-white/[0.07]"
         >
           {/* Subtle Studio Ambient Radial */}
           <div
@@ -264,9 +264,9 @@ export default function GoogleAdsGestao() {
               {/* Left Column: Narrative Headline */}
               <div className="lg:col-span-7 text-center lg:text-left">
                 {/* Studio Eyebrow Tag */}
-                <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-md border border-white/[0.12] bg-white/[0.03] mb-6 sm:mb-8 text-left">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                  <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F4E0A1] font-mono font-medium">
+                <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-3.5 py-1.5 rounded-md border border-white/[0.12] bg-white/[0.03] mb-6 sm:mb-8 text-left max-w-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" aria-hidden="true" />
+                  <span className="text-[9px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.25em] uppercase text-[#F4E0A1] font-mono font-medium truncate">
                     Orvion Studio // Google Ads & Aquisição
                   </span>
                 </div>
@@ -274,7 +274,7 @@ export default function GoogleAdsGestao() {
                 {/* Single H1 on page */}
                 <h1
                   className="font-display font-semibold text-white tracking-[-0.03em] mb-6 text-balance"
-                  style={{ fontSize: 'clamp(2.35rem, 5.2vw, 4.25rem)', lineHeight: 1.08 }}
+                  style={{ fontSize: 'clamp(1.95rem, 5.2vw, 4.25rem)', lineHeight: 1.08 }}
                 >
                   Gestão de Google Ads e Tráfego Pago para Empresas
                 </h1>
