@@ -236,7 +236,8 @@ export default function GoogleAdsGestao() {
             className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/[0.06] px-3 sm:px-5 py-2 min-h-[38px] sm:min-h-[42px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
           >
             <Phone size={13} aria-hidden="true" className="shrink-0" />
-            <span>Falar com Especialista</span>
+            <span className="hidden sm:inline">Falar com Especialista</span>
+            <span className="sm:hidden">WhatsApp</span>
           </a>
         </div>
       </header>
@@ -266,8 +267,9 @@ export default function GoogleAdsGestao() {
                 {/* Studio Eyebrow Tag */}
                 <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-3.5 py-1.5 rounded-md border border-white/[0.12] bg-white/[0.03] mb-6 sm:mb-8 text-left max-w-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" aria-hidden="true" />
-                  <span className="text-[9px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.25em] uppercase text-[#F4E0A1] font-mono font-medium truncate">
-                    Orvion Studio // Google Ads & Aquisição
+                  <span className="text-[9px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.25em] uppercase text-[#F4E0A1] font-mono font-medium">
+                    <span className="hidden sm:inline">Orvion Studio // Google Ads & Aquisição</span>
+                    <span className="sm:hidden">Google Ads & Aquisição</span>
                   </span>
                 </div>
 
@@ -757,17 +759,17 @@ export default function GoogleAdsGestao() {
                   {/* Flow Diagram */}
                   <div className="py-6 space-y-4">
                     {/* Step 1 */}
-                    <div className="p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
+                    <div className="p-3.5 sm:p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
                           01
                         </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white">Google Ads (Mídia)</div>
-                          <div className="text-xs text-[#888]">Captura de demanda ativa de quem já quer comprar</div>
+                        <div className="min-w-0">
+                          <div className="text-xs sm:text-sm font-semibold text-white">Google Ads (Mídia)</div>
+                          <div className="text-[11px] sm:text-xs text-[#888] truncate sm:whitespace-normal">Captura de demanda ativa de quem já quer comprar</div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
+                      <span className="shrink-0 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
                     </div>
 
                     <div className="flex justify-center -my-2 text-[#D4AF37]/40">
@@ -775,17 +777,17 @@ export default function GoogleAdsGestao() {
                     </div>
 
                     {/* Step 2 */}
-                    <div className="p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
+                    <div className="p-3.5 sm:p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
                           02
                         </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white">Landing Page de Alto Padrão</div>
-                          <div className="text-xs text-[#888]">Carregamento ultrarrápido, copy alinhada e design autoral</div>
+                        <div className="min-w-0">
+                          <div className="text-xs sm:text-sm font-semibold text-white">Landing Page de Alto Padrão</div>
+                          <div className="text-[11px] sm:text-xs text-[#888] truncate sm:whitespace-normal">Carregamento ultrarrápido, copy alinhada e design autoral</div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
+                      <span className="shrink-0 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
                     </div>
 
                     <div className="flex justify-center -my-2 text-[#D4AF37]/40">
@@ -793,17 +795,17 @@ export default function GoogleAdsGestao() {
                     </div>
 
                     {/* Step 3 */}
-                    <div className="p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
+                    <div className="p-3.5 sm:p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
                           03
                         </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white">Telemetria & Mensuração</div>
-                          <div className="text-xs text-[#888]">Contatos e conversões reais rastreados no WhatsApp</div>
+                        <div className="min-w-0">
+                          <div className="text-xs sm:text-sm font-semibold text-white">Telemetria & Mensuração</div>
+                          <div className="text-[11px] sm:text-xs text-[#888] truncate sm:whitespace-normal">Contatos e conversões reais rastreados no WhatsApp</div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
+                      <span className="shrink-0 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
                     </div>
 
                     <div className="flex justify-center -my-2 text-[#D4AF37]/40">
@@ -811,22 +813,22 @@ export default function GoogleAdsGestao() {
                     </div>
 
                     {/* Step 4 */}
-                    <div className="p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
+                    <div className="p-3.5 sm:p-4 rounded-xl border border-white/[0.08] bg-[#0e0e0e] flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-mono text-xs font-semibold">
                           04
                         </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white">Otimização Contínua de ROI</div>
-                          <div className="text-xs text-[#888]">Realocação da verba nas palavras que geram contratos</div>
+                        <div className="min-w-0">
+                          <div className="text-xs sm:text-sm font-semibold text-white">Otimização Contínua de ROI</div>
+                          <div className="text-[11px] sm:text-xs text-[#888] truncate sm:whitespace-normal">Realocação da verba nas palavras que geram contratos</div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
+                      <span className="shrink-0 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Ativo</span>
                     </div>
                   </div>
 
                   {/* Summary Footer */}
-                  <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs text-[#8a8a8a] font-mono">
+                  <div className="pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5 text-[10px] sm:text-xs text-[#8a8a8a] font-mono">
                     <span>ALINHAMENTO PONTA A PONTA</span>
                     <span className="text-[#D4AF37]">ZERO CONFLITO DE FORNECEDOR</span>
                   </div>
