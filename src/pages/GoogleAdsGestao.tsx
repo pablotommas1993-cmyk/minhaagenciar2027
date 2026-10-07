@@ -275,8 +275,8 @@ export default function GoogleAdsGestao() {
 
                 {/* Single H1 on page */}
                 <h1
-                  className="font-display font-semibold text-white tracking-[-0.03em] mb-6 text-balance"
-                  style={{ fontSize: 'clamp(1.95rem, 5.2vw, 4.25rem)', lineHeight: 1.08 }}
+                  className="font-display font-semibold text-white tracking-[-0.03em] mb-6 sm:text-balance"
+                  style={{ fontSize: 'clamp(1.55rem, 4.8vw, 4.25rem)', lineHeight: 1.12 }}
                 >
                   Gestão de Google Ads e Tráfego Pago para Empresas
                 </h1>
