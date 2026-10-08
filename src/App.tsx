@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 
 import GoogleAdsGestao from '@/pages/GoogleAdsGestao';
+import Nova from '@/pages/Nova';
 
 const Home = lazy(() => import('@/pages/Home'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
@@ -22,6 +23,7 @@ export default function App() {
   const isPrivacy = currentPath === '/privacidade' || currentPath === '/privacidade/';
   const isGoogleAds =
     currentPath === '/google-ads/gestao' || currentPath === '/google-ads/gestao/';
+  const isNova = currentPath === '/nova' || currentPath === '/nova/';
 
   return (
     <>
@@ -31,6 +33,8 @@ export default function App() {
         </Suspense>
       ) : isGoogleAds ? (
         <GoogleAdsGestao />
+      ) : isNova ? (
+        <Nova />
       ) : (
         <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
           <Home />
