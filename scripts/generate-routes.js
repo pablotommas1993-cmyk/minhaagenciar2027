@@ -114,6 +114,12 @@ googleAdsHtml = googleAdsHtml.replace(
   '<meta property="twitter:url" content="https://orvionstudio.com.br/google-ads/gestao" />'
 );
 
+// Preload Hero Image
+googleAdsHtml = googleAdsHtml.replace(
+  '</head>',
+  '    <link rel="preload" href="/images/hero-executive-office.webp" as="image" type="image/webp" />\n  </head>'
+);
+
 // Inject prerendered component inside <div id="root">
 if (prerenderedGoogleAdsBody) {
   googleAdsHtml = googleAdsHtml.replace(

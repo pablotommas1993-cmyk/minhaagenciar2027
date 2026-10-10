@@ -127,130 +127,16 @@ function IconAlertTriangle({ size = 16, className = '' }: { size?: number; class
 }
 
 // ============================================================================
-// COMPOSIÇÃO VISUAL HEROCURVE (SVG arquitetural em código puro, sem dados fictícios)
+// CONSTANTES DE CONVERSÃO WHATSAPP DA HERO
 // ============================================================================
-function HeroDiagram() {
-  return (
-    <div
-      className="relative rounded-2xl border border-white/[0.1] bg-[#080808] p-5 sm:p-7 shadow-[0_24px_64px_rgba(0,0,0,0.85)] overflow-hidden select-none"
-      aria-label="Diagrama do fluxo de aquisição: da intenção no Google ao contato comercial"
-    >
-      {/* Glow ambiente sutil */}
-      <div
-        className="absolute -top-24 -right-24 w-72 h-72 rounded-full pointer-events-none opacity-25"
-        style={{
-          background: 'radial-gradient(circle, rgba(212,175,55,0.35) 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
+const WHATSAPP_HERO_MESSAGE =
+  'Olá! Vim pelo site da Orvion e quero entender como funciona a gestão de Google Ads para minha empresa.';
+const WHATSAPP_HERO_URL = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_HERO_MESSAGE)}`;
 
-      {/* Topo do painel */}
-      <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-white/[0.08] text-[10px] sm:text-[11px] font-mono">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-          <span className="text-[#F4E0A1] uppercase tracking-[0.2em] font-medium">
-            Fluxo de Aquisição
-          </span>
-        </div>
-        <span className="text-[#737373] tracking-wider uppercase text-[9px] sm:text-[10px]">
-          Da intenção ao contato
-        </span>
-      </div>
+const WHATSAPP_DIAGNOSTICO_MESSAGE =
+  'Olá! Vim pelo site da Orvion e quero solicitar um diagnóstico de Google Ads para minha empresa.';
+const WHATSAPP_DIAGNOSTICO_URL = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_DIAGNOSTICO_MESSAGE)}`;
 
-      {/* SVG da curva ascendente */}
-      <div className="relative pt-6 pb-2">
-        <svg
-          viewBox="0 0 600 240"
-          className="w-full h-auto overflow-visible"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="gAdsCurveGradient" x1="80" y1="180" x2="520" y2="40" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#8A7322" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#D4AF37" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#F4E0A1" stopOpacity="1" />
-            </linearGradient>
-
-            <filter id="gAdsGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-
-            <pattern id="gAdsGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
-            </pattern>
-          </defs>
-
-          {/* Grid sutil */}
-          <rect width="600" height="240" fill="url(#gAdsGrid)" />
-
-          {/* Linhas de base */}
-          <line x1="80" y1="210" x2="520" y2="210" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" />
-          <line x1="80" y1="130" x2="520" y2="130" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" />
-          <line x1="80" y1="50" x2="520" y2="50" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" />
-
-          {/* Curva suave de progressão */}
-          <path
-            d="M 80 185 C 200 180, 260 145, 330 115 C 400 85, 460 55, 520 45"
-            stroke="url(#gAdsCurveGradient)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            filter="url(#gAdsGlow)"
-          />
-
-          {/* Área sombreada sob a curva */}
-          <path
-            d="M 80 185 C 200 180, 260 145, 330 115 C 400 85, 460 55, 520 45 L 520 210 L 80 210 Z"
-            fill="url(#gAdsCurveGradient)"
-            fillOpacity="0.04"
-          />
-
-          {/* Ponto 1: Busca */}
-          <g transform="translate(80, 185)">
-            <circle r="6" fill="#080808" stroke="#D4AF37" strokeWidth="2" />
-            <circle r="2.5" fill="#F4E0A1" />
-          </g>
-
-          {/* Ponto 2: Clique */}
-          <g transform="translate(330, 115)">
-            <circle r="6" fill="#080808" stroke="#D4AF37" strokeWidth="2" />
-            <circle r="2.5" fill="#F4E0A1" />
-          </g>
-
-          {/* Ponto 3: Contato */}
-          <g transform="translate(520, 45)">
-            <circle r="12" fill="rgba(212,175,55,0.18)" />
-            <circle r="7" fill="#080808" stroke="#F4E0A1" strokeWidth="2" />
-            <circle r="3" fill="#F4E0A1" />
-          </g>
-        </svg>
-      </div>
-
-      {/* 3 Etapas explicativas */}
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-white/[0.08]">
-        <div>
-          <div className="text-[10px] font-mono text-[#D4AF37] mb-1">01 Busca</div>
-          <p className="text-[11px] text-[#a3a3a3] leading-snug m-0">
-            Pesquisa ativa com intenção de contratação.
-          </p>
-        </div>
-        <div>
-          <div className="text-[10px] font-mono text-[#D4AF37] mb-1">02 Clique</div>
-          <p className="text-[11px] text-[#a3a3a3] leading-snug m-0">
-            Anúncio alinhado à busca que leva à página certa.
-          </p>
-        </div>
-        <div>
-          <div className="text-[10px] font-mono text-[#F4E0A1] mb-1">03 Contato</div>
-          <p className="text-[11px] text-white font-medium leading-snug m-0">
-            Conversa comercial iniciada no WhatsApp.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ============================================================================
 // COMPONENTE PRINCIPAL: GOOGLE ADS GESTÃO
@@ -445,9 +331,9 @@ export default function GoogleAdsGestao() {
       suppressHydrationWarning
     >
       {/* ========================================================
-          CABEÇALHO EDITORIAL
+          CABEÇALHO EDITORIAL (SOBRE A IMAGEM / STICKY GLASS)
           ======================================================== */}
-      <header className="sticky top-0 inset-x-0 z-40 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/92 backdrop-blur-xl border-b border-white/[0.08]">
+      <header className="sticky top-0 inset-x-0 z-40 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/75 backdrop-blur-xl border-b border-white/[0.08]">
         <a
           href="/"
           onClick={navigateToHome}
@@ -462,17 +348,60 @@ export default function GoogleAdsGestao() {
           </span>
         </a>
 
-        <div className="flex items-center gap-3">
+        {/* Links / Âncoras discretas no desktop */}
+        <nav
+          className="hidden md:flex items-center gap-7 text-xs text-[#a3a3a3] font-medium tracking-wide"
+          aria-label="Navegação da landing"
+        >
           <a
-            href={WHATSAPP_GESTÃO_URL}
+            href="#problema"
+            onClick={scrollToAnchor('problema')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Diagnóstico
+          </a>
+          <a
+            href="#metodo"
+            onClick={scrollToAnchor('metodo')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Método
+          </a>
+          <a
+            href="#servicos"
+            onClick={scrollToAnchor('servicos')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            O que inclui
+          </a>
+          <a
+            href="#faq"
+            onClick={scrollToAnchor('faq')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Dúvidas
+          </a>
+          <a
+            href="#proposta"
+            onClick={scrollToAnchor('proposta')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Contato
+          </a>
+        </nav>
+
+        {/* CTA secundário no topo: Solicitar Diagnóstico */}
+        <div className="flex items-center shrink-0">
+          <a
+            href={WHATSAPP_DIAGNOSTICO_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={trackWhatsAppConversion}
-            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#D4AF37]/60 bg-[#D4AF37]/[0.08] px-3.5 sm:px-5 py-2 sm:py-2.5 min-h-[40px] sm:min-h-[44px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap shadow-[0_2px_14px_rgba(212,175,55,0.15)]"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/[0.08] px-3 sm:px-4 py-1.5 sm:py-2.5 min-h-[38px] sm:min-h-[40px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap shadow-[0_2px_14px_rgba(212,175,55,0.12)] shrink-0"
           >
             <IconPhone size={13} className="shrink-0 text-[#D4AF37]" />
-            <span className="hidden sm:inline">Falar no WhatsApp</span>
-            <span className="sm:hidden">WhatsApp</span>
+            <span className="hidden sm:inline">Solicitar Diagnóstico</span>
+            <span className="sm:hidden">Diagnóstico</span>
           </a>
         </div>
       </header>
@@ -480,85 +409,127 @@ export default function GoogleAdsGestao() {
       {/* Espaçamento inferior no mobile para a barra fixa de conversão */}
       <main className="pb-24 sm:pb-0">
         {/* ========================================================
-            SEÇÃO 1 — HERO MEMORÁVEL COM DIAGRAMA SVG ARQUITETURAL
+            SEÇÃO 1 — HERO DEFINITIVA COM BACKGROUND OFFICE FULL-BLEED
             ======================================================== */}
         <section
           id="topo"
-          className="relative pt-12 pb-20 md:pt-20 md:pb-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
+          className="relative min-h-[90vh] md:min-h-[calc(100vh-5rem)] flex items-center -mt-16 sm:-mt-20 pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
         >
-          {/* Luz ambiente discreta */}
-          <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[550px] pointer-events-none opacity-20 select-none overflow-hidden"
-            style={{
-              background:
-                'radial-gradient(ellipse 70% 50% at 50% 25%, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.02) 50%, transparent 80%)',
-            }}
-            aria-hidden="true"
-          />
+          {/* Background de Imagem Executiva Full-Bleed */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <picture>
+              <source srcSet="/images/hero-executive-office.webp" type="image/webp" />
+              <img
+                src="/images/hero-executive-office.jpg"
+                alt=""
+                aria-hidden="true"
+                fetchPriority="high"
+                loading="eager"
+                className="w-full h-full object-cover object-[78%_center] sm:object-[72%_center] md:object-[right_center]"
+              />
+            </picture>
 
-          <div className="relative z-10 max-w-[1360px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-              {/* Coluna de texto */}
-              <div className="lg:col-span-7 text-center lg:text-left">
-                {/* Eyebrow de posicionamento */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-white/[0.12] bg-white/[0.03] mb-6 sm:mb-8 text-left">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" aria-hidden="true" />
-                  <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-[#F4E0A1] font-mono font-medium">
-                    Google Ads & Aquisição
-                  </span>
-                </div>
+            {/* Overlay Desktop: Gradiente Horizontal (escuro na esquerda para texto, transparente na direita para skyline, telas e iluminação) */}
+            <div
+              className="hidden md:block absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, #050505 0%, rgba(5,5,5,0.95) 30%, rgba(5,5,5,0.72) 48%, rgba(5,5,5,0.2) 75%, rgba(5,5,5,0.45) 100%)',
+              }}
+              aria-hidden="true"
+            />
 
-                {/* H1 único da landing */}
-                <h1
-                  className="font-display font-semibold text-white tracking-[-0.03em] mb-6 text-balance break-words"
-                  style={{ fontSize: 'clamp(1.75rem, 4.6vw, 4rem)', lineHeight: 1.15 }}
-                >
-                  Google Ads para empresas que querem contatos, não só cliques.
-                </h1>
+            {/* Overlay Mobile: Gradiente vertical + horizontal escurecendo para garantir contraste absoluto dos textos */}
+            <div
+              className="md:hidden absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.88) 40%, rgba(5,5,5,0.96) 82%, #070707 100%)',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="md:hidden absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.5) 100%)',
+              }}
+              aria-hidden="true"
+            />
 
-                {/* Subheadline curta e comercial */}
-                <p className="text-[#b8b8b8] text-base md:text-lg leading-relaxed max-w-[620px] mb-8 font-normal mx-auto lg:mx-0">
-                  Estratégia, estrutura e otimização para transformar buscas em oportunidades reais de negócio.
-                </p>
+            {/* Transição suave na base conectando a Hero com a seção seguinte (#problema em fundo #070707) */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-28 sm:h-36 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 0%, #070707 100%)',
+              }}
+              aria-hidden="true"
+            />
+          </div>
 
-                {/* CTAs Primário e Secundário */}
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8">
-                  <a
-                    href={WHATSAPP_GESTÃO_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={trackWhatsAppConversion}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 min-h-[48px] sm:min-h-[52px] font-semibold text-[#050505] text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
-                    style={{
-                      background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
-                    }}
-                  >
-                    <IconPhone size={16} aria-hidden="true" className="shrink-0" />
-                    <span>Quero anunciar no Google</span>
-                  </a>
-
-                  <a
-                    href="#metodo"
-                    onClick={scrollToAnchor('metodo')}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.2] bg-white/[0.03] px-6 py-3.5 min-h-[48px] sm:min-h-[52px] font-medium text-white text-sm md:text-base hover:bg-white/[0.08] hover:border-[#D4AF37]/60 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
-                  >
-                    <span>Ver como trabalhamos</span>
-                    <IconArrowRight size={15} aria-hidden="true" className="shrink-0" />
-                  </a>
-                </div>
-
-                {/* Linha de apoio e transparência */}
-                <div className="flex items-start justify-center lg:justify-start gap-2.5 text-[11px] sm:text-xs text-[#8a8a8a] font-mono max-w-[500px] mx-auto lg:mx-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1 shrink-0" aria-hidden="true" />
-                  <span className="min-w-0 leading-relaxed">
-                    Atendimento para empresas. Resposta em até 24h úteis.
-                  </span>
-                </div>
+          <div className="relative z-10 max-w-[1360px] mx-auto w-full">
+            <div className="max-w-[780px]">
+              {/* Eyebrow de posicionamento */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-white/[0.12] bg-white/[0.04] backdrop-blur-sm mb-6 sm:mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" aria-hidden="true" />
+                <span className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[#F4E0A1] font-mono font-medium">
+                  Google Ads • Aquisição • Performance
+                </span>
               </div>
 
-              {/* Coluna Visual Direita: Composição SVG Arquitetural */}
-              <div className="lg:col-span-5">
-                <HeroDiagram />
+              {/* H1 único da landing */}
+              <h1
+                className="font-display font-semibold text-white tracking-[-0.03em] mb-6 text-balance break-words"
+                style={{ fontSize: 'clamp(1.85rem, 5vw, 4.25rem)', lineHeight: 1.15 }}
+              >
+                Google Ads para empresas
+                <br />
+                que querem mais
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F4E0A1] to-[#D4AF37]">
+                  oportunidades de venda.
+                </span>
+              </h1>
+
+              {/* Subheadline curta e comercial */}
+              <p className="text-[#c2c2c2] text-base md:text-lg leading-relaxed max-w-[560px] mb-8 sm:mb-10 font-normal">
+                Estratégia, gestão e otimização de campanhas para colocar sua empresa diante de pessoas que já estão procurando pelo que você oferece.
+              </p>
+
+              {/* CTAs Primário e Secundário */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <a
+                  href={WHATSAPP_HERO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackWhatsAppConversion}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[54px] font-semibold text-[#050505] text-sm md:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_28px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_36px_rgba(212,175,55,0.55)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
+                  style={{
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                  }}
+                >
+                  <IconPhone size={16} aria-hidden="true" className="shrink-0" />
+                  <span>Quero anunciar no Google</span>
+                </a>
+
+                <a
+                  href="#problema"
+                  onClick={scrollToAnchor('problema')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.04] backdrop-blur-sm px-6 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[54px] font-medium text-white text-sm md:text-base hover:bg-white/[0.08] hover:border-[#D4AF37]/60 active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
+                >
+                  <span>Ver como trabalhamos</span>
+                  <IconArrowRight size={15} aria-hidden="true" className="shrink-0" />
+                </a>
+              </div>
+
+              {/* Micro-confirmação / Microcopy */}
+              <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-[#9a9a9a] font-mono max-w-[560px]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" aria-hidden="true" />
+                <span>Estratégia personalizada</span>
+                <span className="text-white/20">•</span>
+                <span>Otimização contínua</span>
+                <span className="text-white/20">•</span>
+                <span>Atendimento direto</span>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ interface HeroContentProps {
   onServicesClick?: () => void;
 }
 
-export default function HeroContent({ onCTAClick, onServicesClick }: HeroContentProps) {
+export default function HeroContent({ onServicesClick }: HeroContentProps) {
   return (
     <div>
       {/* Label */}
