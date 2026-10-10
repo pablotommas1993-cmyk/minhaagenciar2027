@@ -168,7 +168,6 @@ function IconMessageCircle({ size = 16, className = '' }: { size?: number; class
   );
 }
 
-
 // ============================================================================
 // CONSTANTES DE CONVERSÃO WHATSAPP OFICIAIS
 // ============================================================================
@@ -477,6 +476,7 @@ export default function GoogleAdsGestao() {
       <main className="pb-24 sm:pb-0">
         {/* ========================================================
             SEÇÃO 1 — HERO DEFINITIVA COM BACKGROUND OFFICE FULL-BLEED
+            (PRESERVADA INTEGRALMENTE CONFORME ESPECIFICADO)
             ======================================================== */}
         <section
           id="topo"
@@ -496,7 +496,7 @@ export default function GoogleAdsGestao() {
               />
             </picture>
 
-            {/* Overlay Desktop: Gradiente Horizontal (escuro na esquerda para texto, transparente na direita para skyline, telas e iluminação) */}
+            {/* Overlay Desktop: Gradiente Horizontal */}
             <div
               className="hidden md:block absolute inset-0"
               style={{
@@ -506,7 +506,7 @@ export default function GoogleAdsGestao() {
               aria-hidden="true"
             />
 
-            {/* Overlay Mobile: Gradiente vertical + horizontal escurecendo para garantir contraste absoluto dos textos */}
+            {/* Overlay Mobile */}
             <div
               className="md:hidden absolute inset-0"
               style={{
@@ -524,11 +524,11 @@ export default function GoogleAdsGestao() {
               aria-hidden="true"
             />
 
-            {/* Transição suave na base conectando a Hero com a seção seguinte (#problema em fundo #070707) */}
+            {/* Transição suave na base */}
             <div
               className="absolute inset-x-0 bottom-0 h-28 sm:h-36 pointer-events-none"
               style={{
-                background: 'linear-gradient(to bottom, transparent 0%, #070707 100%)',
+                background: 'linear-gradient(to bottom, transparent 0%, #050505 100%)',
               }}
               aria-hidden="true"
             />
@@ -604,16 +604,55 @@ export default function GoogleAdsGestao() {
 
         {/* ========================================================
             SEÇÃO 2 — 01 // ONDE O INVESTIMENTO SE PERDE
-            (Alinhada com a referência visual aprovada media_1791650066210_d7faabfa.png)
+            (Com fotografia cinematográfica integrada no background,
+             conforme o design aprovado em media_1791650066210_d7faabfa.png)
             ======================================================== */}
         <section
           id="problema"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707] overflow-hidden"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
         >
-          <div className="max-w-[1360px] mx-auto">
+          {/* Fundo Fotográfico Cinematográfico Integrado */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <picture>
+              <source srcSet="/images/section-problema-bg.webp" type="image/webp" />
+              <img
+                src="/images/section-problema-bg.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-full h-full object-cover object-[center_right] opacity-40 scale-105"
+              />
+            </picture>
+
+            {/* Overlay Gradiente Editorial Escuro para Contraste Textual Absoluto */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, #050505 0%, rgba(5,5,5,0.95) 35%, rgba(5,5,5,0.85) 60%, rgba(5,5,5,0.7) 100%)',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, #050505 0%, transparent 100%)',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to top, #050505 0%, transparent 100%)',
+              }}
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-[1360px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               {/* Lado Esquerdo: Mensagem Editorial e Destaque */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-6">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                   <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -621,8 +660,8 @@ export default function GoogleAdsGestao() {
                   </span>
                 </div>
                 <h2
-                  className="font-display font-medium text-white tracking-[-0.02em] mb-6 text-balance"
-                  style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
+                  className="font-display font-medium text-white tracking-[-0.03em] mb-6 text-balance"
+                  style={{ fontSize: 'clamp(2rem, 3.8vw, 3.25rem)', lineHeight: 1.15 }}
                 >
                   O problema não é anunciar.
                   <br />
@@ -631,7 +670,7 @@ export default function GoogleAdsGestao() {
                     não vira oportunidade.
                   </span>
                 </h2>
-                <div className="space-y-4 text-[#a3a3a3] text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                <div className="space-y-4 text-[#c2c2c2] text-sm sm:text-base leading-relaxed mb-8 font-normal max-w-[560px]">
                   <p className="m-0">
                     Muitas empresas investem em Google Ads, recebem cliques e ainda assim terminam o mês sem saber quais campanhas realmente trouxeram contatos comerciais.
                   </p>
@@ -639,68 +678,68 @@ export default function GoogleAdsGestao() {
                     Quando intenção de busca, anúncio, página e mensuração não trabalham juntos, o orçamento se dispersa.
                   </p>
                 </div>
-                <div className="border-l-2 border-[#D4AF37] pl-4 py-1.5 text-xs sm:text-sm font-medium text-[#F4E0A1]">
+                <div className="border-l-2 border-[#D4AF37] pl-4 py-2 text-sm sm:text-base font-medium text-[#F4E0A1] bg-[#D4AF37]/[0.03] rounded-r-md max-w-[520px]">
                   Tráfego qualificado precisa terminar em uma ação comercial.
                 </div>
               </div>
 
-              {/* Lado Direito: Três Pontos com Números Grandes e Divisores */}
-              <div className="lg:col-span-7 divide-y divide-white/[0.08]">
+              {/* Lado Direito: Elementos Numerados 01, 02, 03 (Sem Cards Pesados) */}
+              <div className="lg:col-span-6 divide-y divide-white/[0.08] backdrop-blur-[2px]">
                 {/* Ponto 01 */}
-                <div className="py-6 first:pt-0 flex items-start gap-5 sm:gap-6">
+                <div className="py-7 first:pt-0 flex items-start gap-5 sm:gap-6">
                   <div className="flex items-baseline gap-3 shrink-0">
-                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                    <span className="font-mono text-4xl sm:text-5xl font-light text-[#D4AF37] tracking-tight">
                       01
                     </span>
-                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                    <span className="text-white/20 text-3xl font-extralight select-none" aria-hidden="true">
                       |
                     </span>
                   </div>
-                  <div className="pt-0.5">
-                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                  <div className="pt-1">
+                    <h3 className="font-display text-white font-semibold text-lg sm:text-xl mb-1.5">
                       Clique sem intenção
                     </h3>
-                    <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    <p className="text-[#a3a3a3] text-xs sm:text-sm leading-relaxed m-0 font-normal">
                       Campanhas atraem pesquisas informativas ou usuários que ainda não estão prontos para contratar.
                     </p>
                   </div>
                 </div>
 
                 {/* Ponto 02 */}
-                <div className="py-6 flex items-start gap-5 sm:gap-6">
+                <div className="py-7 flex items-start gap-5 sm:gap-6">
                   <div className="flex items-baseline gap-3 shrink-0">
-                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                    <span className="font-mono text-4xl sm:text-5xl font-light text-[#D4AF37] tracking-tight">
                       02
                     </span>
-                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                    <span className="text-white/20 text-3xl font-extralight select-none" aria-hidden="true">
                       |
                     </span>
                   </div>
-                  <div className="pt-0.5">
-                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                  <div className="pt-1">
+                    <h3 className="font-display text-white font-semibold text-lg sm:text-xl mb-1.5">
                       Página que não converte
                     </h3>
-                    <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    <p className="text-[#a3a3a3] text-xs sm:text-sm leading-relaxed m-0 font-normal">
                       O anúncio gera acesso, mas a experiência depois do clique não conduz o visitante até o contato.
                     </p>
                   </div>
                 </div>
 
                 {/* Ponto 03 */}
-                <div className="py-6 last:pb-0 flex items-start gap-5 sm:gap-6">
+                <div className="py-7 last:pb-0 flex items-start gap-5 sm:gap-6">
                   <div className="flex items-baseline gap-3 shrink-0">
-                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                    <span className="font-mono text-4xl sm:text-5xl font-light text-[#D4AF37] tracking-tight">
                       03
                     </span>
-                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                    <span className="text-white/20 text-3xl font-extralight select-none" aria-hidden="true">
                       |
                     </span>
                   </div>
-                  <div className="pt-0.5">
-                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                  <div className="pt-1">
+                    <h3 className="font-display text-white font-semibold text-lg sm:text-xl mb-1.5">
                       Decisão sem mensuração
                     </h3>
-                    <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    <p className="text-[#a3a3a3] text-xs sm:text-sm leading-relaxed m-0 font-normal">
                       Sem acompanhar quais campanhas, termos e anúncios geram oportunidades reais, otimizar vira tentativa e erro.
                     </p>
                   </div>
@@ -708,16 +747,16 @@ export default function GoogleAdsGestao() {
               </div>
             </div>
 
-            {/* Fluxo Visual da Base (Busca → Anúncio → Página → Contato) */}
-            <div className="mt-12 sm:mt-16 rounded-2xl border border-white/[0.08] bg-[#090909]/80 backdrop-blur-md p-6 sm:p-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+            {/* Fluxo Visual da Base Integrado (Busca → Anúncio → Página → Contato) */}
+            <div className="mt-14 sm:mt-18 rounded-2xl border border-white/[0.1] bg-[#050505]/85 backdrop-blur-xl p-6 sm:p-8 shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4 items-center">
                 {/* 1. Busca */}
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
-                    <IconSearch size={18} className="text-[#F4E0A1]" />
+                  <div className="w-12 h-12 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
+                    <IconSearch size={20} className="text-[#F4E0A1]" />
                   </div>
                   <div>
-                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                    <div className="font-display font-medium text-white text-base">
                       Busca
                     </div>
                     <div className="text-xs text-[#8f8f8f]">
@@ -728,11 +767,11 @@ export default function GoogleAdsGestao() {
 
                 {/* 2. Anúncio */}
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center shrink-0">
-                    <IconLayoutGrid size={18} className="text-[#D4AF37]" />
+                  <div className="w-12 h-12 rounded-full border border-white/[0.15] bg-white/[0.04] flex items-center justify-center shrink-0">
+                    <IconLayoutGrid size={20} className="text-[#D4AF37]" />
                   </div>
                   <div>
-                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                    <div className="font-display font-medium text-white text-base">
                       Anúncio
                     </div>
                     <div className="text-xs text-[#8f8f8f]">
@@ -743,11 +782,11 @@ export default function GoogleAdsGestao() {
 
                 {/* 3. Página */}
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center shrink-0">
-                    <IconBrowser size={18} className="text-[#D4AF37]" />
+                  <div className="w-12 h-12 rounded-full border border-white/[0.15] bg-white/[0.04] flex items-center justify-center shrink-0">
+                    <IconBrowser size={20} className="text-[#D4AF37]" />
                   </div>
                   <div>
-                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                    <div className="font-display font-medium text-white text-base">
                       Página
                     </div>
                     <div className="text-xs text-[#8f8f8f]">
@@ -758,11 +797,11 @@ export default function GoogleAdsGestao() {
 
                 {/* 4. Contato */}
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
-                    <IconMessageCircle size={18} className="text-[#F4E0A1]" />
+                  <div className="w-12 h-12 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
+                    <IconMessageCircle size={20} className="text-[#F4E0A1]" />
                   </div>
                   <div>
-                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                    <div className="font-display font-medium text-white text-base">
                       Contato
                     </div>
                     <div className="text-xs text-[#8f8f8f]">
@@ -776,15 +815,16 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 3 — 02 // NOSSO PROCESSO (4 ETAPAS EDITORIAIS GRANDES)
+            SEÇÃO 3 — 02 // NOSSO PROCESSO
+            (Composição Editorial Estilo Case Monograph: Fotografia lateral + Timeline conectada)
             ======================================================== */}
         <section
           id="metodo"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
         >
           <div className="max-w-[1360px] mx-auto">
             {/* Cabeçalho da Seção */}
-            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+            <div className="max-w-[820px] mb-16 sm:mb-20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                 <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -793,7 +833,7 @@ export default function GoogleAdsGestao() {
               </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
               >
                 Uma operação de Google Ads começa antes do primeiro clique.
               </h2>
@@ -802,97 +842,115 @@ export default function GoogleAdsGestao() {
               </p>
             </div>
 
-            {/* Quatro Etapas Editoriais Assimétricas e Numeradas */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-              {/* ETAPA 01 */}
-              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
-                <div>
-                  <div className="flex items-baseline justify-between mb-6">
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+            {/* Composição Editorial: Imagem Fotográfica Lateral + 4 Etapas com Linha Conectora */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Painel Fotográfico Lateral (Estilo Case de Estúdio) */}
+              <div className="lg:col-span-5 order-2 lg:order-1">
+                <div className="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-[#080808] shadow-[0_20px_50px_rgba(0,0,0,0.7)] group">
+                  <picture>
+                    <source srcSet="/images/section-studio-arch.webp" type="image/webp" />
+                    <img
+                      src="/images/section-studio-arch.jpg"
+                      alt="Ambiente arquitetônico contemporâneo da operação da Orvion"
+                      loading="lazy"
+                      className="w-full h-[440px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </picture>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        'linear-gradient(to top, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.2) 60%, transparent 100%)',
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute bottom-6 inset-x-6">
+                    <span className="text-[10px] tracking-[0.22em] uppercase font-mono text-[#F4E0A1] block mb-1">
+                      Arquitetura de Aquisição
+                    </span>
+                    <p className="text-white text-xs sm:text-sm font-medium m-0 leading-snug">
+                      Planejamento rigoroso que une infraestrutura técnica e direcionamento comercial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timeline Editorial Conectada (Sem 4 Cards Iguais) */}
+              <div className="lg:col-span-7 order-1 lg:order-2 space-y-10 sm:space-y-12">
+                {/* ETAPA 01 */}
+                <div className="relative pl-8 sm:pl-10 border-l border-white/[0.12] group">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#050505] border-2 border-[#D4AF37] group-hover:bg-[#D4AF37] transition-colors" />
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#D4AF37]">
                       ETAPA 01
                     </span>
-                    <span className="font-mono text-3xl font-light text-white/30">
-                      01
+                    <span className="font-mono text-sm text-white/30">
+                      // 01
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-2">
                     Estratégia
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                  <p className="text-[#a3a3a3] text-sm leading-relaxed m-0 font-normal max-w-[560px]">
                     Entendemos o negócio, os serviços, a região de atuação e o perfil de cliente que realmente faz sentido alcançar.
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Alinhamento comercial
-                </div>
-              </div>
 
-              {/* ETAPA 02 */}
-              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
-                <div>
-                  <div className="flex items-baseline justify-between mb-6">
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                {/* ETAPA 02 */}
+                <div className="relative pl-8 sm:pl-10 border-l border-white/[0.12] group">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#050505] border-2 border-[#D4AF37] group-hover:bg-[#D4AF37] transition-colors" />
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#D4AF37]">
                       ETAPA 02
                     </span>
-                    <span className="font-mono text-3xl font-light text-white/30">
-                      02
+                    <span className="font-mono text-sm text-white/30">
+                      // 02
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-2">
                     Pesquisa
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                  <p className="text-[#a3a3a3] text-sm leading-relaxed m-0 font-normal max-w-[560px]">
                     Mapeamos buscas com intenção comercial e estruturamos campanhas para reduzir tráfego irrelevante.
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Filtro de intenção
-                </div>
-              </div>
 
-              {/* ETAPA 03 */}
-              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
-                <div>
-                  <div className="flex items-baseline justify-between mb-6">
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                {/* ETAPA 03 */}
+                <div className="relative pl-8 sm:pl-10 border-l border-white/[0.12] group">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#050505] border-2 border-[#D4AF37] group-hover:bg-[#D4AF37] transition-colors" />
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#D4AF37]">
                       ETAPA 03
                     </span>
-                    <span className="font-mono text-3xl font-light text-white/30">
-                      03
+                    <span className="font-mono text-sm text-white/30">
+                      // 03
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-2">
                     Experiência
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                  <p className="text-[#a3a3a3] text-sm leading-relaxed m-0 font-normal max-w-[560px]">
                     Anúncio e página precisam entregar continuidade para quem acabou de pesquisar pelo serviço.
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Continuidade do clique
-                </div>
-              </div>
 
-              {/* ETAPA 04 */}
-              <div className="relative p-6 sm:p-7 rounded-xl border border-[#D4AF37]/35 bg-[#090909] flex flex-col justify-between shadow-[0_4px_24px_rgba(212,175,55,0.06)]">
-                <div>
-                  <div className="flex items-baseline justify-between mb-6">
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1]">
+                {/* ETAPA 04 */}
+                <div className="relative pl-8 sm:pl-10 border-l border-[#D4AF37]/50 group">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#D4AF37] border-2 border-[#F4E0A1]" />
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#F4E0A1]">
                       ETAPA 04
                     </span>
-                    <span className="font-mono text-3xl font-light text-[#D4AF37]">
-                      04
+                    <span className="font-mono text-sm text-[#D4AF37]">
+                      // 04
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-2">
                     Otimização
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                  <p className="text-[#c2c2c2] text-sm leading-relaxed m-0 font-normal max-w-[560px]">
                     Analisamos termos, anúncios e conversões para direcionar investimento ao que demonstra maior potencial.
                   </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#F4E0A1]">
-                  Ajuste por retorno real
                 </div>
               </div>
             </div>
@@ -900,14 +958,15 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 4 — 03 // GESTÃO CONTÍNUA (6 PILARES ESTRATÉGICOS)
+            SEÇÃO 4 — 03 // GESTÃO CONTÍNUA
+            (Layout Dividido Editorial: 45% Imagem Desk Executivo + 55% Pilares)
             ======================================================== */}
         <section
           id="servicos"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
         >
           <div className="max-w-[1360px] mx-auto">
-            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+            <div className="max-w-[820px] mb-16 sm:mb-20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                 <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -916,7 +975,7 @@ export default function GoogleAdsGestao() {
               </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
               >
                 Campanha publicada não significa trabalho concluído.
               </h2>
@@ -925,83 +984,100 @@ export default function GoogleAdsGestao() {
               </p>
             </div>
 
-            {/* Painel Asimétrico com 6 Pilares da Gestão */}
-            <div className="rounded-2xl border border-white/[0.08] bg-[#090909] p-6 sm:p-10 lg:p-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                {/* Pilar 1 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Planejamento estratégico
-                    </h3>
+            {/* Layout Dividido Editorial: 45% Imagem Cinematográfica + 55% Lista de Pilares */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* 45% Imagem Fotográfica de Ambiente de Trabalho Digital Realista */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-[#090909] shadow-[0_24px_60px_rgba(0,0,0,0.8)]">
+                  <picture>
+                    <source srcSet="/images/section-gestao-desk.webp" type="image/webp" />
+                    <img
+                      src="/images/section-gestao-desk.jpg"
+                      alt="Mesa executiva de análise de dados com iluminação âmbar"
+                      loading="lazy"
+                      className="w-full h-[420px] sm:h-[480px] object-cover"
+                    />
+                  </picture>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        'linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 60%)',
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute bottom-6 inset-x-6">
+                    <p className="text-white text-xs sm:text-sm font-mono text-[#F4E0A1] m-0">
+                      Decisões guiadas por dados reais de negócio.
+                    </p>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                </div>
+              </div>
+
+              {/* 55% Lista Editorial dos 6 Pilares (Com linhas finas, sem cards pesados) */}
+              <div className="lg:col-span-7 divide-y divide-white/[0.08]">
+                {/* Pilar 1 */}
+                <div className="py-4.5 first:pt-0">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Planejamento estratégico
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Estrutura baseada no negócio, demanda e intenção de busca.
                   </p>
                 </div>
 
                 {/* Pilar 2 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Palavras-chave
-                    </h3>
-                  </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                <div className="py-4.5">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Palavras-chave
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Seleção e refinamento contínuo das pesquisas relevantes.
                   </p>
                 </div>
 
                 {/* Pilar 3 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Termos de pesquisa
-                    </h3>
-                  </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                <div className="py-4.5">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Termos de pesquisa
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Identificação de buscas reais e exclusão do que desperdiça orçamento.
                   </p>
                 </div>
 
                 {/* Pilar 4 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Anúncios
-                    </h3>
-                  </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                <div className="py-4.5">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Anúncios
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Mensagens alinhadas à intenção do potencial cliente.
                   </p>
                 </div>
 
                 {/* Pilar 5 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Mensuração
-                    </h3>
-                  </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                <div className="py-4.5">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Mensuração
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Configuração e acompanhamento das ações comerciais importantes.
                   </p>
                 </div>
 
                 {/* Pilar 6 */}
-                <div className="relative">
-                  <div className="flex items-center gap-2.5 mb-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
-                      Otimização
-                    </h3>
-                  </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                <div className="py-4.5 last:pb-0">
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    Otimização
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 pl-4 font-normal">
                     Ajustes de campanha guiados por dados, não por impressão.
                   </p>
                 </div>
@@ -1011,14 +1087,37 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 5 — 04 // DA BUSCA AO CONTATO (FLUXO LINEAR + DESTAQUE)
+            SEÇÃO 5 — 04 // DA BUSCA AO CONTATO
+            (Ultra Visual: Fotografia de Luzes Urbanas em Movimento + Fluxo Linear)
             ======================================================== */}
         <section
           id="fluxo"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505] overflow-hidden"
+          className="relative py-28 md:py-36 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
         >
-          <div className="max-w-[1360px] mx-auto">
-            <div className="max-w-[820px] mb-12 sm:mb-16">
+          {/* Background Fotográfico de Cidade e Movimento de Luzes */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <picture>
+              <source srcSet="/images/section-fluxo-city.webp" type="image/webp" />
+              <img
+                src="/images/section-fluxo-city.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-full h-full object-cover object-center opacity-35 scale-105"
+              />
+            </picture>
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.85) 40%, rgba(5,5,5,0.88) 70%, #050505 100%)',
+              }}
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-[1360px] mx-auto">
+            <div className="max-w-[820px] mb-16 sm:mb-20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                 <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -1027,93 +1126,93 @@ export default function GoogleAdsGestao() {
               </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
               >
                 O anúncio é apenas o começo da experiência.
               </h2>
-              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+              <p className="text-[#c2c2c2] text-sm sm:text-base leading-relaxed m-0 font-normal">
                 Depois do clique, cada detalhe influencia a decisão do potencial cliente. Por isso, analisamos não apenas a campanha, mas também o caminho até a conversão.
               </p>
             </div>
 
-            {/* Painel do Fluxo Completo: Pesquisa → Anúncio → Landing Page → WhatsApp → Oportunidade */}
-            <div className="rounded-2xl border border-white/[0.1] bg-[#080808] p-6 sm:p-10 lg:p-12 mb-10">
-              <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 lg:gap-2">
+            {/* Fita / Trilha Luminosa do Fluxo Linear */}
+            <div className="rounded-2xl border border-white/[0.12] bg-[#050505]/85 backdrop-blur-xl p-6 sm:p-10 mb-12 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+              <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 lg:gap-3">
                 {/* 1. Pesquisa */}
-                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                <div className="flex-1 p-5 rounded-xl border border-white/[0.08] bg-[#080808]/80 text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8f8f8f] block mb-1">
                     Passo 01
                   </span>
-                  <div className="font-display font-medium text-white text-base mb-1">
+                  <div className="font-display font-medium text-white text-lg mb-1">
                     Pesquisa
                   </div>
-                  <div className="text-xs text-[#8f8f8f]">
+                  <div className="text-xs text-[#a3a3a3]">
                     Intenção real do usuário
                   </div>
                 </div>
 
-                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
-                  <IconArrowRight size={18} />
+                <div className="hidden lg:flex items-center justify-center text-[#D4AF37]/60" aria-hidden="true">
+                  <IconArrowRight size={20} />
                 </div>
 
                 {/* 2. Anúncio */}
-                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                <div className="flex-1 p-5 rounded-xl border border-white/[0.08] bg-[#080808]/80 text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8f8f8f] block mb-1">
                     Passo 02
                   </span>
-                  <div className="font-display font-medium text-white text-base mb-1">
+                  <div className="font-display font-medium text-white text-lg mb-1">
                     Anúncio
                   </div>
-                  <div className="text-xs text-[#8f8f8f]">
+                  <div className="text-xs text-[#a3a3a3]">
                     Mensagem que filtra e atrai
                   </div>
                 </div>
 
-                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
-                  <IconArrowRight size={18} />
+                <div className="hidden lg:flex items-center justify-center text-[#D4AF37]/60" aria-hidden="true">
+                  <IconArrowRight size={20} />
                 </div>
 
                 {/* 3. Landing Page */}
-                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                <div className="flex-1 p-5 rounded-xl border border-white/[0.08] bg-[#080808]/80 text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8f8f8f] block mb-1">
                     Passo 03
                   </span>
-                  <div className="font-display font-medium text-white text-base mb-1">
+                  <div className="font-display font-medium text-white text-lg mb-1">
                     Landing Page
                   </div>
-                  <div className="text-xs text-[#8f8f8f]">
+                  <div className="text-xs text-[#a3a3a3]">
                     Ambiente claro de conversão
                   </div>
                 </div>
 
-                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
-                  <IconArrowRight size={18} />
+                <div className="hidden lg:flex items-center justify-center text-[#D4AF37]/60" aria-hidden="true">
+                  <IconArrowRight size={20} />
                 </div>
 
                 {/* 4. WhatsApp / contato */}
-                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                <div className="flex-1 p-5 rounded-xl border border-white/[0.08] bg-[#080808]/80 text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8f8f8f] block mb-1">
                     Passo 04
                   </span>
-                  <div className="font-display font-medium text-white text-base mb-1">
+                  <div className="font-display font-medium text-white text-lg mb-1">
                     WhatsApp / contato
                   </div>
-                  <div className="text-xs text-[#8f8f8f]">
+                  <div className="text-xs text-[#a3a3a3]">
                     Abertura da conversa direta
                   </div>
                 </div>
 
-                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]" aria-hidden="true">
-                  <IconArrowRight size={18} />
+                <div className="hidden lg:flex items-center justify-center text-[#D4AF37]" aria-hidden="true">
+                  <IconArrowRight size={20} />
                 </div>
 
                 {/* 5. Oportunidade comercial */}
-                <div className="flex-1 p-4 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/[0.08] text-center lg:text-left">
-                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1] block mb-1">
+                <div className="flex-1 p-5 rounded-xl border border-[#D4AF37]/60 bg-[#D4AF37]/[0.12] text-center lg:text-left shadow-[0_0_24px_rgba(212,175,55,0.15)]">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1] block mb-1 font-semibold">
                     Resultado
                   </span>
-                  <div className="font-display font-medium text-[#F4E0A1] text-base mb-1">
-                    Oportunidade
+                  <div className="font-display font-medium text-[#F4E0A1] text-lg mb-1">
+                    Oportunidade comercial
                   </div>
                   <div className="text-xs text-[#c2c2c2]">
                     Negociação com cliente real
@@ -1122,13 +1221,13 @@ export default function GoogleAdsGestao() {
               </div>
             </div>
 
-            {/* Destaque Central */}
-            <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex items-center justify-between flex-col md:flex-row gap-6">
-              <div className="space-y-1 text-center md:text-left">
-                <p className="font-display text-white text-base sm:text-lg m-0 font-medium">
+            {/* Destaque Central Inspirador */}
+            <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.1] bg-[#050505]/70 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="space-y-1.5 text-center md:text-left">
+                <p className="font-display text-white text-lg sm:text-xl m-0 font-medium">
                   O objetivo não é simplesmente aumentar acessos.
                 </p>
-                <p className="text-sm text-[#F4E0A1] m-0 font-mono">
+                <p className="text-sm sm:text-base text-[#F4E0A1] m-0 font-mono">
                   É criar um caminho mais eficiente entre intenção e contato.
                 </p>
               </div>
@@ -1137,7 +1236,7 @@ export default function GoogleAdsGestao() {
                 <a
                   href="#metodo"
                   onClick={scrollToAnchor('metodo')}
-                  className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.18] bg-white/[0.04] px-5 py-2.5 text-xs sm:text-sm text-white hover:border-[#D4AF37] transition-all no-underline cursor-pointer"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.04] px-6 py-3 text-xs sm:text-sm text-white hover:border-[#D4AF37] hover:bg-white/[0.08] transition-all no-underline cursor-pointer"
                 >
                   <span>Conhecer o método</span>
                   <IconArrowRight size={14} />
@@ -1148,14 +1247,15 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 6 — 05 // ECOSSISTEMA ORVION (MOSAICO EDITORIAL)
+            SEÇÃO 6 — 05 // ECOSSISTEMA ORVION
+            (Mosaico Editorial: Blocos Tipográficos + Fotografia Integrada + Serviços)
             ======================================================== */}
         <section
           id="ecossistema"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
         >
           <div className="max-w-[1360px] mx-auto">
-            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+            <div className="max-w-[820px] mb-16 sm:mb-20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                 <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -1164,7 +1264,7 @@ export default function GoogleAdsGestao() {
               </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
               >
                 Quando a campanha precisa de mais estrutura, nós também construímos.
               </h2>
@@ -1173,10 +1273,10 @@ export default function GoogleAdsGestao() {
               </p>
             </div>
 
-            {/* Mosaico Editorial Assimétrico com 5 Soluções */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Item 1: Landing Pages (Destaque Ampliado) */}
-              <div className="lg:col-span-2 p-6 sm:p-8 rounded-xl border border-white/[0.1] bg-[#0a0a0a] flex flex-col justify-between">
+            {/* Mosaico Editorial Assimétrico com Fotografia Integrada */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+              {/* Card A: Landing Pages (Ocupa 7 colunas, destaque editorial) */}
+              <div className="lg:col-span-7 p-8 sm:p-10 rounded-2xl border border-white/[0.1] bg-[#090909] flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-4">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
@@ -1184,99 +1284,114 @@ export default function GoogleAdsGestao() {
                       Conversão Direta
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-3">
+                  <h3 className="font-display text-white font-medium text-2xl sm:text-3xl mb-3">
                     Landing Pages
                   </h3>
-                  <p className="text-[#8f8f8f] text-sm sm:text-base leading-relaxed max-w-[620px] m-0">
+                  <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed max-w-[560px] m-0 font-normal">
                     Páginas desenvolvidas para campanhas e objetivos específicos, com carregamento rápido e narrativa pensada para transformar o clique em mensagem no WhatsApp.
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#a3a3a3]">
-                  Alinhadas à palavra-chave anunciada
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#F4E0A1]">
+                  Página específica, alinhada ao anúncio
                 </div>
               </div>
 
-              {/* Item 2: Websites Premium */}
-              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
+              {/* Card B: Websites Premium com Fotografia Integrada (Ocupa 5 colunas) */}
+              <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-white/[0.12] bg-[#090909] p-8 flex flex-col justify-end min-h-[300px]">
+                <picture className="absolute inset-0 z-0">
+                  <source srcSet="/images/section-studio-arch.webp" type="image/webp" />
+                  <img
+                    src="/images/section-studio-arch.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-30"
+                  />
+                </picture>
+                <div
+                  className="absolute inset-0 z-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(to top, #090909 25%, rgba(9,9,9,0.7) 100%)',
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
-                      Autoridade Digital
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1]">
+                      Presença e Autoridade
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-2">
                     Websites Premium
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                  <p className="text-[#c2c2c2] text-xs sm:text-sm leading-relaxed m-0 font-normal">
                     Experiências digitais que fortalecem posicionamento e confiança para empresas que vendem serviços de alto valor.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
-                  Presença institucional sólida
-                </div>
               </div>
 
-              {/* Item 3: Automações */}
-              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+              {/* Card C: Automações (Ocupa 4 colunas) */}
+              <div className="lg:col-span-4 p-7 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
                     <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
-                      Eficiência Operacional
+                      Eficiência
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-2">
                     Automações
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Processos que reduzem trabalho manual e aceleram o tempo de resposta entre a chegada do contato e o atendimento.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Processos que reduzem trabalho manual e aceleram atendimento.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                <div className="mt-6 pt-3 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
                   Agilidade comercial
                 </div>
               </div>
 
-              {/* Item 4: Inteligência Artificial */}
-              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+              {/* Card D: Inteligência Artificial (Ocupa 4 colunas) */}
+              <div className="lg:col-span-4 p-7 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
                     <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
-                      Inovação Prática
+                      Tecnologia Aplicada
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-2">
                     Inteligência Artificial
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Aplicações práticas de IA integradas à operação da empresa para qualificação inicial e suporte à tomada de decisão.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Aplicações práticas de IA integradas à operação da empresa.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
-                  Tecnologia aplicada ao negócio
+                <div className="mt-6 pt-3 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Qualificação inteligente
                 </div>
               </div>
 
-              {/* Item 5: SEO e Estratégia Digital */}
-              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+              {/* Card E: SEO e Estratégia Digital (Ocupa 4 colunas) */}
+              <div className="lg:col-span-4 p-7 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
                     <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
-                      Longo Prazo
+                      Sustentabilidade
                     </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-2">
                     SEO e Estratégia Digital
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Estrutura para fortalecer aquisição além da mídia paga, garantindo relevância orgânica e sustentabilidade do tráfego.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Estrutura para fortalecer aquisição além da mídia paga.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
-                  Visibilidade perene
+                <div className="mt-6 pt-3 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Visibilidade orgânica sólida
                 </div>
               </div>
             </div>
@@ -1284,15 +1399,48 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 7 — POSICIONAMENTO INSTITUCIONAL ORVION
+            SEÇÃO 7 — POSICIONAMENTO INSTITUCIONAL
+            (Layout Dividido: Imagem Arquitetônica em Grande Escala + Manifesto)
             ======================================================== */}
         <section
           id="posicionamento"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
         >
-          <div className="max-w-[1040px] mx-auto">
-            <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border border-white/[0.1] bg-[#080808] relative overflow-hidden">
-              <div className="relative z-10">
+          <div className="max-w-[1360px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Imagem Arquitetônica em Grande Escala */}
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-[#080808] shadow-[0_24px_60px_rgba(0,0,0,0.85)] group">
+                  <picture>
+                    <source srcSet="/images/section-studio-arch.webp" type="image/webp" />
+                    <img
+                      src="/images/section-studio-arch.jpg"
+                      alt="Arquitetura de estúdio contemporâneo com pé direito duplo"
+                      loading="lazy"
+                      className="w-full h-[460px] sm:h-[540px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </picture>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        'linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 60%)',
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute bottom-6 inset-x-6">
+                    <span className="text-[10px] font-mono tracking-[0.22em] uppercase text-[#F4E0A1] block mb-1">
+                      Padrão de Agência Digital
+                    </span>
+                    <p className="text-white text-xs sm:text-sm font-medium m-0">
+                      Rigor estético, precisão técnica e compromisso comercial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Manifesto Institucional com Tipografia Editorial Elegante */}
+              <div className="lg:col-span-6">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
                   <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
@@ -1300,12 +1448,12 @@ export default function GoogleAdsGestao() {
                   </span>
                 </div>
                 <h2
-                  className="font-display font-medium text-white tracking-[-0.02em] mb-6 text-balance"
-                  style={{ fontSize: 'clamp(1.85rem, 3.8vw, 3rem)', lineHeight: 1.15 }}
+                  className="font-display font-medium text-white tracking-[-0.03em] mb-6 text-balance"
+                  style={{ fontSize: 'clamp(2rem, 3.8vw, 3.25rem)', lineHeight: 1.15 }}
                 >
                   Não somos apenas operadores de campanha.
                 </h2>
-                <div className="space-y-5 text-[#c2c2c2] text-sm sm:text-base md:text-lg leading-relaxed max-w-[820px] font-normal mb-8">
+                <div className="space-y-5 text-[#c2c2c2] text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-8">
                   <p className="m-0">
                     A Orvion Studio trabalha na interseção entre aquisição, tecnologia e experiência digital.
                   </p>
@@ -1314,7 +1462,7 @@ export default function GoogleAdsGestao() {
                   </p>
                 </div>
                 <div className="pt-6 border-t border-white/[0.08]">
-                  <p className="text-xs sm:text-sm text-[#8f8f8f] font-mono m-0 max-w-[720px] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#8f8f8f] font-mono m-0 leading-relaxed max-w-[540px]">
                     Cada projeto parte da realidade da empresa. Sem fórmulas prontas, métricas de vaidade ou promessas impossíveis.
                   </p>
                 </div>
@@ -1324,14 +1472,37 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 8 — CTA INTERMEDIÁRIO (BLOCO CINEMATOGRÁFICO DE ALTO CONTRASTE)
+            SEÇÃO 8 — CTA INTERMEDIÁRIO
+            (Bloco Cinematográfico de Alto Contraste com Background Fotográfico)
             ======================================================== */}
         <section
           id="diagnostico"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
         >
-          <div className="max-w-[1040px] mx-auto">
-            <div className="rounded-2xl border border-[#D4AF37]/35 bg-[#0a0a0a] p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-[0_12px_48px_rgba(0,0,0,0.8)]">
+          {/* Fundo Fotográfico Cinematográfico */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <picture>
+              <source srcSet="/images/section-problema-bg.webp" type="image/webp" />
+              <img
+                src="/images/section-problema-bg.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-full h-full object-cover object-center opacity-30 scale-105"
+              />
+            </picture>
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(135deg, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.95) 100%)',
+              }}
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-[1040px] mx-auto">
+            <div className="rounded-2xl border border-[#D4AF37]/35 bg-[#080808]/85 backdrop-blur-xl p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-[0_24px_64px_rgba(0,0,0,0.8)]">
               <div className="max-w-[620px]">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-6 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
@@ -1341,11 +1512,11 @@ export default function GoogleAdsGestao() {
                 </div>
                 <h2
                   className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                  style={{ fontSize: 'clamp(1.65rem, 3.2vw, 2.5rem)', lineHeight: 1.18 }}
+                  style={{ fontSize: 'clamp(1.75rem, 3.4vw, 2.75rem)', lineHeight: 1.15 }}
                 >
                   Quer entender se o Google Ads faz sentido para sua empresa?
                 </h2>
-                <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                <p className="text-[#c2c2c2] text-sm sm:text-base leading-relaxed m-0 font-normal">
                   Conte brevemente sobre seu negócio. Vamos entender seu cenário antes de falar sobre campanha.
                 </p>
               </div>
@@ -1356,7 +1527,7 @@ export default function GoogleAdsGestao() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={trackWhatsAppConversion}
-                  className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[50px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_28px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_36px_rgba(212,175,55,0.55)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
                   style={{
                     background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
                   }}
@@ -1370,11 +1541,12 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 9 — PERGUNTAS FREQUENTES (ACORDEÃO LIMPO E OBJETIVO)
+            SEÇÃO 9 — PERGUNTAS FREQUENTES
+            (Respiro Tipográfico Limpo, Objetivo e Elegante)
             ======================================================== */}
         <section
           id="faq"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
         >
           <div className="max-w-[920px] mx-auto">
             <div className="mb-14 pb-8 border-b border-white/[0.08]">
@@ -1386,11 +1558,11 @@ export default function GoogleAdsGestao() {
               </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+                style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
               >
                 Perguntas Frequentes
               </h2>
-              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0">
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
                 Respostas diretas sobre orçamento, prazos e rotina da operação.
               </p>
             </div>
@@ -1562,14 +1734,37 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 10 — CTA FINAL COM FORMULÁRIO REAL E FUNCIONAL
+            SEÇÃO 10 — CTA FINAL COM FORMULÁRIO INTEGRADO
+            (Fechamento com Fundo Fotográfico Premium e Overlay)
             ======================================================== */}
         <section
           id="proposta"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-24 md:py-32 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] overflow-hidden"
         >
-          <div className="max-w-[1180px] mx-auto">
-            <div className="rounded-2xl border border-white/[0.1] bg-[#090909] p-6 sm:p-10 lg:p-14 shadow-[0_24px_64px_rgba(0,0,0,0.85)]">
+          {/* Background Fotográfico Premium de Fechamento */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <picture>
+              <source srcSet="/images/hero-executive-office.webp" type="image/webp" />
+              <img
+                src="/images/hero-executive-office.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-full h-full object-cover object-[center_left] opacity-25 scale-105"
+              />
+            </picture>
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, #050505 0%, rgba(5,5,5,0.92) 50%, rgba(5,5,5,0.85) 100%)',
+              }}
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-[1240px] mx-auto">
+            <div className="rounded-2xl border border-white/[0.12] bg-[#070707]/90 backdrop-blur-2xl p-6 sm:p-10 lg:p-14 shadow-[0_32px_80px_rgba(0,0,0,0.85)]">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                 {/* Lado Esquerdo: Mensagem e Ação Imediata */}
                 <div className="lg:col-span-6 text-center lg:text-left">
@@ -1581,11 +1776,11 @@ export default function GoogleAdsGestao() {
                   </div>
                   <h2
                     className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
-                    style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.15 }}
+                    style={{ fontSize: 'clamp(1.85rem, 3.6vw, 2.85rem)', lineHeight: 1.15 }}
                   >
                     Sua próxima oportunidade pode começar em uma pesquisa no Google.
                   </h2>
-                  <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed mb-8">
+                  <p className="text-[#c2c2c2] text-sm sm:text-base leading-relaxed mb-8 font-normal">
                     Vamos estruturar uma operação de aquisição alinhada ao seu negócio e aos seus objetivos.
                   </p>
 
@@ -1595,7 +1790,7 @@ export default function GoogleAdsGestao() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={trackWhatsAppConversion}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_28px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_36px_rgba(212,175,55,0.55)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
                       style={{
                         background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
                       }}
@@ -1609,20 +1804,20 @@ export default function GoogleAdsGestao() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={trackWhatsAppConversion}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.18] bg-white/[0.04] px-6 py-4 min-h-[52px] text-xs sm:text-sm font-medium text-white hover:border-[#D4AF37] transition-all no-underline cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.04] px-6 py-4 min-h-[52px] text-xs sm:text-sm font-medium text-white hover:border-[#D4AF37] hover:bg-white/[0.08] transition-all no-underline cursor-pointer"
                     >
                       <span>Solicitar diagnóstico</span>
                     </a>
                   </div>
                 </div>
 
-                {/* Lado Direito: Formulário Funcional que Direciona para o WhatsApp */}
+                {/* Lado Direito: Formulário Funcional Integrado */}
                 <div className="lg:col-span-6 border-t lg:border-t-0 lg:border-l border-white/[0.08] pt-8 lg:pt-0 lg:pl-10">
                   <div className="mb-6">
                     <h3 className="font-display text-white font-medium text-lg mb-1">
                       Envie os dados do seu negócio
                     </h3>
-                    <p className="text-[#737373] text-xs leading-relaxed m-0">
+                    <p className="text-[#8f8f8f] text-xs leading-relaxed m-0 font-normal">
                       Formatamos sua solicitação e direcionamos imediatamente para o WhatsApp da Orvion.
                     </p>
                   </div>
