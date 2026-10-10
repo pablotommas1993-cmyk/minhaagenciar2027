@@ -1,7 +1,6 @@
 import { useState, useEffect, useId } from 'react';
 import {
   WHATSAPP_BASE_URL,
-  WHATSAPP_GESTÃO_URL,
   trackWhatsAppConversion,
 } from '@/utils/gtag';
 
@@ -47,25 +46,6 @@ function IconArrowRight({ size = 16, className = '' }: { size?: number; classNam
   );
 }
 
-function IconCheck({ size = 16, className = '' }: { size?: number; className?: string }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
 function IconChevronDown({ size = 16, className = '' }: { size?: number; className?: string }) {
   return (
     <svg
@@ -105,7 +85,7 @@ function IconSend({ size = 16, className = '' }: { size?: number; className?: st
   );
 }
 
-function IconAlertTriangle({ size = 16, className = '' }: { size?: number; className?: string }) {
+function IconSearch({ size = 16, className = '' }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}
@@ -119,15 +99,78 @@ function IconAlertTriangle({ size = 16, className = '' }: { size?: number; class
       className={className}
       aria-hidden="true"
     >
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-      <path d="M12 9v4" />
-      <path d="M12 17h.01" />
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
     </svg>
   );
 }
 
+function IconLayoutGrid({ size = 16, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="7" height="7" x="3" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="14" rx="1" />
+      <rect width="7" height="7" x="3" y="14" rx="1" />
+    </svg>
+  );
+}
+
+function IconBrowser({ size = 16, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="M2 8h20" />
+      <path d="M6 6h.01" />
+      <path d="M10 6h.01" />
+    </svg>
+  );
+}
+
+function IconMessageCircle({ size = 16, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+  );
+}
+
+
 // ============================================================================
-// CONSTANTES DE CONVERSÃO WHATSAPP DA HERO
+// CONSTANTES DE CONVERSÃO WHATSAPP OFICIAIS
 // ============================================================================
 const WHATSAPP_HERO_MESSAGE =
   'Olá! Vim pelo site da Orvion e quero entender como funciona a gestão de Google Ads para minha empresa.';
@@ -137,14 +180,14 @@ const WHATSAPP_DIAGNOSTICO_MESSAGE =
   'Olá! Vim pelo site da Orvion e quero solicitar um diagnóstico de Google Ads para minha empresa.';
 const WHATSAPP_DIAGNOSTICO_URL = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_DIAGNOSTICO_MESSAGE)}`;
 
-
 // ============================================================================
 // COMPONENTE PRINCIPAL: GOOGLE ADS GESTÃO
 // ============================================================================
 interface FormState {
   name: string;
   company: string;
-  investment: string;
+  phone: string;
+  service: string;
   message: string;
 }
 
@@ -241,7 +284,8 @@ export default function GoogleAdsGestao() {
   const [form, setForm] = useState<FormState>({
     name: '',
     company: '',
-    investment: '',
+    phone: '',
+    service: 'Gestão de Google Ads',
     message: '',
   });
   const [honeypot, setHoneypot] = useState('');
@@ -262,8 +306,8 @@ export default function GoogleAdsGestao() {
     if (!form.name.trim()) {
       errors.name = 'Por favor, informe seu nome.';
     }
-    if (!form.investment) {
-      errors.investment = 'Selecione a faixa estimada de investimento.';
+    if (!form.phone.trim()) {
+      errors.phone = 'Por favor, informe seu WhatsApp para contato.';
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -283,7 +327,7 @@ export default function GoogleAdsGestao() {
     trackWhatsAppConversion();
 
     const lines = [
-      'Olá! Vim pela página da ORVION Studio e quero uma proposta de gestão de Google Ads.',
+      'Olá! Vim pela página da ORVION Studio e tenho interesse em avançar com a gestão de Google Ads.',
       '',
       `Nome: ${form.name.trim()}`,
     ];
@@ -292,7 +336,13 @@ export default function GoogleAdsGestao() {
       lines.push(`Empresa: ${form.company.trim()}`);
     }
 
-    lines.push(`Investimento mensal pretendido no Google: ${form.investment}`);
+    if (form.phone.trim()) {
+      lines.push(`WhatsApp: ${form.phone.trim()}`);
+    }
+
+    if (form.service.trim()) {
+      lines.push(`Serviço de interesse: ${form.service.trim()}`);
+    }
 
     if (form.message.trim()) {
       lines.push(`Mensagem: ${form.message.trim()}`);
@@ -300,6 +350,9 @@ export default function GoogleAdsGestao() {
 
     if (utmData.utm_source) {
       lines.push(`Origem: ${utmData.utm_source}`);
+    }
+    if (utmData.gclid) {
+      lines.push(`GCLID: ${utmData.gclid}`);
     }
 
     const whatsappUrl = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
@@ -333,7 +386,7 @@ export default function GoogleAdsGestao() {
       {/* ========================================================
           CABEÇALHO EDITORIAL (SOBRE A IMAGEM / STICKY GLASS)
           ======================================================== */}
-      <header className="sticky top-0 inset-x-0 z-40 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/75 backdrop-blur-xl border-b border-white/[0.08]">
+      <header className="sticky top-0 inset-x-0 z-40 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/80 backdrop-blur-xl border-b border-white/[0.08]">
         <a
           href="/"
           onClick={navigateToHome}
@@ -365,14 +418,28 @@ export default function GoogleAdsGestao() {
             onClick={scrollToAnchor('metodo')}
             className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
           >
-            Método
+            Processo
           </a>
           <a
             href="#servicos"
             onClick={scrollToAnchor('servicos')}
             className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
           >
-            O que inclui
+            Gestão
+          </a>
+          <a
+            href="#fluxo"
+            onClick={scrollToAnchor('fluxo')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Fluxo
+          </a>
+          <a
+            href="#ecossistema"
+            onClick={scrollToAnchor('ecossistema')}
+            className="hover:text-white transition-colors duration-150 no-underline cursor-pointer"
+          >
+            Ecossistema
           </a>
           <a
             href="#faq"
@@ -536,92 +603,171 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 2 — O PROBLEMA (VISUAL FORTE, SEM CARDS REPETIDOS)
+            SEÇÃO 2 — 01 // ONDE O INVESTIMENTO SE PERDE
+            (Alinhada com a referência visual aprovada media_1791650066210_d7faabfa.png)
             ======================================================== */}
         <section
           id="problema"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707] overflow-hidden"
         >
           <div className="max-w-[1360px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              {/* Lado Esquerdo: Mensagem Editorial de Impacto */}
+              {/* Lado Esquerdo: Mensagem Editorial e Destaque */}
               <div className="lg:col-span-5">
-                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-                  01 // O Cenário Real
-                </span>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                  <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                    01 — ONDE O INVESTIMENTO SE PERDE
+                  </span>
+                </div>
                 <h2
                   className="font-display font-medium text-white tracking-[-0.02em] mb-6 text-balance"
-                  style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.18 }}
+                  style={{ fontSize: 'clamp(1.85rem, 3.6vw, 3rem)', lineHeight: 1.15 }}
                 >
-                  O que costuma drenar o investimento no Google Ads
+                  O problema não é anunciar.
+                  <br />
+                  É pagar por atenção que{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F4E0A1] to-[#D4AF37]">
+                    não vira oportunidade.
+                  </span>
                 </h2>
-                <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                  Muitas empresas investem mensalmente no Google, mas terminam o mês sem saber exatamente quantas conversas reais o tráfego gerou. O problema quase sempre não é a ferramenta, mas a falta de alinhamento entre a intenção da busca e o destino do clique.
-                </p>
-                <div className="inline-flex items-center gap-2 text-xs font-mono text-[#F4E0A1] border-l-2 border-[#D4AF37] pl-3 py-1">
-                  Tráfego qualificado precisa virar conversa comercial.
+                <div className="space-y-4 text-[#a3a3a3] text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                  <p className="m-0">
+                    Muitas empresas investem em Google Ads, recebem cliques e ainda assim terminam o mês sem saber quais campanhas realmente trouxeram contatos comerciais.
+                  </p>
+                  <p className="m-0">
+                    Quando intenção de busca, anúncio, página e mensuração não trabalham juntos, o orçamento se dispersa.
+                  </p>
+                </div>
+                <div className="border-l-2 border-[#D4AF37] pl-4 py-1.5 text-xs sm:text-sm font-medium text-[#F4E0A1]">
+                  Tráfego qualificado precisa terminar em uma ação comercial.
                 </div>
               </div>
 
-              {/* Lado Direito: Linhas Editoriais Assimétricas (Sem cards idênticos) */}
+              {/* Lado Direito: Três Pontos com Números Grandes e Divisores */}
               <div className="lg:col-span-7 divide-y divide-white/[0.08]">
-                {/* Problema 1 */}
-                <div className="py-6 first:pt-0 flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-red-500/[0.1] border border-red-500/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <IconAlertTriangle size={15} className="text-red-400" />
+                {/* Ponto 01 */}
+                <div className="py-6 first:pt-0 flex items-start gap-5 sm:gap-6">
+                  <div className="flex items-baseline gap-3 shrink-0">
+                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                      01
+                    </span>
+                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                      |
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1.5">
-                      Clique sem contato comercial
+                  <div className="pt-0.5">
+                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                      Clique sem intenção
                     </h3>
                     <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                      O anúncio gera visitas, mas os visitantes chegam a páginas genéricas e saem sem iniciar contato. O custo por clique é pago, mas o retorno não acontece.
+                      Campanhas atraem pesquisas informativas ou usuários que ainda não estão prontos para contratar.
                     </p>
                   </div>
                 </div>
 
-                {/* Problema 2 */}
-                <div className="py-6 flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-red-500/[0.1] border border-red-500/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <IconAlertTriangle size={15} className="text-red-400" />
+                {/* Ponto 02 */}
+                <div className="py-6 flex items-start gap-5 sm:gap-6">
+                  <div className="flex items-baseline gap-3 shrink-0">
+                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                      02
+                    </span>
+                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                      |
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1.5">
-                      Campanha sem direção de intenção
+                  <div className="pt-0.5">
+                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                      Página que não converte
                     </h3>
                     <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                      Palavras-chave amplas atraem pesquisas informativas, curiosos ou quem procura artigos gratuitos, em vez de tomadores de decisão prontos para contratar.
+                      O anúncio gera acesso, mas a experiência depois do clique não conduz o visitante até o contato.
                     </p>
                   </div>
                 </div>
 
-                {/* Problema 3 */}
-                <div className="py-6 flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-red-500/[0.1] border border-red-500/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <IconAlertTriangle size={15} className="text-red-400" />
+                {/* Ponto 03 */}
+                <div className="py-6 last:pb-0 flex items-start gap-5 sm:gap-6">
+                  <div className="flex items-baseline gap-3 shrink-0">
+                    <span className="font-mono text-3xl sm:text-4xl font-light text-[#D4AF37] tracking-tight">
+                      03
+                    </span>
+                    <span className="text-white/20 text-2xl font-extralight select-none" aria-hidden="true">
+                      |
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1.5">
-                      Orçamento desperdiçado sem negativação
+                  <div className="pt-0.5">
+                    <h3 className="font-display text-white font-semibold text-base sm:text-lg mb-1.5">
+                      Decisão sem mensuração
                     </h3>
                     <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                      Sem uma rotina contínua de análise dos termos reais de pesquisa, dezenas de reais são consumidos todos os dias por termos fora do escopo do seu serviço.
+                      Sem acompanhar quais campanhas, termos e anúncios geram oportunidades reais, otimizar vira tentativa e erro.
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Problema 4 */}
-                <div className="py-6 last:pb-0 flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-red-500/[0.1] border border-red-500/25 flex items-center justify-center shrink-0 mt-0.5">
-                    <IconAlertTriangle size={15} className="text-red-400" />
+            {/* Fluxo Visual da Base (Busca → Anúncio → Página → Contato) */}
+            <div className="mt-12 sm:mt-16 rounded-2xl border border-white/[0.08] bg-[#090909]/80 backdrop-blur-md p-6 sm:p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+                {/* 1. Busca */}
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
+                    <IconSearch size={18} className="text-[#F4E0A1]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-white font-medium text-base sm:text-lg mb-1.5">
-                      Falta de mensuração confiável
-                    </h3>
-                    <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                      Decisões tomadas com base em impressões ou métricas de vaidade, sem saber quais campanhas e palavras realmente geram os contatos recebidos na equipe comercial.
-                    </p>
+                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                      Busca
+                    </div>
+                    <div className="text-xs text-[#8f8f8f]">
+                      Pessoa pesquisa no Google
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Anúncio */}
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center shrink-0">
+                    <IconLayoutGrid size={18} className="text-[#D4AF37]" />
+                  </div>
+                  <div>
+                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                      Anúncio
+                    </div>
+                    <div className="text-xs text-[#8f8f8f]">
+                      Seu negócio aparece para quem tem interesse
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Página */}
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full border border-white/[0.12] bg-white/[0.04] flex items-center justify-center shrink-0">
+                    <IconBrowser size={18} className="text-[#D4AF37]" />
+                  </div>
+                  <div>
+                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                      Página
+                    </div>
+                    <div className="text-xs text-[#8f8f8f]">
+                      Experiência que responde o que o cliente procura
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4. Contato */}
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/[0.08] flex items-center justify-center shrink-0">
+                    <IconMessageCircle size={18} className="text-[#F4E0A1]" />
+                  </div>
+                  <div>
+                    <div className="font-display font-medium text-white text-sm sm:text-base">
+                      Contato
+                    </div>
+                    <div className="text-xs text-[#8f8f8f]">
+                      Ação comercial na sua empresa
+                    </div>
                   </div>
                 </div>
               </div>
@@ -630,99 +776,122 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 3 — COMO A ORVION ATUA (TIMELINE EDITORIAL 4 ETAPAS)
+            SEÇÃO 3 — 02 // NOSSO PROCESSO (4 ETAPAS EDITORIAIS GRANDES)
             ======================================================== */}
         <section
           id="metodo"
           className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
         >
           <div className="max-w-[1360px] mx-auto">
-            {/* Cabeçalho da seção */}
-            <div className="max-w-[760px] mb-14 pb-8 border-b border-white/[0.08]">
-              <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-                02 // Metodologia
-              </span>
+            {/* Cabeçalho da Seção */}
+            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                  02 — NOSSO PROCESSO
+                </span>
+              </div>
               <h2
-                className="font-display font-medium text-white tracking-[-0.02em] mb-4"
+                className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
                 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
               >
-                Como estruturamos sua operação no Google Ads
+                Uma operação de Google Ads começa antes do primeiro clique.
               </h2>
-              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed">
-                Um fluxo linear em quatro momentos, do entendimento inicial à otimização contínua da conta.
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                Cada etapa precisa trabalhar em conjunto para transformar intenção de busca em uma oportunidade comercial mensurável.
               </p>
             </div>
 
-            {/* Linha de processo editorial com números grandes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
-              {/* Passo 01 */}
-              <div className="relative p-6 rounded-xl border border-white/[0.08] bg-[#090909] flex flex-col justify-between">
+            {/* Quatro Etapas Editoriais Assimétricas e Numeradas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+              {/* ETAPA 01 */}
+              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
                 <div>
-                  <div className="font-mono text-3xl font-semibold text-[#D4AF37]/50 mb-4">
-                    01
+                  <div className="flex items-baseline justify-between mb-6">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                      ETAPA 01
+                    </span>
+                    <span className="font-mono text-3xl font-light text-white/30">
+                      01
+                    </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg mb-2">
-                    Diagnóstico
+                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                    Estratégia
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Mapeamento do serviço, perfil do cliente ideal e volume de buscas qualificadas no Google para o seu nicho.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Entendemos o negócio, os serviços, a região de atuação e o perfil de cliente que realmente faz sentido alcançar.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Entendimento de negócio
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
+                  Alinhamento comercial
                 </div>
               </div>
 
-              {/* Passo 02 */}
-              <div className="relative p-6 rounded-xl border border-white/[0.08] bg-[#090909] flex flex-col justify-between">
+              {/* ETAPA 02 */}
+              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
                 <div>
-                  <div className="font-mono text-3xl font-semibold text-[#D4AF37]/50 mb-4">
-                    02
+                  <div className="flex items-baseline justify-between mb-6">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                      ETAPA 02
+                    </span>
+                    <span className="font-mono text-3xl font-light text-white/30">
+                      02
+                    </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg mb-2">
-                    Estrutura
+                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                    Pesquisa
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Definição de palavras-chave com real intenção de contratação, redação de anúncios específicos e negativação prévia.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Mapeamos buscas com intenção comercial e estruturamos campanhas para reduzir tráfego irrelevante.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Campanha sem dispersão
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
+                  Filtro de intenção
                 </div>
               </div>
 
-              {/* Passo 03 */}
-              <div className="relative p-6 rounded-xl border border-white/[0.08] bg-[#090909] flex flex-col justify-between">
+              {/* ETAPA 03 */}
+              <div className="relative p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between transition-all duration-200 hover:border-white/[0.18]">
                 <div>
-                  <div className="font-mono text-3xl font-semibold text-[#D4AF37]/50 mb-4">
-                    03
+                  <div className="flex items-baseline justify-between mb-6">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                      ETAPA 03
+                    </span>
+                    <span className="font-mono text-3xl font-light text-white/30">
+                      03
+                    </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg mb-2">
-                    Lançamento
+                  <h3 className="font-display text-white font-medium text-xl mb-3">
+                    Experiência
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Ativação com validação de tags de mensuração, orçamento diário controlado e verificação de rota até o WhatsApp.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Anúncio e página precisam entregar continuidade para quem acabou de pesquisar pelo serviço.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
-                  Início seguro e medido
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#a3a3a3]">
+                  Continuidade do clique
                 </div>
               </div>
 
-              {/* Passo 04 */}
-              <div className="relative p-6 rounded-xl border border-[#D4AF37]/35 bg-[#090909] flex flex-col justify-between shadow-[0_4px_24px_rgba(212,175,55,0.08)]">
+              {/* ETAPA 04 */}
+              <div className="relative p-6 sm:p-7 rounded-xl border border-[#D4AF37]/35 bg-[#090909] flex flex-col justify-between shadow-[0_4px_24px_rgba(212,175,55,0.06)]">
                 <div>
-                  <div className="font-mono text-3xl font-semibold text-[#F4E0A1] mb-4">
-                    04
+                  <div className="flex items-baseline justify-between mb-6">
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1]">
+                      ETAPA 04
+                    </span>
+                    <span className="font-mono text-3xl font-light text-[#D4AF37]">
+                      04
+                    </span>
                   </div>
-                  <h3 className="font-display text-white font-medium text-lg mb-2">
+                  <h3 className="font-display text-white font-medium text-xl mb-3">
                     Otimização
                   </h3>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Análise semanal dos termos de pesquisa reais, corte contínuo de desperdícios e redistribuição da verba no que converte.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Analisamos termos, anúncios e conversões para direcionar investimento ao que demonstra maior potencial.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#F4E0A1]">
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#F4E0A1]">
                   Ajuste por retorno real
                 </div>
               </div>
@@ -731,106 +900,109 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 4 — SERVIÇO PRINCIPAL (GOOGLE ADS EM DESTAQUE)
+            SEÇÃO 4 — 03 // GESTÃO CONTÍNUA (6 PILARES ESTRATÉGICOS)
             ======================================================== */}
         <section
           id="servicos"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#080808]"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
         >
           <div className="max-w-[1360px] mx-auto">
-            <div className="max-w-[760px] mb-14 pb-8 border-b border-white/[0.08]">
-              <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-                03 // Núcleo da Operação
-              </span>
+            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                  03 — GESTÃO CONTÍNUA
+                </span>
+              </div>
               <h2
-                className="font-display font-medium text-white tracking-[-0.02em] mb-4"
+                className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
                 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
               >
-                Gestão Estratégica de Google Ads
+                Campanha publicada não significa trabalho concluído.
               </h2>
-              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed">
-                Nosso serviço principal, desenhado para empresas prestadoras de serviços que precisam de previsibilidade de demanda.
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                Google Ads exige acompanhamento. A gestão da Orvion combina análise, ajustes e decisões baseadas no comportamento real das campanhas.
               </p>
             </div>
 
-            {/* Painel amplo com 6 pilares fundamentais */}
-            <div className="rounded-2xl border border-[#D4AF37]/35 bg-[#0a0a0a] p-6 sm:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.6)] relative overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Painel Asimétrico com 6 Pilares da Gestão */}
+            <div className="rounded-2xl border border-white/[0.08] bg-[#090909] p-6 sm:p-10 lg:p-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                 {/* Pilar 1 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Pesquisa de Intenção
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Planejamento estratégico
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Focamos nas palavras que indicam intenção clara de contratação, evitando pesquisas puramente acadêmicas ou curiosas.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Estrutura baseada no negócio, demanda e intenção de busca.
                   </p>
                 </div>
 
                 {/* Pilar 2 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Estrutura de Palavras-Chave
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Palavras-chave
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Grupos de anúncios organizados por intenção específica, garantindo que o texto do anúncio responda exatamente à busca.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Seleção e refinamento contínuo das pesquisas relevantes.
                   </p>
                 </div>
 
                 {/* Pilar 3 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Anúncios Comerciais
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Termos de pesquisa
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Textos diretos e objetivos que qualificam quem clica e filtram quem não tem o perfil adequado para a sua contratação.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Identificação de buscas reais e exclusão do que desperdiça orçamento.
                   </p>
                 </div>
 
                 {/* Pilar 4 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Negativação Contínua
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Anúncios
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Auditoria constante dos termos reais acionados para bloquear termos irrelevantes e proteger o orçamento da conta.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Mensagens alinhadas à intenção do potencial cliente.
                   </p>
                 </div>
 
                 {/* Pilar 5 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Mensuração de Contatos
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Mensuração
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Configuração de eventos de clique para o WhatsApp e monitoramento de quais campanhas originam o tráfego comercial.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Configuração e acompanhamento das ações comerciais importantes.
                   </p>
                 </div>
 
                 {/* Pilar 6 */}
-                <div>
+                <div className="relative">
                   <div className="flex items-center gap-2.5 mb-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
-                    <h3 className="font-display text-white font-medium text-base">
-                      Otimização Periódica
+                    <h3 className="font-display text-white font-medium text-base sm:text-lg">
+                      Otimização
                     </h3>
                   </div>
-                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
-                    Ajuste regular de lances, orçamentos e termos com comunicação direta e relatórios compreensíveis, sem jargões.
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0 font-normal">
+                    Ajustes de campanha guiados por dados, não por impressão.
                   </p>
                 </div>
               </div>
@@ -839,144 +1011,136 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 5 — SERVIÇOS DE APOIO (VISUAL LEVE E SECUNDÁRIO)
+            SEÇÃO 5 — 04 // DA BUSCA AO CONTATO (FLUXO LINEAR + DESTAQUE)
             ======================================================== */}
         <section
-          id="apoio"
-          className="relative py-16 md:py-24 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+          id="fluxo"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505] overflow-hidden"
         >
           <div className="max-w-[1360px] mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-white/[0.08]">
-              <div>
-                <span className="text-[11px] tracking-[0.25em] uppercase text-[#737373] font-mono font-medium mb-2 block">
-                  04 // Escopo Complementar
+            <div className="max-w-[820px] mb-12 sm:mb-16">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                  04 — DA BUSCA AO CONTATO
                 </span>
-                <h2 className="font-display text-white font-medium text-xl sm:text-2xl m-0">
-                  Serviços de apoio à conversão
-                </h2>
               </div>
-              <p className="text-xs sm:text-sm text-[#8a8a8a] m-0 max-w-[360px]">
-                Soluções contratadas em conjunto para elevar a taxa de conversão do tráfego.
+              <h2
+                className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+              >
+                O anúncio é apenas o começo da experiência.
+              </h2>
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                Depois do clique, cada detalhe influencia a decisão do potencial cliente. Por isso, analisamos não apenas a campanha, mas também o caminho até a conversão.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Apoio 1 */}
-              <div className="p-5 rounded-lg border border-white/[0.06] bg-[#080808]">
-                <h3 className="font-display text-white font-medium text-sm sm:text-base mb-1.5">
-                  Landing Pages de Conversão
-                </h3>
-                <p className="text-[#737373] text-xs leading-relaxed m-0">
-                  Páginas dedicadas e rápidas desenhadas especificamente para converter o clique da campanha em mensagem.
-                </p>
-              </div>
+            {/* Painel do Fluxo Completo: Pesquisa → Anúncio → Landing Page → WhatsApp → Oportunidade */}
+            <div className="rounded-2xl border border-white/[0.1] bg-[#080808] p-6 sm:p-10 lg:p-12 mb-10">
+              <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 lg:gap-2">
+                {/* 1. Pesquisa */}
+                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                    Passo 01
+                  </span>
+                  <div className="font-display font-medium text-white text-base mb-1">
+                    Pesquisa
+                  </div>
+                  <div className="text-xs text-[#8f8f8f]">
+                    Intenção real do usuário
+                  </div>
+                </div>
 
-              {/* Apoio 2 */}
-              <div className="p-5 rounded-lg border border-white/[0.06] bg-[#080808]">
-                <h3 className="font-display text-white font-medium text-sm sm:text-base mb-1.5">
-                  Websites Institucionais
-                </h3>
-                <p className="text-[#737373] text-xs leading-relaxed m-0">
-                  Presença digital moderna com carregamento rápido e estrutura clara para sustentar autoridade comercial.
-                </p>
-              </div>
+                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
+                  <IconArrowRight size={18} />
+                </div>
 
-              {/* Apoio 3 */}
-              <div className="p-5 rounded-lg border border-white/[0.06] bg-[#080808]">
-                <h3 className="font-display text-white font-medium text-sm sm:text-base mb-1.5">
-                  Automações de Atendimento
-                </h3>
-                <p className="text-[#737373] text-xs leading-relaxed m-0">
-                  Integrações com planilhas e notificações para reduzir o tempo entre o contato do lead e a resposta.
-                </p>
-              </div>
+                {/* 2. Anúncio */}
+                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                    Passo 02
+                  </span>
+                  <div className="font-display font-medium text-white text-base mb-1">
+                    Anúncio
+                  </div>
+                  <div className="text-xs text-[#8f8f8f]">
+                    Mensagem que filtra e atrai
+                  </div>
+                </div>
 
-              {/* Apoio 4 */}
-              <div className="p-5 rounded-lg border border-white/[0.06] bg-[#080808]">
-                <h3 className="font-display text-white font-medium text-sm sm:text-base mb-1.5">
-                  SEO Técnico Estrutural
-                </h3>
-                <p className="text-[#737373] text-xs leading-relaxed m-0">
-                  Ajustes de metadados, arquitetura de URLs e velocidade para ganho de relevância orgânica consistente.
-                </p>
+                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
+                  <IconArrowRight size={18} />
+                </div>
+
+                {/* 3. Landing Page */}
+                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                    Passo 03
+                  </span>
+                  <div className="font-display font-medium text-white text-base mb-1">
+                    Landing Page
+                  </div>
+                  <div className="text-xs text-[#8f8f8f]">
+                    Ambiente claro de conversão
+                  </div>
+                </div>
+
+                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]/50" aria-hidden="true">
+                  <IconArrowRight size={18} />
+                </div>
+
+                {/* 4. WhatsApp / contato */}
+                <div className="flex-1 p-4 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#737373] block mb-1">
+                    Passo 04
+                  </span>
+                  <div className="font-display font-medium text-white text-base mb-1">
+                    WhatsApp / contato
+                  </div>
+                  <div className="text-xs text-[#8f8f8f]">
+                    Abertura da conversa direta
+                  </div>
+                </div>
+
+                <div className="hidden lg:flex items-center justify-center px-1 text-[#D4AF37]" aria-hidden="true">
+                  <IconArrowRight size={18} />
+                </div>
+
+                {/* 5. Oportunidade comercial */}
+                <div className="flex-1 p-4 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/[0.08] text-center lg:text-left">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#F4E0A1] block mb-1">
+                    Resultado
+                  </span>
+                  <div className="font-display font-medium text-[#F4E0A1] text-base mb-1">
+                    Oportunidade
+                  </div>
+                  <div className="text-xs text-[#c2c2c2]">
+                    Negociação com cliente real
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ========================================================
-            SEÇÃO 6 — MENSURAÇÃO HONESTA (TRANSPARÊNCIA EDITORIAL)
-            ======================================================== */}
-        <section
-          id="mensuracao"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
-        >
-          <div className="max-w-[1000px] mx-auto text-center lg:text-left">
-            <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-              05 // Princípio de Trabalho
-            </span>
-            <h2
-              className="font-display font-medium text-white tracking-[-0.02em] mb-6"
-              style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.18 }}
-            >
-              “Clique no WhatsApp é um sinal. Contato real é o que importa.”
-            </h2>
-            <div className="space-y-4 text-[#a3a3a3] text-sm sm:text-base leading-relaxed max-w-[800px]">
-              <p className="m-0">
-                Muitas agências apresentam relatórios repletos de métricas técnicas para justificar o trabalho: impressões, CTR ou cliques brutos.
-              </p>
-              <p className="m-0">
-                Nosso critério é simples e transparente: acompanhamos os eventos técnicos de clique até o WhatsApp e mantemos um canal direto com você para entender a qualidade das conversas que chegam. Se os contatos não forem qualificados, ajustamos imediatamente as palavras-chave e a negativação.
-              </p>
-            </div>
-            <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-wrap items-center gap-6 text-xs font-mono text-[#8a8a8a]">
-              <span className="inline-flex items-center gap-2">
-                <IconCheck size={14} className="text-[#D4AF37]" /> Sem métricas infladas
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <IconCheck size={14} className="text-[#D4AF37]" /> Ajustes baseados em conversas reais
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <IconCheck size={14} className="text-[#D4AF37]" /> Comunicação direta com quem opera a conta
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* ========================================================
-            SEÇÃO 7 — QUEM ESTÁ POR TRÁS (FUNDADOR)
-            ======================================================== */}
-        <section
-          id="fundador"
-          className="relative py-20 md:py-24 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
-        >
-          <div className="max-w-[1000px] mx-auto">
-            <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.1] bg-[#080808] flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <div className="max-w-[620px]">
-                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-2 block">
-                  06 // Atendimento Direto
-                </span>
-                <h2 className="font-display text-white font-medium text-xl sm:text-2xl mb-3">
-                  Pablo — Fundador da ORVION Studio
-                </h2>
-                <p className="text-[#a3a3a3] text-xs sm:text-sm leading-relaxed mb-4">
-                  A ORVION Studio opera com atendimento direto e acompanhamento próximo de cada conta. Não repassamos sua estratégia para estagiários ou equipes rotativas.
+            {/* Destaque Central */}
+            <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex items-center justify-between flex-col md:flex-row gap-6">
+              <div className="space-y-1 text-center md:text-left">
+                <p className="font-display text-white text-base sm:text-lg m-0 font-medium">
+                  O objetivo não é simplesmente aumentar acessos.
                 </p>
-                <p className="text-[#737373] text-xs leading-relaxed m-0 font-mono">
-                  Foco exclusivo em prestadores de serviços que buscam previsibilidade e seriedade.
+                <p className="text-sm text-[#F4E0A1] m-0 font-mono">
+                  É criar um caminho mais eficiente entre intenção e contato.
                 </p>
               </div>
 
               <div className="shrink-0 w-full md:w-auto">
                 <a
-                  href={WHATSAPP_GESTÃO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={trackWhatsAppConversion}
-                  className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-[#D4AF37]/60 bg-[#D4AF37]/[0.08] px-6 py-3 min-h-[46px] text-xs sm:text-sm font-medium text-[#F4E0A1] hover:bg-[#D4AF37] hover:text-[#050505] active:scale-[0.98] transition-all duration-200 no-underline cursor-pointer focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                  href="#metodo"
+                  onClick={scrollToAnchor('metodo')}
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.18] bg-white/[0.04] px-5 py-2.5 text-xs sm:text-sm text-white hover:border-[#D4AF37] transition-all no-underline cursor-pointer"
                 >
-                  <IconPhone size={14} className="text-[#D4AF37]" />
-                  <span>Conversar com Pablo</span>
+                  <span>Conhecer o método</span>
+                  <IconArrowRight size={14} />
                 </a>
               </div>
             </div>
@@ -984,25 +1148,250 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 8 — PERGUNTAS FREQUENTES (ACORDEÃO LIMPO E PREMIUM)
+            SEÇÃO 6 — 05 // ECOSSISTEMA ORVION (MOSAICO EDITORIAL)
+            ======================================================== */}
+        <section
+          id="ecossistema"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+        >
+          <div className="max-w-[1360px] mx-auto">
+            <div className="max-w-[820px] mb-14 pb-8 border-b border-white/[0.08]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                  05 — ECOSSISTEMA ORVION
+                </span>
+              </div>
+              <h2
+                className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
+              >
+                Quando a campanha precisa de mais estrutura, nós também construímos.
+              </h2>
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                Estruturas digitais completas desenvolvidas com o mesmo padrão de excelência para potencializar a taxa de resposta da sua empresa.
+              </p>
+            </div>
+
+            {/* Mosaico Editorial Assimétrico com 5 Soluções */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Item 1: Landing Pages (Destaque Ampliado) */}
+              <div className="lg:col-span-2 p-6 sm:p-8 rounded-xl border border-white/[0.1] bg-[#0a0a0a] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#D4AF37]">
+                      Conversão Direta
+                    </span>
+                  </div>
+                  <h3 className="font-display text-white font-medium text-xl sm:text-2xl mb-3">
+                    Landing Pages
+                  </h3>
+                  <p className="text-[#8f8f8f] text-sm sm:text-base leading-relaxed max-w-[620px] m-0">
+                    Páginas desenvolvidas para campanhas e objetivos específicos, com carregamento rápido e narrativa pensada para transformar o clique em mensagem no WhatsApp.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#a3a3a3]">
+                  Alinhadas à palavra-chave anunciada
+                </div>
+              </div>
+
+              {/* Item 2: Websites Premium */}
+              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
+                      Autoridade Digital
+                    </span>
+                  </div>
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                    Websites Premium
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    Experiências digitais que fortalecem posicionamento e confiança para empresas que vendem serviços de alto valor.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Presença institucional sólida
+                </div>
+              </div>
+
+              {/* Item 3: Automações */}
+              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
+                      Eficiência Operacional
+                    </span>
+                  </div>
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                    Automações
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    Processos que reduzem trabalho manual e aceleram o tempo de resposta entre a chegada do contato e o atendimento.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Agilidade comercial
+                </div>
+              </div>
+
+              {/* Item 4: Inteligência Artificial */}
+              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
+                      Inovação Prática
+                    </span>
+                  </div>
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                    Inteligência Artificial
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    Aplicações práticas de IA integradas à operação da empresa para qualificação inicial e suporte à tomada de decisão.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Tecnologia aplicada ao negócio
+                </div>
+              </div>
+
+              {/* Item 5: SEO e Estratégia Digital */}
+              <div className="p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#080808] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#a3a3a3]">
+                      Longo Prazo
+                    </span>
+                  </div>
+                  <h3 className="font-display text-white font-medium text-lg sm:text-xl mb-3">
+                    SEO e Estratégia Digital
+                  </h3>
+                  <p className="text-[#8f8f8f] text-xs sm:text-sm leading-relaxed m-0">
+                    Estrutura para fortalecer aquisição além da mídia paga, garantindo relevância orgânica e sustentabilidade do tráfego.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#737373]">
+                  Visibilidade perene
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SEÇÃO 7 — POSICIONAMENTO INSTITUCIONAL ORVION
+            ======================================================== */}
+        <section
+          id="posicionamento"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+        >
+          <div className="max-w-[1040px] mx-auto">
+            <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border border-white/[0.1] bg-[#080808] relative overflow-hidden">
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                  <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                    POSICIONAMENTO
+                  </span>
+                </div>
+                <h2
+                  className="font-display font-medium text-white tracking-[-0.02em] mb-6 text-balance"
+                  style={{ fontSize: 'clamp(1.85rem, 3.8vw, 3rem)', lineHeight: 1.15 }}
+                >
+                  Não somos apenas operadores de campanha.
+                </h2>
+                <div className="space-y-5 text-[#c2c2c2] text-sm sm:text-base md:text-lg leading-relaxed max-w-[820px] font-normal mb-8">
+                  <p className="m-0">
+                    A Orvion Studio trabalha na interseção entre aquisição, tecnologia e experiência digital.
+                  </p>
+                  <p className="m-0">
+                    Planejamos campanhas, construímos estruturas digitais e analisamos dados com um único objetivo: criar operações de aquisição mais profissionais e mensuráveis.
+                  </p>
+                </div>
+                <div className="pt-6 border-t border-white/[0.08]">
+                  <p className="text-xs sm:text-sm text-[#8f8f8f] font-mono m-0 max-w-[720px] leading-relaxed">
+                    Cada projeto parte da realidade da empresa. Sem fórmulas prontas, métricas de vaidade ou promessas impossíveis.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SEÇÃO 8 — CTA INTERMEDIÁRIO (BLOCO CINEMATOGRÁFICO DE ALTO CONTRASTE)
+            ======================================================== */}
+        <section
+          id="diagnostico"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+        >
+          <div className="max-w-[1040px] mx-auto">
+            <div className="rounded-2xl border border-[#D4AF37]/35 bg-[#0a0a0a] p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-[0_12px_48px_rgba(0,0,0,0.8)]">
+              <div className="max-w-[620px]">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-6 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                  <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                    FALE COM A ORVION
+                  </span>
+                </div>
+                <h2
+                  className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
+                  style={{ fontSize: 'clamp(1.65rem, 3.2vw, 2.5rem)', lineHeight: 1.18 }}
+                >
+                  Quer entender se o Google Ads faz sentido para sua empresa?
+                </h2>
+                <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0 font-normal">
+                  Conte brevemente sobre seu negócio. Vamos entender seu cenário antes de falar sobre campanha.
+                </p>
+              </div>
+
+              <div className="shrink-0 w-full md:w-auto">
+                <a
+                  href={WHATSAPP_DIAGNOSTICO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackWhatsAppConversion}
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[50px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none whitespace-nowrap"
+                  style={{
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                  }}
+                >
+                  <IconPhone size={16} aria-hidden="true" className="shrink-0" />
+                  <span>Solicitar diagnóstico</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SEÇÃO 9 — PERGUNTAS FREQUENTES (ACORDEÃO LIMPO E OBJETIVO)
             ======================================================== */}
         <section
           id="faq"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
         >
           <div className="max-w-[920px] mx-auto">
             <div className="mb-14 pb-8 border-b border-white/[0.08]">
-              <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-                07 // Esclarecimentos
-              </span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                  ESCLARECIMENTOS
+                </span>
+              </div>
               <h2
                 className="font-display font-medium text-white tracking-[-0.02em] mb-4"
                 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.16 }}
               >
                 Perguntas Frequentes
               </h2>
-              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed">
-                Respostas diretas sobre modelo de investimento, prazos e rotina de atendimento.
+              <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed m-0">
+                Respostas diretas sobre orçamento, prazos e rotina da operação.
               </p>
             </div>
 
@@ -1030,7 +1419,7 @@ export default function GoogleAdsGestao() {
                     openFaq === 0 ? 'block' : 'hidden md:block md:text-[#888]'
                   }`}
                 >
-                  O investimento envolve duas partes: a verba paga diretamente ao Google para exibir os anúncios (definida por você) e os honorários de gestão da ORVION Studio. Apresentamos uma proposta detalhada após entender o porte do seu negócio e o escopo de campanhas.
+                  O investimento depende da estrutura e necessidade de cada operação. Primeiro entendemos o negócio e o objetivo antes de apresentar uma proposta.
                 </div>
               </div>
 
@@ -1043,7 +1432,7 @@ export default function GoogleAdsGestao() {
                   aria-expanded={openFaq === 1}
                 >
                   <h3 className="font-display text-white font-medium text-base sm:text-lg group-hover:text-[#F4E0A1] transition-colors">
-                    Qual o prazo para começar a receber contatos?
+                    Quanto preciso investir no Google Ads?
                   </h3>
                   <IconChevronDown
                     size={18}
@@ -1057,7 +1446,7 @@ export default function GoogleAdsGestao() {
                     openFaq === 1 ? 'block' : 'hidden md:block md:text-[#888]'
                   }`}
                 >
-                  Assim que a campanha é publicada e aprovada pelo Google, os anúncios passam a concorrer nas buscas imediatas. Os primeiros contatos costumam ocorrer nos primeiros dias de veiculação, com refinamento de custo e qualidade ao longo das semanas de otimização contínua.
+                  Não existe um orçamento único para todas as empresas. O valor depende do segmento, região, concorrência e objetivo da campanha.
                 </div>
               </div>
 
@@ -1070,7 +1459,7 @@ export default function GoogleAdsGestao() {
                   aria-expanded={openFaq === 2}
                 >
                   <h3 className="font-display text-white font-medium text-base sm:text-lg group-hover:text-[#F4E0A1] transition-colors">
-                    A conta de anúncios do Google fica no meu nome?
+                    A Orvion garante número de clientes ou vendas?
                   </h3>
                   <IconChevronDown
                     size={18}
@@ -1084,7 +1473,7 @@ export default function GoogleAdsGestao() {
                     openFaq === 2 ? 'block' : 'hidden md:block md:text-[#888]'
                   }`}
                 >
-                  Sim, sempre. Toda a conta de anúncios e o histórico pertencem exclusivamente à sua empresa. A ORVION Studio atua como administradora técnica autorizada, garantindo total transparência de custos e dados.
+                  Não. Nenhuma operação séria pode garantir resultados comerciais específicos. Trabalhamos para melhorar estratégia, estrutura, mensuração e eficiência da aquisição.
                 </div>
               </div>
 
@@ -1097,7 +1486,7 @@ export default function GoogleAdsGestao() {
                   aria-expanded={openFaq === 3}
                 >
                   <h3 className="font-display text-white font-medium text-base sm:text-lg group-hover:text-[#F4E0A1] transition-colors">
-                    Preciso de um site novo para começar a anunciar?
+                    Vocês criam a página da campanha?
                   </h3>
                   <IconChevronDown
                     size={18}
@@ -1111,7 +1500,7 @@ export default function GoogleAdsGestao() {
                     openFaq === 3 ? 'block' : 'hidden md:block md:text-[#888]'
                   }`}
                 >
-                  Se o seu site atual carregar rápido e possuir rotas claras de contato, podemos iniciar com ele. Caso a página atual seja lenta ou dispersiva, recomendamos estruturar uma landing page dedicada focada no serviço para não desperdiçar o investimento dos cliques.
+                  Sim. Quando necessário, podemos desenvolver ou otimizar a estrutura utilizada para receber o tráfego.
                 </div>
               </div>
 
@@ -1124,7 +1513,7 @@ export default function GoogleAdsGestao() {
                   aria-expanded={openFaq === 4}
                 >
                   <h3 className="font-display text-white font-medium text-base sm:text-lg group-hover:text-[#F4E0A1] transition-colors">
-                    Existe fidelidade ou contrato de longo prazo obrigatório?
+                    Como acompanho os resultados?
                   </h3>
                   <IconChevronDown
                     size={18}
@@ -1138,7 +1527,34 @@ export default function GoogleAdsGestao() {
                     openFaq === 4 ? 'block' : 'hidden md:block md:text-[#888]'
                   }`}
                 >
-                  Trabalhamos com contratos mensais renováveis. Recomendamos um ciclo mínimo de maturação de 90 dias para consolidar histórico de pesquisa e otimização de termos, mas não retemos clientes por amarras contratuais.
+                  A operação é acompanhada por métricas relevantes para cada campanha, com foco em ações comerciais e não apenas em cliques ou impressões.
+                </div>
+              </div>
+
+              {/* FAQ 6 */}
+              <div className="py-6">
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(5)}
+                  className="w-full flex items-center justify-between text-left gap-4 cursor-pointer bg-transparent border-none p-0 group focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none rounded"
+                  aria-expanded={openFaq === 5}
+                >
+                  <h3 className="font-display text-white font-medium text-base sm:text-lg group-hover:text-[#F4E0A1] transition-colors">
+                    Posso falar diretamente pelo WhatsApp?
+                  </h3>
+                  <IconChevronDown
+                    size={18}
+                    className={`text-[#D4AF37] transition-transform duration-200 shrink-0 ${
+                      openFaq === 5 ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`pt-3 text-[#a3a3a3] text-xs sm:text-sm leading-relaxed ${
+                    openFaq === 5 ? 'block' : 'hidden md:block md:text-[#888]'
+                  }`}
+                >
+                  Sim. O primeiro contato pode ser feito diretamente pelo WhatsApp da Orvion.
                 </div>
               </div>
             </div>
@@ -1146,53 +1562,68 @@ export default function GoogleAdsGestao() {
         </section>
 
         {/* ========================================================
-            SEÇÃO 9 — CTA FINAL COM FORMULÁRIO DIRETO E BOTÃO WHATSAPP
+            SEÇÃO 10 — CTA FINAL COM FORMULÁRIO REAL E FUNCIONAL
             ======================================================== */}
         <section
           id="proposta"
-          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#050505]"
+          className="relative py-20 md:py-28 px-4 sm:px-[5%] lg:px-[8%] border-b border-white/[0.08] bg-[#070707]"
         >
-          <div className="max-w-[1100px] mx-auto">
+          <div className="max-w-[1180px] mx-auto">
             <div className="rounded-2xl border border-white/[0.1] bg-[#090909] p-6 sm:p-10 lg:p-14 shadow-[0_24px_64px_rgba(0,0,0,0.85)]">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                 {/* Lado Esquerdo: Mensagem e Ação Imediata */}
                 <div className="lg:col-span-6 text-center lg:text-left">
-                  <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium mb-3 block">
-                    08 // Próximo Passo
-                  </span>
+                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
+                    <span className="w-8 h-[1px] bg-[#D4AF37]" aria-hidden="true" />
+                    <span className="text-[11px] tracking-[0.25em] uppercase text-[#D4AF37] font-mono font-medium">
+                      PRÓXIMO PASSO
+                    </span>
+                  </div>
                   <h2
                     className="font-display font-medium text-white tracking-[-0.02em] mb-4 text-balance"
                     style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.15 }}
                   >
-                    Pronto para transformar buscas no Google em contatos comerciais?
+                    Sua próxima oportunidade pode começar em uma pesquisa no Google.
                   </h2>
                   <p className="text-[#a3a3a3] text-sm sm:text-base leading-relaxed mb-8">
-                    Fale diretamente conosco no WhatsApp para analisar o cenário da sua empresa e receber uma proposta personalizada.
+                    Vamos estruturar uma operação de aquisição alinhada ao seu negócio e aos seus objetivos.
                   </p>
 
-                  <a
-                    href={WHATSAPP_GESTÃO_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={trackWhatsAppConversion}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
-                    style={{
-                      background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
-                    }}
-                  >
-                    <IconPhone size={16} aria-hidden="true" className="shrink-0" />
-                    <span>Falar no WhatsApp com Especialista</span>
-                  </a>
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                    <a
+                      href={WHATSAPP_HERO_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={trackWhatsAppConversion}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 min-h-[52px] font-semibold text-[#050505] text-sm sm:text-base cursor-pointer border-none no-underline transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                      style={{
+                        background: 'linear-gradient(135deg, #D4AF37 0%, #F4E0A1 50%, #D4AF37 100%)',
+                      }}
+                    >
+                      <IconPhone size={16} aria-hidden="true" className="shrink-0" />
+                      <span>Quero falar com a Orvion</span>
+                    </a>
+
+                    <a
+                      href={WHATSAPP_DIAGNOSTICO_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={trackWhatsAppConversion}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.18] bg-white/[0.04] px-6 py-4 min-h-[52px] text-xs sm:text-sm font-medium text-white hover:border-[#D4AF37] transition-all no-underline cursor-pointer"
+                    >
+                      <span>Solicitar diagnóstico</span>
+                    </a>
+                  </div>
                 </div>
 
-                {/* Lado Direito: Formulário Estruturado */}
+                {/* Lado Direito: Formulário Funcional que Direciona para o WhatsApp */}
                 <div className="lg:col-span-6 border-t lg:border-t-0 lg:border-l border-white/[0.08] pt-8 lg:pt-0 lg:pl-10">
                   <div className="mb-6">
                     <h3 className="font-display text-white font-medium text-lg mb-1">
-                      Ou envie os dados da sua empresa
+                      Envie os dados do seu negócio
                     </h3>
                     <p className="text-[#737373] text-xs leading-relaxed m-0">
-                      Montamos sua mensagem personalizada e direcionamos para o WhatsApp oficial.
+                      Formatamos sua solicitação e direcionamos imediatamente para o WhatsApp da Orvion.
                     </p>
                   </div>
 
@@ -1215,7 +1646,7 @@ export default function GoogleAdsGestao() {
                         htmlFor={`${formId}-name`}
                         className="block text-[11px] tracking-[0.18em] uppercase text-[#a3a3a3] mb-1.5 font-mono font-medium"
                       >
-                        Seu Nome ou Responsável <span className="text-[#D4AF37]">*</span>
+                        Nome <span className="text-[#D4AF37]">*</span>
                       </label>
                       <input
                         type="text"
@@ -1225,7 +1656,7 @@ export default function GoogleAdsGestao() {
                         onChange={handleInputChange}
                         placeholder="Ex: Carlos Silva"
                         required
-                        className={`w-full bg-[#050505] border rounded-lg px-4 py-3 text-white text-sm placeholder-[#737373] focus:outline-none focus:border-[#D4AF37] transition-all duration-200 ${
+                        className={`w-full bg-[#050505] border rounded-lg px-4 py-3 text-white text-sm placeholder-[#666] focus:outline-none focus:border-[#D4AF37] transition-all duration-200 ${
                           formErrors.name ? 'border-red-500/80' : 'border-white/[0.12]'
                         }`}
                       />
@@ -1240,7 +1671,7 @@ export default function GoogleAdsGestao() {
                         htmlFor={`${formId}-company`}
                         className="block text-[11px] tracking-[0.18em] uppercase text-[#a3a3a3] mb-1.5 font-mono font-medium"
                       >
-                        Empresa ou Serviço <span className="text-[#666]">(opcional)</span>
+                        Empresa <span className="text-[#666]">(opcional)</span>
                       </label>
                       <input
                         type="text"
@@ -1248,57 +1679,76 @@ export default function GoogleAdsGestao() {
                         name="company"
                         value={form.company}
                         onChange={handleInputChange}
-                        placeholder="Ex: Clínica Odontológica / Consultoria"
-                        className="w-full bg-[#050505] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder-[#737373] focus:outline-none focus:border-[#D4AF37] transition-all duration-200"
+                        placeholder="Ex: Minha Empresa / Escritório"
+                        className="w-full bg-[#050505] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder-[#666] focus:outline-none focus:border-[#D4AF37] transition-all duration-200"
                       />
                     </div>
 
-                    {/* Faixa de Investimento */}
+                    {/* WhatsApp */}
                     <div>
                       <label
-                        htmlFor={`${formId}-investment`}
+                        htmlFor={`${formId}-phone`}
                         className="block text-[11px] tracking-[0.18em] uppercase text-[#a3a3a3] mb-1.5 font-mono font-medium"
                       >
-                        Investimento mensal pretendido no Google <span className="text-[#D4AF37]">*</span>
+                        WhatsApp <span className="text-[#D4AF37]">*</span>
                       </label>
-                      <select
-                        id={`${formId}-investment`}
-                        name="investment"
-                        value={form.investment}
+                      <input
+                        type="tel"
+                        id={`${formId}-phone`}
+                        name="phone"
+                        value={form.phone}
                         onChange={handleInputChange}
+                        placeholder="Ex: (11) 99999-9999"
                         required
-                        className={`w-full bg-[#050505] border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#D4AF37] transition-all duration-200 ${
-                          formErrors.investment ? 'border-red-500/80' : 'border-white/[0.12]'
+                        className={`w-full bg-[#050505] border rounded-lg px-4 py-3 text-white text-sm placeholder-[#666] focus:outline-none focus:border-[#D4AF37] transition-all duration-200 ${
+                          formErrors.phone ? 'border-red-500/80' : 'border-white/[0.12]'
                         }`}
-                      >
-                        <option value="" disabled className="bg-[#050505] text-[#737373]">
-                          Selecione uma faixa estimada
-                        </option>
-                        <option value="R$ 1.500 a R$ 3.000 / mês" className="bg-[#050505] text-white">
-                          R$ 1.500 a R$ 3.000 / mês
-                        </option>
-                        <option value="R$ 3.000 a R$ 6.000 / mês" className="bg-[#050505] text-white">
-                          R$ 3.000 a R$ 6.000 / mês
-                        </option>
-                        <option value="R$ 6.000 a R$ 15.000 / mês" className="bg-[#050505] text-white">
-                          R$ 6.000 a R$ 15.000 / mês
-                        </option>
-                        <option value="Acima de R$ 15.000 / mês" className="bg-[#050505] text-white">
-                          Acima de R$ 15.000 / mês
-                        </option>
-                      </select>
-                      {formErrors.investment && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.investment}</p>
+                      />
+                      {formErrors.phone && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
                       )}
                     </div>
 
-                    {/* Mensagem Opcional */}
+                    {/* Serviço de interesse */}
+                    <div>
+                      <label
+                        htmlFor={`${formId}-service`}
+                        className="block text-[11px] tracking-[0.18em] uppercase text-[#a3a3a3] mb-1.5 font-mono font-medium"
+                      >
+                        Serviço de interesse
+                      </label>
+                      <select
+                        id={`${formId}-service`}
+                        name="service"
+                        value={form.service}
+                        onChange={handleInputChange}
+                        className="w-full bg-[#050505] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#D4AF37] transition-all duration-200"
+                      >
+                        <option value="Gestão de Google Ads" className="bg-[#050505] text-white">
+                          Gestão de Google Ads
+                        </option>
+                        <option value="Landing Page de Alta Conversão" className="bg-[#050505] text-white">
+                          Landing Page de Alta Conversão
+                        </option>
+                        <option value="Website Institucional Premium" className="bg-[#050505] text-white">
+                          Website Institucional Premium
+                        </option>
+                        <option value="Automações / Inteligência Artificial" className="bg-[#050505] text-white">
+                          Automações / Inteligência Artificial
+                        </option>
+                        <option value="Diagnóstico Completo" className="bg-[#050505] text-white">
+                          Diagnóstico Completo
+                        </option>
+                      </select>
+                    </div>
+
+                    {/* Mensagem */}
                     <div>
                       <label
                         htmlFor={`${formId}-message`}
                         className="block text-[11px] tracking-[0.18em] uppercase text-[#a3a3a3] mb-1.5 font-mono font-medium"
                       >
-                        Mensagem ou Dúvida <span className="text-[#666]">(opcional)</span>
+                        Mensagem <span className="text-[#666]">(opcional)</span>
                       </label>
                       <textarea
                         id={`${formId}-message`}
@@ -1306,12 +1756,12 @@ export default function GoogleAdsGestao() {
                         rows={2}
                         value={form.message}
                         onChange={handleInputChange}
-                        placeholder="Breve descrição do objetivo"
-                        className="w-full bg-[#050505] border border-white/[0.12] rounded-lg px-4 py-2.5 text-white text-sm placeholder-[#737373] focus:outline-none focus:border-[#D4AF37] transition-all duration-200 resize-none"
+                        placeholder="Conte brevemente sobre o seu objetivo"
+                        className="w-full bg-[#050505] border border-white/[0.12] rounded-lg px-4 py-2.5 text-white text-sm placeholder-[#666] focus:outline-none focus:border-[#D4AF37] transition-all duration-200 resize-none"
                       />
                     </div>
 
-                    {/* Botão de Envio */}
+                    {/* Botão de Envio Funcional */}
                     <button
                       type="submit"
                       className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 min-h-[48px] font-semibold text-[#050505] text-sm cursor-pointer border-none transition-all duration-200 shadow-[0_4px_24px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.5)] hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
@@ -1331,13 +1781,13 @@ export default function GoogleAdsGestao() {
       </main>
 
       {/* ========================================================
-          RODAPÉ EDITORIAL
+          SEÇÃO 11 — RODAPÉ EDITORIAL
           ======================================================== */}
       <footer className="relative bg-[#030303] px-4 sm:px-[5%] lg:px-[8%] py-12 border-t border-white/[0.08] overflow-hidden">
         <div className="relative z-10 max-w-[1360px] mx-auto space-y-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-white/[0.08]">
-            <div>
-              <div className="flex items-baseline gap-2 mb-2">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-8 border-b border-white/[0.08]">
+            <div className="max-w-[420px]">
+              <div className="flex items-baseline gap-2 mb-3">
                 <span className="font-display text-base font-bold tracking-[0.22em] text-white">
                   ORVION
                 </span>
@@ -1345,20 +1795,37 @@ export default function GoogleAdsGestao() {
                   Studio
                 </span>
               </div>
-              <p className="text-[#737373] text-xs leading-relaxed max-w-[420px] m-0">
-                Gestão de tráfego pago no Google Ads e páginas de alta conversão para empresas que vendem serviços qualificados.
+              <p className="text-[#737373] text-xs leading-relaxed m-0 font-normal">
+                Gestão estratégica de Google Ads e estruturas digitais de alta conversão para empresas que buscam gerar contatos comerciais qualificados.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-xs font-mono text-[#8a8a8a]">
-              <span className="inline-flex items-center gap-2">
-                <IconPhone size={13} className="text-[#D4AF37]" />
-                WhatsApp +55 11 97999-1680
-              </span>
-              <span className="hidden sm:inline text-white/20">•</span>
-              <span className="inline-flex items-center gap-2">
-                contato@orvionstudio.com.br
-              </span>
+            {/* Lista de Serviços */}
+            <div>
+              <div className="text-[10px] tracking-[0.22em] uppercase text-white/50 font-mono font-medium mb-3">
+                Serviços
+              </div>
+              <ul className="list-none p-0 m-0 space-y-1.5 text-xs text-[#a3a3a3]">
+                <li>Google Ads</li>
+                <li>Websites</li>
+                <li>Automações</li>
+                <li>IA</li>
+                <li>SEO</li>
+              </ul>
+            </div>
+
+            {/* Contato Oficial */}
+            <div>
+              <div className="text-[10px] tracking-[0.22em] uppercase text-white/50 font-mono font-medium mb-3">
+                Contato
+              </div>
+              <div className="space-y-1.5 text-xs font-mono text-[#8a8a8a]">
+                <div className="inline-flex items-center gap-2">
+                  <IconPhone size={13} className="text-[#D4AF37]" />
+                  <span>+55 11 97999-1680</span>
+                </div>
+                <div>contato@orvionstudio.com.br</div>
+              </div>
             </div>
           </div>
 
@@ -1393,7 +1860,7 @@ export default function GoogleAdsGestao() {
         aria-label="Ação rápida no celular"
       >
         <a
-          href={WHATSAPP_GESTÃO_URL}
+          href={WHATSAPP_HERO_URL}
           target="_blank"
           rel="noopener noreferrer"
           onClick={trackWhatsAppConversion}
