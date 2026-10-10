@@ -619,7 +619,7 @@ export default function GoogleAdsGestao() {
                 src="/images/section-problema-bg.jpg"
                 alt=""
                 aria-hidden="true"
-                loading="lazy"
+                loading="eager"
                 className="w-full h-full object-cover object-[center_right] opacity-40 scale-105"
               />
             </picture>
@@ -852,7 +852,7 @@ export default function GoogleAdsGestao() {
                     <img
                       src="/images/section-studio-arch.jpg"
                       alt="Ambiente arquitetônico contemporâneo da operação da Orvion"
-                      loading="lazy"
+                      loading="eager"
                       className="w-full h-[440px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </picture>
@@ -994,7 +994,7 @@ export default function GoogleAdsGestao() {
                     <img
                       src="/images/section-gestao-desk.jpg"
                       alt="Mesa executiva de análise de dados com iluminação âmbar"
-                      loading="lazy"
+                      loading="eager"
                       className="w-full h-[420px] sm:h-[480px] object-cover"
                     />
                   </picture>
@@ -1102,7 +1102,7 @@ export default function GoogleAdsGestao() {
                 src="/images/section-fluxo-city.jpg"
                 alt=""
                 aria-hidden="true"
-                loading="lazy"
+                loading="eager"
                 className="w-full h-full object-cover object-center opacity-35 scale-105"
               />
             </picture>
@@ -1304,7 +1304,7 @@ export default function GoogleAdsGestao() {
                     src="/images/section-studio-arch.jpg"
                     alt=""
                     aria-hidden="true"
-                    loading="lazy"
+                    loading="eager"
                     className="w-full h-full object-cover opacity-30"
                   />
                 </picture>
@@ -1416,7 +1416,7 @@ export default function GoogleAdsGestao() {
                     <img
                       src="/images/section-studio-arch.jpg"
                       alt="Arquitetura de estúdio contemporâneo com pé direito duplo"
-                      loading="lazy"
+                      loading="eager"
                       className="w-full h-[460px] sm:h-[540px] object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </picture>
@@ -1487,7 +1487,7 @@ export default function GoogleAdsGestao() {
                 src="/images/section-problema-bg.jpg"
                 alt=""
                 aria-hidden="true"
-                loading="lazy"
+                loading="eager"
                 className="w-full h-full object-cover object-center opacity-30 scale-105"
               />
             </picture>
@@ -1749,7 +1749,7 @@ export default function GoogleAdsGestao() {
                 src="/images/hero-executive-office.jpg"
                 alt=""
                 aria-hidden="true"
-                loading="lazy"
+                loading="eager"
                 className="w-full h-full object-cover object-[center_left] opacity-25 scale-105"
               />
             </picture>
