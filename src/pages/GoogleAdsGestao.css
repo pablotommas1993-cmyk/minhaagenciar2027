@@ -1,0 +1,303 @@
+.orvion-landing {
+  --ink: #252a29;
+  --paper: #f4f2ed;
+  --muted: #666b67;
+  --amber: #d9ae73;
+  --gutter: clamp(24px, 6.2vw, 112px);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: clip;
+}
+.orvion-landing :is(h1,h2,h3,p,figure,ol,dl,dd) { margin: 0; }
+.orvion-landing :is(h1,h2,h3) { font-weight: 400; }
+.orvion-landing h2 { font-size: clamp(36px,4vw,64px); line-height: 1.08; letter-spacing: -.045em; text-wrap: balance; }
+.orvion-landing p { font-size: 16px; line-height: 1.7; }
+.orvion-landing img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.orvion-landing figure { position: relative; overflow: hidden; }
+.orvion-landing figure figcaption { position: absolute; inset: auto 0 0; padding: 72px 40px 32px; color: #fff; background: linear-gradient(transparent,rgba(13,23,24,.86)); font-size: 23px; line-height: 1.35; font-family: var(--font-display); }
+.orvion-landing a { text-decoration: none; }
+.orvion-landing :is(a,button,input,select,textarea):focus-visible { outline: 2px solid #ac7737; outline-offset: 5px; }
+.orvion-landing section { scroll-margin-top: 96px; }
+.orvion-landing .orvion-eyebrow { font: 500 11px/1.6 var(--font-body); letter-spacing: .17em; text-transform: uppercase; margin-bottom: 30px; }
+.orvion-landing .orvion-intro { font-size: 17px; line-height: 1.75; color: var(--muted); max-width: 580px; margin-top: 24px; }
+.orvion-section { padding: 104px var(--gutter); }
+.orvion-section-heading { display: grid; grid-template-columns: .75fr 1.65fr; gap: 64px; margin-bottom: 64px; }
+.orvion-section-heading > .orvion-eyebrow { padding-top: 9px; }
+.orvion-landing .orvion-button { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 17px 26px; border-radius: 3px; font-size: 15px; font-weight: 500; transition: background .2s,transform .2s; }
+.orvion-landing .orvion-button-dark { background: var(--ink); color: #fff; }
+.orvion-landing .orvion-button-dark:hover { background: #414743; }
+.orvion-text-link { display: inline-flex; align-items: center; gap: 28px; padding: 12px 0; border-bottom: 1px solid currentColor; font-size: 14px; }
+
+/* The existing office photograph remains the hero's visual anchor. */
+.orvion-landing > header { padding: 0 var(--gutter); height: 84px; background: rgba(12,17,18,.52); border-color: #ffffff21; backdrop-filter: blur(18px); }
+.orvion-landing > header nav { gap: 24px; font-size: 13px; color: #d8dcda; }
+.orvion-landing > header > a > span:last-child { color: #ded6c7; }
+.orvion-landing > header > div > a { border: 1px solid #ffffff66; color: #fff; background: transparent; box-shadow: none; border-radius: 3px; padding: 10px 16px; min-height: 44px; }
+.orvion-landing > header > div > a svg { color: inherit; }
+.orvion-menu-toggle { display: none; color: #fff; background: none; border: 0; padding: 10px; min-height: 44px; font-size: 14px; }
+.orvion-menu { position: fixed; inset: 72px 0 auto; z-index: 39; background: #202725; color: #fff; padding: 24px var(--gutter); box-shadow: 0 18px 30px #0003; }
+.orvion-menu a { display: block; padding: 14px 0; border-bottom: 1px solid #ffffff20; font-size: 18px; }
+.orvion-landing main { padding-bottom: 0; }
+.orvion-landing #topo { min-height: max(820px,100svh); margin-top: -84px; padding: 144px var(--gutter) 80px; border: 0; color: #fff; }
+.orvion-landing #topo > .orvion-hero-background { position: absolute; inset: 0; }
+.orvion-hero-background picture { display: block; height: 100%; }
+.orvion-landing #topo .orvion-hero-background img { object-position: right center; }
+.orvion-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg,rgba(8,14,16,.55),rgba(8,14,16,.22) 43%,transparent 72%); }
+.orvion-landing #topo h1 { font-size: clamp(48px,5.35vw,86px); line-height: 1.025; letter-spacing: -.055em; max-width: 800px; margin-bottom: 28px; font-weight: 400; text-wrap: initial; }
+.orvion-landing #topo h1 span { color: #e1d7c8; background: none; -webkit-text-fill-color: currentColor; }
+.orvion-landing #topo .orvion-hero-eyebrow { border: 0; background: none; padding: 0; margin-bottom: 28px; backdrop-filter: none; }
+.orvion-landing #topo .orvion-hero-eyebrow span:last-child { color: #e2d6c1; font: 500 11px/1.6 var(--font-body); letter-spacing: .17em; }
+.orvion-landing #topo p { max-width: 475px; font-size: 17px; color: #d0d5d3; margin-bottom: 32px; line-height: 1.75; }
+.orvion-landing #topo .orvion-hero-actions { margin-bottom: 30px; gap: 24px; }
+.orvion-landing #topo .orvion-hero-actions a { border-radius: 3px; box-shadow: none; font-weight: 500; font-size: 15px; min-height: 56px; padding: 16px 24px; }
+.orvion-landing #topo .orvion-hero-actions a:first-child { background: #e4c496; color: #202725; }
+.orvion-landing #topo .orvion-hero-actions a:last-child { background: none; border: 0; padding-inline: 0; }
+.orvion-landing #topo .orvion-hero-microcopy { color: #c2c9c5; font: 400 12px/1.7 var(--font-body); gap: 10px; }
+
+.orvion-problem { display: grid; grid-template-columns: 53% 47%; }
+.orvion-problem-copy { padding: 90px 64px 90px var(--gutter); }
+.orvion-problem-list { list-style: none; padding: 0; margin-top: 36px !important; }
+.orvion-problem-list li { display: grid; grid-template-columns: 50px 1fr; gap: 24px; padding: 25px 0; border-top: 1px solid #252a2925; }
+.orvion-problem-list li:last-child { padding-bottom: 0; }
+.orvion-number { font: 300 36px/1.1 var(--font-display); color: #868a80; }
+.orvion-problem-list h3 { font-size: 25px; letter-spacing: -.02em; margin-bottom: 8px; }
+.orvion-problem-list p { font-size: 15px; color: var(--muted); }
+.orvion-problem-photo { min-height: 700px; }
+.orvion-problem-photo img { object-position: 60% center; }
+.orvion-process { background: #e6e6de; }
+.orvion-process-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 8%; align-items: stretch; }
+.orvion-process-photo { min-height: 610px; }
+.orvion-process-photo img { object-position: 42% center; }
+.orvion-process-photo figcaption span { font-family: var(--font-body); font-size: 14px; }
+.orvion-steps { padding: 0; list-style: none; }
+.orvion-steps li { padding: 25px 0; border-top: 1px solid #252a2930; }
+.orvion-steps li:first-child { padding-top: 0; border-top: 0; }
+.orvion-step-label { display: block; font-size: 10px; letter-spacing: .16em; margin-bottom: 10px; color: #696e66; }
+.orvion-steps h3 { font-size: 33px; line-height: 1.15; margin-bottom: 10px; letter-spacing: -.035em; }
+.orvion-steps p { color: #60675e; font-size: 16px; max-width: 480px; }
+.orvion-management { display: grid; grid-template-columns: 53% 47%; background: #242e2e; color: #f5f2eb; }
+.orvion-management-copy { padding: 90px 64px 90px var(--gutter); }
+.orvion-management .orvion-eyebrow { color: #c8b291; }
+.orvion-management h2 { font-size: clamp(40px,4.2vw,66px); }
+.orvion-management h2 span { color: #c4ccbd; }
+.orvion-management .orvion-intro { color: #c0c9c4; margin-bottom: 34px; }
+.orvion-pillars > div { border-top: 1px solid #ffffff29; padding: 16px 0; }
+.orvion-pillars dt { font-size: 18px; margin-bottom: 5px; }
+.orvion-pillars dd { color: #bac4be; font-size: 14px; line-height: 1.65; max-width: 420px; }
+.orvion-management-photo { min-height: 800px; }
+.orvion-management-photo img { object-position: 57% center; }
+.orvion-landing .orvion-management-photo figcaption { font-size: 36px; padding: 140px 48px 56px; letter-spacing: -.035em; }
+.orvion-flow { position: relative; isolation: isolate; color: #fff; min-height: 800px; padding: 80px var(--gutter) 54px; display: flex; flex-direction: column; justify-content: space-between; gap: 180px; }
+.orvion-flow-photo { position: absolute; z-index: -2; inset: 0; object-position: center; }
+.orvion-flow::before { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg,rgba(12,21,25,.16) 30%,rgba(12,21,25,.35) 53%,#0c1519 100%),linear-gradient(90deg,rgba(12,21,25,.75),transparent 68%); }
+.orvion-flow-heading { max-width: 650px; }
+.orvion-flow h2 { font-size: clamp(44px,5.4vw,82px); }
+.orvion-flow-heading > p:last-child { margin-top: 24px; color: #e1e4e1; }
+.orvion-flow-stages { display: grid; grid-template-columns: repeat(4,1fr) 1.4fr; gap: 28px; list-style: none; padding: 0; }
+.orvion-flow-stages li { border-top: 1px solid #ffffff80; padding-top: 18px; }
+.orvion-flow-index { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; font-size: 11px; letter-spacing: .1em; color: #c6cfc9; }
+.orvion-flow-stages li:last-child .orvion-flow-index svg { visibility: hidden; }
+.orvion-flow-stages h3 { font-size: 24px; line-height: 1.1; margin-bottom: 10px; }
+.orvion-flow-stages p { color: #ccd3ce; font-size: 13px; line-height: 1.6; }
+.orvion-flow-stages li:last-child h3 { color: #e5c79c; }
+.orvion-ecosystem { background: #f7f5f0; }
+.orvion-ecosystem-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
+.orvion-ecosystem-focus { border-top: 1px solid #252a2970; padding-top: 30px; }
+.orvion-ecosystem-focus > .orvion-eyebrow { display: block; color: #626b62; }
+.orvion-ecosystem-focus h3 { position: relative; font-size: clamp(70px,7.7vw,116px); letter-spacing: -.065em; line-height: .95; margin-bottom: 32px; }
+.orvion-ecosystem-focus h3 span { position: absolute; right: 0; top: 0; font-size: 70px; color: #a17b47; }
+.orvion-ecosystem-focus > p { color: var(--muted); max-width: 350px; margin-bottom: 28px; }
+.orvion-ecosystem-services > div { display: flex; gap: 26px; align-items: flex-start; padding: 24px 0; border-top: 1px solid #252a2928; }
+.orvion-ecosystem-services > div > span { font-size: 11px; color: #788078; padding-top: 9px; }
+.orvion-ecosystem-services > div > div { flex: 1; }
+.orvion-ecosystem-services > div > svg { margin-top: 10px; flex-shrink: 0; color: #737d70; }
+.orvion-ecosystem-services dt { font: 400 29px/1.2 var(--font-display); letter-spacing: -.035em; margin-bottom: 10px; }
+.orvion-ecosystem-services dd { font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 440px; }
+.orvion-studio { display: grid; grid-template-columns: 54% 46%; background: #e7e6df; }
+.orvion-studio > figure { min-height: 640px; }
+.orvion-studio > figure img { object-position: 30% center; }
+.orvion-studio-copy { padding: 84px var(--gutter) 84px 64px; align-self: center; }
+.orvion-studio-copy h2 { font-size: clamp(36px,3.4vw,54px); }
+.orvion-studio-copy > p:not(.orvion-eyebrow) { color: var(--muted); margin-top: 24px; }
+.orvion-studio-copy > .orvion-studio-note { border-top: 1px solid #252a2930; padding-top: 24px; font-size: 14px; }
+.orvion-diagnostic { background: #d9cbb5; padding-block: 100px; }
+.orvion-diagnostic > div { display: grid; grid-template-columns: 1.4fr .8fr; align-items: end; gap: 72px; }
+.orvion-diagnostic h2 { font-size: clamp(44px,5.5vw,84px); }
+.orvion-diagnostic-action p { color: #50544c; margin-bottom: 28px; }
+.orvion-diagnostic-action > span { display: block; margin-top: 20px; font-size: 12px; letter-spacing: .09em; }
+.orvion-faq { background: #f7f5f0; display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
+.orvion-faq .orvion-intro { max-width: 285px; }
+.orvion-faq-item { border-top: 1px solid #252a2938; }
+.orvion-faq-item:last-child { border-bottom: 1px solid #252a2938; }
+.orvion-faq-item h3 { font-size: 21px; letter-spacing: -.015em; }
+.orvion-faq-item button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 28px; padding: 26px 0; text-align: left; line-height: 1.4; background: none; border: 0; cursor: pointer; color: inherit; }
+.orvion-faq-toggle { flex-shrink: 0; font: 300 28px/1 var(--font-body); color: #636e60; }
+.orvion-faq-item p { padding: 0 40px 26px 0; color: var(--muted); font-size: 15px; }
+
+/* Preserve the existing form and conversion handlers; restyle only this route. */
+.orvion-landing #proposta { padding: 104px var(--gutter); background: #222b2b; color: #f5f2eb; border: 0; }
+.orvion-landing #proposta > .absolute { display: none; }
+.orvion-landing #proposta > .relative > div { border: 0; padding: 0; background: none; box-shadow: none; border-radius: 0; backdrop-filter: none; }
+.orvion-landing #proposta .orvion-contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; align-items: start; }
+.orvion-landing #proposta .orvion-contact-copy { grid-column: auto; text-align: left; }
+.orvion-landing #proposta .orvion-contact-copy > div:first-child { justify-content: flex-start; margin-bottom: 28px; }
+.orvion-landing #proposta .orvion-contact-copy > div:first-child > span:first-child { display: none; }
+.orvion-landing #proposta .orvion-contact-copy > div:first-child > span:last-child { color: #c8b291; font-size: 11px; font-family: var(--font-body); }
+.orvion-landing #proposta h2 { font-size: clamp(36px,4.1vw,62px); font-weight: 400; line-height: 1.08; letter-spacing: -.04em; margin-bottom: 26px; }
+.orvion-landing #proposta .orvion-contact-copy > p { color: #c1cac4; font-size: 17px; margin-bottom: 32px; }
+.orvion-landing #proposta .orvion-contact-actions { flex-wrap: wrap; justify-content: flex-start; }
+.orvion-landing #proposta .orvion-contact-actions a { border-radius: 3px; background: none; box-shadow: none; color: #f5f2eb; font-weight: 400; font-size: 15px; padding: 14px 0; border: 0; border-bottom: 1px solid #bcc6be; }
+.orvion-landing #proposta .orvion-contact-actions a:last-child { display: none; }
+.orvion-landing #proposta .orvion-contact-form { grid-column: auto; padding: 0; border: 0; }
+.orvion-landing #proposta h3 { font-size: 26px; font-weight: 400; margin-bottom: 10px; }
+.orvion-landing #proposta .orvion-contact-form > div > p { font-size: 14px; color: #c1cac4; }
+.orvion-landing #proposta form { margin-top: 32px; }
+.orvion-landing #proposta label { color: #e4e7e0; font: 400 14px/1.5 var(--font-body); text-transform: none; letter-spacing: 0; margin-bottom: 9px; }
+.orvion-landing #proposta label span { color: #b7c1b9; }
+.orvion-landing #proposta :is(input,select,textarea) { font-size: 16px; color: #f5f2eb; background: #ffffff05; border: 1px solid #b3c2ba66; border-radius: 2px; min-height: 50px; box-shadow: none; padding: 12px 14px; }
+.orvion-landing #proposta :is(input,textarea)::placeholder { color: #aab6ad; }
+.orvion-landing #proposta [aria-invalid="true"] { border-color: #fca5a5; }
+.orvion-landing #proposta form > button { margin-top: 24px; border-radius: 3px; box-shadow: none; background: #e4c496; font-size: 15px; min-height: 56px; color: #202725; }
+.orvion-landing > footer { background: #1a2222; border-top: 1px solid #ffffff26; padding: 64px var(--gutter); }
+.orvion-landing > footer p { font-size: 14px; color: #b3bdb5; }
+.orvion-landing > footer :is(ul,.space-y-1\.5) { font-size: 14px; line-height: 1.8; color: #bbc6bd; }
+.orvion-landing > footer a { color: #d8d7cc; }
+.orvion-landing > footer .font-mono { font-family: var(--font-body); }
+.orvion-mobile-contact { background: #222b2bf5; padding: 12px 20px calc(12px + env(safe-area-inset-bottom,0px)); }
+.orvion-landing .orvion-mobile-contact a { background: #e4c496; box-shadow: none; border-radius: 3px; font-size: 13px; color: #202725; }
+.orvion-mobile-contact[hidden] { display: none; }
+
+/* Preserve the section frames while fitting the campaign-specific photographs. */
+.orvion-landing :is(.orvion-problem-photo,.orvion-process-photo,.orvion-management-photo,.orvion-studio > figure) > img { position: absolute; inset: 0; object-position: 50% 44%; }
+.orvion-landing figure figcaption small { display: block; margin-top: 14px; font: 400 12px/1.6 var(--font-body); letter-spacing: 0; color: #dce1df; }
+.orvion-landing figure .orvion-illustrative-caption { font: 400 12px/1.6 var(--font-body); padding: 60px 24px 24px; }
+
+@media(min-width:1800px) {
+  .orvion-landing { --gutter: max(112px,calc((100vw - 1550px)/2)); }
+}
+@media(max-width:1199px) {
+  .orvion-landing > header nav { display: none; }
+  .orvion-menu-toggle { display: inline-flex; }
+  .orvion-landing > header > div { gap: 14px; }
+  .orvion-problem-copy,.orvion-management-copy { padding-right: 40px; }
+  .orvion-section-heading { grid-template-columns: .65fr 1.4fr; gap: 40px; }
+  .orvion-studio-copy { padding-left: 40px; }
+  .orvion-diagnostic > div { gap: 40px; }
+  .orvion-diagnostic .orvion-button { gap: 12px; padding-inline: 20px; }
+}
+@media(max-width:899px) {
+  .orvion-landing > header { height: 72px; }
+  .orvion-landing #topo { margin-top: -72px; min-height: 900px; padding-top: 150px; }
+  .orvion-landing #topo h1 { font-size: 64px; }
+  .orvion-section { padding-block: 76px; }
+  .orvion-section-heading { display: block; margin-bottom: 40px; }
+  .orvion-problem,.orvion-management,.orvion-studio { grid-template-columns: 1fr; }
+  .orvion-problem-copy,.orvion-management-copy { padding: 76px var(--gutter); }
+  .orvion-problem-photo { min-height: 0; height: 480px; }
+  .orvion-process-layout { gap: 40px; }
+  .orvion-process-photo { min-height: 650px; }
+  .orvion-management-photo { min-height: 0; height: 520px; }
+  .orvion-pillars { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
+  .orvion-flow { min-height: 760px; padding-top: 64px; gap: 130px; }
+  .orvion-flow-stages { gap: 16px; }
+  .orvion-flow-stages h3 { font-size: 21px; }
+  .orvion-ecosystem-layout { gap: 8%; }
+  .orvion-studio > figure { min-height: 0; height: 500px; }
+  .orvion-studio-copy { padding: 70px var(--gutter); }
+  .orvion-diagnostic > div { grid-template-columns: 1fr; gap: 36px; }
+  .orvion-diagnostic-action { max-width: 440px; }
+  .orvion-faq { gap: 7%; grid-template-columns: .7fr 1.3fr; }
+  .orvion-landing #proposta { padding-block: 76px; }
+  .orvion-landing #proposta .orvion-contact-layout { gap: 7%; }
+}
+@media(max-width:639px) {
+  .orvion-landing { --gutter: 24px; }
+  .orvion-landing section { scroll-margin-top: 86px; }
+  .orvion-landing > header { padding-inline: 20px; }
+  .orvion-landing > header > a { gap: 7px; }
+  .orvion-landing > header > a span:first-child { font-size: 17px; letter-spacing: .15em; }
+  .orvion-landing > header > a span:last-child { font-size: 8px; letter-spacing: .18em; }
+  .orvion-landing > header > div { gap: 3px; }
+  .orvion-landing > header > div > a { padding: 8px 11px; font-size: 11px; }
+  .orvion-landing > header > div > a svg { display: none; }
+  .orvion-menu-toggle { font-size: 12px; padding: 8px; }
+  .orvion-landing #topo { min-height: max(870px,100svh); padding: 120px var(--gutter) 72px; align-items: flex-start; }
+  .orvion-landing #topo .orvion-hero-background img { object-position: 70% bottom; }
+  .orvion-hero-shade { background: linear-gradient(180deg,#101b20a6 0%,#101b20c7 49%,#101b2040 75%,transparent 100%); }
+  .orvion-landing #topo h1 { font-size: clamp(38px,10.7vw,64px); line-height: 1.07; max-width: 100%; margin-bottom: 24px; }
+  .orvion-landing #topo .orvion-hero-eyebrow { margin-bottom: 25px; }
+  .orvion-landing #topo .orvion-hero-eyebrow span:last-child { font-size: 9px; letter-spacing: .12em; }
+  .orvion-landing #topo p { font-size: 16px; line-height: 1.7; margin-bottom: 24px; max-width: 370px; }
+  .orvion-landing #topo .orvion-hero-actions { align-items: stretch; gap: 4px; margin-bottom: 16px; }
+  .orvion-landing #topo .orvion-hero-actions a { font-size: 14px; white-space: normal; }
+  .orvion-landing #topo .orvion-hero-actions a:last-child { justify-content: flex-start; min-height: 46px; }
+  .orvion-landing #topo .orvion-hero-microcopy { gap: 7px; font-size: 11px; max-width: 310px; }
+  .orvion-landing h2 { font-size: clamp(34px,9.3vw,48px); line-height: 1.1; }
+  .orvion-landing .orvion-eyebrow { font-size: 10px; margin-bottom: 24px; letter-spacing: .13em; }
+  .orvion-landing .orvion-intro { font-size: 16px; margin-top: 20px; }
+  .orvion-section { padding: 64px var(--gutter); }
+  .orvion-section-heading { margin-bottom: 36px; }
+  .orvion-problem-copy,.orvion-management-copy { padding: 64px var(--gutter); }
+  .orvion-problem-list { margin-top: 32px !important; }
+  .orvion-problem-list li { grid-template-columns: 35px 1fr; gap: 19px; padding-block: 24px; }
+  .orvion-number { font-size: 29px; }
+  .orvion-problem-list h3 { font-size: 23px; }
+  .orvion-problem-list p { font-size: 15px; }
+  .orvion-problem-photo { height: 440px; }
+  .orvion-landing figure figcaption { padding: 72px 24px 28px; font-size: 23px; }
+  .orvion-process-layout { grid-template-columns: 1fr; gap: 38px; }
+  .orvion-process-photo { min-height: 0; height: 430px; margin-inline: -24px !important; }
+  .orvion-steps li { padding-block: 24px; }
+  .orvion-steps li:last-child { padding-bottom: 0; }
+  .orvion-steps h3 { font-size: 30px; }
+  .orvion-steps p { font-size: 16px; }
+  .orvion-management h2 { font-size: 43px; }
+  .orvion-management h2 br:nth-child(2) { display: block; }
+  .orvion-pillars { display: block; }
+  .orvion-pillars > div { padding-block: 18px; }
+  .orvion-pillars dt { font-size: 19px; }
+  .orvion-pillars dd { font-size: 15px; }
+  .orvion-management-photo { height: 470px; }
+  .orvion-landing .orvion-management-photo figcaption { padding: 80px 24px 32px; font-size: 32px; }
+  .orvion-flow { min-height: 1020px; padding: 64px var(--gutter) 44px; gap: 180px; }
+  .orvion-flow-photo { object-position: 53% top; }
+  .orvion-flow::before { background: linear-gradient(180deg,rgba(12,21,25,.65),rgba(12,21,25,.15) 25%,rgba(12,21,25,.9) 53%,#0c1519 100%); }
+  .orvion-flow h2 { font-size: 47px; }
+  .orvion-flow-heading > p:last-child { font-size: 15px; }
+  .orvion-flow-stages { display: block; padding-left: 0; }
+  .orvion-flow-stages li { position: relative; padding: 18px 0 18px 46px; border: 0; border-left: 1px solid #ffffff66; margin-left: 12px; }
+  .orvion-flow-index { position: absolute; left: -12px; top: 24px; margin: 0; padding: 4px 3px; color: #e5c79c; background: #111e22; font-size: 10px; }
+  .orvion-flow-index svg { display: none; }
+  .orvion-flow-stages h3 { font-size: 25px; margin-bottom: 5px; }
+  .orvion-flow-stages p { font-size: 14px; }
+  .orvion-ecosystem-layout { grid-template-columns: 1fr; gap: 40px; }
+  .orvion-ecosystem-focus h3 { font-size: 92px; margin-bottom: 22px; }
+  .orvion-ecosystem-focus h3 span { right: 18px; }
+  .orvion-ecosystem-focus > p { margin-bottom: 14px; }
+  .orvion-ecosystem-services > div { gap: 20px; padding-block: 23px; }
+  .orvion-ecosystem-services dt { font-size: 26px; }
+  .orvion-ecosystem-services dd { font-size: 15px; }
+  .orvion-studio > figure { height: 430px; }
+  .orvion-studio-copy { padding: 64px var(--gutter); }
+  .orvion-diagnostic h2 { font-size: 43px; }
+  .orvion-diagnostic .orvion-button { width: 100%; gap: 16px; font-size: 14px; }
+  .orvion-faq { grid-template-columns: 1fr; gap: 36px; }
+  .orvion-faq .orvion-intro { max-width: none; }
+  .orvion-faq-item h3 { font-size: 21px; }
+  .orvion-faq-item button { padding-block: 23px; gap: 20px; }
+  .orvion-faq-item p { padding-right: 20px; font-size: 15px; }
+  .orvion-landing #proposta { padding: 64px var(--gutter); }
+  .orvion-landing #proposta .orvion-contact-layout { grid-template-columns: 1fr; gap: 48px; }
+  .orvion-landing #proposta h2 { font-size: 38px; }
+  .orvion-landing #proposta .orvion-contact-actions a { width: auto; }
+  .orvion-landing > footer { padding: 48px var(--gutter) calc(114px + env(safe-area-inset-bottom,0px)); }
+  .orvion-landing > footer .text-\[10px\] { font-size: 11px; color: #c5cec8; }
+  .orvion-landing > footer .font-mono p { font-size: 12px; text-align: center; }
+  .orvion-landing ~ .fixed { bottom: calc(88px + env(safe-area-inset-bottom,0px)); left: 16px; max-width: calc(100vw - 32px); }
+}
+@media(min-width:1200px) {
+  .orvion-menu { display: none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .orvion-landing *, .orvion-landing *::before { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
