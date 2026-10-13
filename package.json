@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-routes.js",
-    "preview": "vite preview"
+    "build": "vite build --configLoader runner && vite build --ssr --config scripts/ssr-vite.config.js --configLoader runner && node scripts/generate-routes.js",
+    "preview": "vite preview",
+    "lint": "eslint src vite.config.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
@@ -19,15 +21,18 @@
     "tailwind-merge": "3.4.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@tailwindcss/vite": "4.1.17",
     "@types/node": "22.19.17",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
+    "eslint": "^9.39.5",
     "node-fetch": "^3.3.2",
     "sharp": "^0.35.3",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
+    "typescript-eslint": "^8.71.2",
     "vite": "7.3.2"
   }
 }

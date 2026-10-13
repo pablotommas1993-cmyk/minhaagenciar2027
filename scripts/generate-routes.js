@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { createServer } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,40 +20,21 @@ const homeHtml = fs.readFileSync(homeHtmlPath, 'utf-8');
 // ==========================================
 // Prerender /google-ads/gestao component
 // ==========================================
-let prerenderedGoogleAdsBody = '';
-try {
-  const vite = await createServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-    optimizeDeps: { noDiscovery: true },
-  });
-  const mod = await vite.ssrLoadModule('/src/pages/GoogleAdsGestao.tsx');
-  const Component = mod.default;
-  prerenderedGoogleAdsBody = renderToString(React.createElement(Component));
-  await vite.close();
-  console.log(`✓ Prerendered GoogleAdsGestao component (${prerenderedGoogleAdsBody.length} chars)`);
-} catch (err) {
-  console.error('Warning: Failed to prerender GoogleAdsGestao component:', err);
+const ssrDir = path.resolve(__dirname, '../dist-ssr');
+async function prerender(name) {
+  const file = path.join(ssrDir, `${name}.js`);
+  const { default: Component } = await import(pathToFileURL(file).href);
+  const html = renderToString(React.createElement(Component));
+  if (!html) throw new Error(`Empty prerendered route: ${name}`);
+  console.log(`✓ Prerendered ${name} (${html.length} chars)`);
+  return html;
 }
+const prerenderedGoogleAdsBody = await prerender('GoogleAdsGestao');
 
 // ==========================================
 // Prerender /nova component (Homologação)
 // ==========================================
-let prerenderedNovaBody = '';
-try {
-  const vite = await createServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-    optimizeDeps: { noDiscovery: true },
-  });
-  const mod = await vite.ssrLoadModule('/src/pages/Nova.tsx');
-  const Component = mod.default;
-  prerenderedNovaBody = renderToString(React.createElement(Component));
-  await vite.close();
-  console.log(`✓ Prerendered Nova component (${prerenderedNovaBody.length} chars)`);
-} catch (err) {
-  console.error('Warning: Failed to prerender Nova component:', err);
-}
+const prerenderedNovaBody = await prerender('Nova');
 
 // ==========================================
 // 1. Route: /google-ads/gestao
@@ -117,7 +97,7 @@ googleAdsHtml = googleAdsHtml.replace(
 // Preload Hero Image
 googleAdsHtml = googleAdsHtml.replace(
   '</head>',
-  '    <link rel="preload" href="/images/hero-executive-office.webp" as="image" type="image/webp" />\n  </head>'
+  '    <link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" />\n  </head>'
 );
 
 // Inject prerendered component inside <div id="root">

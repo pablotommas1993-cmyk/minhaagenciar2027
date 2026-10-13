@@ -94,6 +94,7 @@ interface UtmData {
   utm_medium: string;
   utm_campaign: string;
   utm_term: string;
+  utm_content: string;
   gclid: string;
 }
 
@@ -185,6 +186,7 @@ export default function GoogleAdsGestao() {
     utm_medium: '',
     utm_campaign: '',
     utm_term: '',
+    utm_content: '',
     gclid: '',
   });
 
@@ -196,6 +198,7 @@ export default function GoogleAdsGestao() {
         utm_medium: searchParams.get('utm_medium') || '',
         utm_campaign: searchParams.get('utm_campaign') || '',
         utm_term: searchParams.get('utm_term') || '',
+        utm_content: searchParams.get('utm_content') || '',
         gclid: searchParams.get('gclid') || '',
       });
     }
@@ -210,6 +213,7 @@ export default function GoogleAdsGestao() {
     message: '',
   });
   const [honeypot, setHoneypot] = useState('');
+  const [preparedUrl, setPreparedUrl] = useState('');
   const [formErrors, setFormErrors] = useState<Partial<FormState>>({});
 
   const handleInputChange = (
@@ -217,6 +221,7 @@ export default function GoogleAdsGestao() {
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    setPreparedUrl('');
     if (formErrors[name as keyof FormState]) {
       setFormErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -229,6 +234,8 @@ export default function GoogleAdsGestao() {
     }
     if (!form.phone.trim()) {
       errors.phone = 'Por favor, informe seu WhatsApp para contato.';
+    } else if (!/^[+\d\s().-]+$/.test(form.phone) || !/^\d{10,15}$/.test(form.phone.replace(/\D/g, ''))) {
+      errors.phone = 'Informe um telefone válido com DDD.';
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -271,12 +278,17 @@ export default function GoogleAdsGestao() {
 
     if (utmData.utm_source) {
       lines.push(`Origem: ${utmData.utm_source}`);
+      lines.push(`utm_source: ${utmData.utm_source}`);
+    }
+    for (const key of ['utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const) {
+      if (utmData[key]) lines.push(`${key}: ${utmData[key]}`);
     }
     if (utmData.gclid) {
       lines.push(`GCLID: ${utmData.gclid}`);
     }
 
     const whatsappUrl = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
+    setPreparedUrl(whatsappUrl);
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -306,7 +318,7 @@ export default function GoogleAdsGestao() {
       suppressHydrationWarning
     >
       {/* ========================================================
-          CABEÇALHO EDITORIAL (SOBRE A IMAGEM / STICKY GLASS)
+          CABEÇALHO EDITORIAL COMPACTO
           ======================================================== */}
       <header className="sticky top-0 inset-x-0 z-40 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-[5%] lg:px-[8%] bg-[#050505]/80 backdrop-blur-xl border-b border-white/[0.08]">
         <a
@@ -405,7 +417,7 @@ export default function GoogleAdsGestao() {
       {/* Espaçamento inferior no mobile para a barra fixa de conversão */}
       <main className="pb-24 sm:pb-0">
         {/* ========================================================
-            SEÇÃO 1 — HERO DEFINITIVA COM BACKGROUND OFFICE FULL-BLEED
+            SEÇÃO 1 — HERO EDITORIAL EM GRAFITE E CHAMPAGNE
             (FOTOGRAFIA ORIGINAL, GRADIENTE LOCALIZADO E HIERARQUIA EDITORIAL)
             ======================================================== */}
         <section
@@ -414,8 +426,8 @@ export default function GoogleAdsGestao() {
         >
           <div className="orvion-hero-background" aria-hidden="true">
             <picture>
-              <source srcSet="/images/hero-executive-office.webp" type="image/webp" />
-              <img src="/images/hero-executive-office.jpg" alt="" fetchPriority="high" loading="eager" />
+              <source srcSet="/images/orvion-champagne-metal.webp" type="image/webp" />
+              <img src="/images/orvion-champagne-metal.webp" alt="" width="1672" height="940" fetchPriority="high" loading="eager" />
             </picture>
             <div className="orvion-hero-shade" />
           </div>
@@ -435,8 +447,7 @@ export default function GoogleAdsGestao() {
                 className="font-display font-semibold text-white tracking-[-0.03em] mb-6 text-balance break-words"
 
               >
-                Google Ads para<br />empresas que querem<br />
-                <span>mais oportunidades<br />de venda.</span>
+                Google Ads para<br className="orvion-desktop-break" /> empresas que querem<br className="orvion-desktop-break" />{' '}<span>mais oportunidades<br className="orvion-desktop-break" /> de venda.</span>
               </h1>
 
               {/* Subheadline curta e comercial */}
@@ -498,10 +509,7 @@ export default function GoogleAdsGestao() {
               ))}
             </ol>
           </div>
-          <figure className="orvion-problem-photo">
-            <img src="/images/campaign-diagnostic.webp" srcSet="/images/campaign-diagnostic-mobile.webp 640w, /images/campaign-diagnostic.webp 1122w" sizes="(max-width: 899px) 100vw, 50vw" alt="Ilustração fotográfica de análise de termos de busca e desperdício em campanhas" loading="lazy" decoding="async" width="1122" height="1402" />
-            <figcaption>Tráfego qualificado precisa terminar<br />em uma ação comercial.</figcaption>
-          </figure>
+          <p className="orvion-problem-note">Tráfego qualificado precisa terminar<br />em uma ação comercial.</p>
         </section>
 
         <section id="metodo" className="orvion-process orvion-section">
@@ -510,10 +518,7 @@ export default function GoogleAdsGestao() {
             <div><h2>Antes do primeiro clique,<br />uma direção clara.</h2><p className="orvion-intro">Uma operação de Google Ads começa com estratégia. Cada etapa conecta intenção de busca a uma oportunidade comercial mensurável.</p></div>
           </div>
           <div className="orvion-process-layout">
-            <figure className="orvion-process-photo">
-              <img src="/images/campaign-strategy.webp" srcSet="/images/campaign-strategy-mobile.webp 640w, /images/campaign-strategy.webp 1122w" sizes="(max-width: 899px) 100vw, 50vw" alt="Ilustração fotográfica de planejamento de campanhas, intenção de busca e jornada de conversão" loading="lazy" decoding="async" width="1122" height="1402" />
-              <figcaption>Estratégia de aquisição.<br /><span>Infraestrutura técnica e direção comercial.</span></figcaption>
-            </figure>
+            <p className="orvion-process-note">Estratégia de aquisição.<br /><span>Infraestrutura técnica e direção comercial.</span></p>
             <ol className="orvion-steps">
               {[
                 ['Estratégia', 'Entendemos o negócio, os serviços, a região de atuação e o perfil de cliente que realmente faz sentido alcançar.'],
@@ -532,6 +537,7 @@ export default function GoogleAdsGestao() {
             <p className="orvion-eyebrow">03 / Gestão de Google Ads</p>
             <h2>Publicar é o início.<br />Gerir é o que<br /><span>faz a diferença.</span></h2>
             <p className="orvion-intro">Análise, ajustes e decisões baseadas no comportamento real das campanhas. Uma operação com direção.</p>
+          </div>
             <dl className="orvion-pillars">
               {[
                 ['Planejamento estratégico', 'Estrutura baseada no negócio, demanda e intenção de busca.'],
@@ -544,15 +550,10 @@ export default function GoogleAdsGestao() {
                 <div key={title}><dt>{title}</dt><dd>{description}</dd></div>
               ))}
             </dl>
-          </div>
-          <figure className="orvion-management-photo">
-            <img src="/images/performance-operations.webp" srcSet="/images/performance-operations-mobile.webp 640w, /images/performance-operations.webp 1122w" sizes="(max-width: 899px) 100vw, 50vw" alt="Ilustração fotográfica de análise e otimização de campanhas em uma estação de performance" loading="lazy" decoding="async" width="1122" height="1402" />
-            <figcaption>Precisão na análise.<br />Clareza nas decisões.<small>Imagem ilustrativa de uma operação de campanhas.</small></figcaption>
-          </figure>
+          <p className="orvion-management-note">Precisão na análise.<br />Clareza nas decisões.</p>
         </section>
 
         <section id="fluxo" className="orvion-flow">
-          <img className="orvion-flow-photo" src="/images/section-fluxo-city.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1376" height="768" />
           <div className="orvion-flow-heading"><p className="orvion-eyebrow">04 / Da busca ao contato</p><h2>Um clique.<br />Todo um caminho.</h2><p>O anúncio é apenas o começo da experiência.<br />Cada próximo passo precisa fazer sentido.</p></div>
           <ol className="orvion-flow-stages">
             {[
@@ -586,7 +587,7 @@ export default function GoogleAdsGestao() {
         </section>
 
         <section id="posicionamento" className="orvion-studio">
-          <figure><img src="/images/digital-agency-collaboration.webp" srcSet="/images/digital-agency-collaboration-mobile.webp 640w, /images/digital-agency-collaboration.webp 1122w" sizes="(max-width: 899px) 100vw, 50vw" alt="Representação ilustrativa de colaboração entre estratégia e criação em uma agência digital" loading="lazy" decoding="async" width="1122" height="1402" /><figcaption className="orvion-illustrative-caption">Representação ilustrativa de estratégia e criação digital.</figcaption></figure>
+
           <div className="orvion-studio-copy"><p className="orvion-eyebrow">A Orvion Studio</p><h2>Visão de negócio.<br />Rigor na execução.</h2><p className="orvion-intro">Trabalhamos na interseção entre aquisição, tecnologia e experiência digital.</p><p>Planejamos campanhas, construímos estruturas digitais e analisamos dados com um objetivo: criar operações de aquisição mais profissionais e mensuráveis.</p><p className="orvion-studio-note">Cada projeto parte da realidade da empresa. Sem fórmulas prontas ou promessas impossíveis.</p></div>
         </section>
 
@@ -749,6 +750,7 @@ export default function GoogleAdsGestao() {
                       </label>
                       <input
                         type="tel"
+                        inputMode="tel"
                         id={`${formId}-phone`}
                         name="phone"
                         autoComplete="tel"
@@ -827,6 +829,7 @@ export default function GoogleAdsGestao() {
                       <span>Solicitar proposta via WhatsApp</span>
                       <IconSend size={14} aria-hidden="true" className="shrink-0" />
                     </button>
+                    {preparedUrl && <p className="orvion-form-feedback" role="status">Sua mensagem está pronta. Conclua o envio no WhatsApp. Se a janela não abriu, <a href={preparedUrl} target="_blank" rel="noopener noreferrer">abrir conversa</a>.</p>}
                   </form>
                 </div>
               </div>

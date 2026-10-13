@@ -1,302 +1,330 @@
+/* ORVION / graphite, silver and restrained champagne. Scoped to the real landing. */
 .orvion-landing {
-  --ink: #252a29;
-  --paper: #f4f2ed;
-  --muted: #666b67;
-  --amber: #d9ae73;
-  --gutter: clamp(24px, 6.2vw, 112px);
-  background: var(--paper);
+  --ink: #f3f1ec;
+  --muted: #b4b4b0;
+  --gold: #cbb98f;
+  --surface: #202123;
+  --border: #ffffff24;
+  --gutter: max(24px, calc((100vw - 1248px) / 2));
+  background: #191a1c;
   color: var(--ink);
-  overflow-x: clip;
+  color-scheme: dark;
 }
 .orvion-landing :is(h1,h2,h3,p,figure,ol,dl,dd) { margin: 0; }
-.orvion-landing :is(h1,h2,h3) { font-weight: 400; }
-.orvion-landing h2 { font-size: clamp(36px,4vw,64px); line-height: 1.08; letter-spacing: -.045em; text-wrap: balance; }
-.orvion-landing p { font-size: 16px; line-height: 1.7; }
-.orvion-landing img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.orvion-landing figure { position: relative; overflow: hidden; }
-.orvion-landing figure figcaption { position: absolute; inset: auto 0 0; padding: 72px 40px 32px; color: #fff; background: linear-gradient(transparent,rgba(13,23,24,.86)); font-size: 23px; line-height: 1.35; font-family: var(--font-display); }
+.orvion-landing :is(h1,h2,h3) { font-weight: 500; }
+.orvion-landing h2 { font-size: clamp(34px,3.7vw,54px); line-height: 1.08; letter-spacing: -.045em; text-wrap: balance; }
+.orvion-landing p { font-size: 15px; line-height: 1.7; }
 .orvion-landing a { text-decoration: none; }
-.orvion-landing :is(a,button,input,select,textarea):focus-visible { outline: 2px solid #ac7737; outline-offset: 5px; }
-.orvion-landing section { scroll-margin-top: 96px; }
-.orvion-landing .orvion-eyebrow { font: 500 11px/1.6 var(--font-body); letter-spacing: .17em; text-transform: uppercase; margin-bottom: 30px; }
-.orvion-landing .orvion-intro { font-size: 17px; line-height: 1.75; color: var(--muted); max-width: 580px; margin-top: 24px; }
-.orvion-section { padding: 104px var(--gutter); }
-.orvion-section-heading { display: grid; grid-template-columns: .75fr 1.65fr; gap: 64px; margin-bottom: 64px; }
-.orvion-section-heading > .orvion-eyebrow { padding-top: 9px; }
-.orvion-landing .orvion-button { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 17px 26px; border-radius: 3px; font-size: 15px; font-weight: 500; transition: background .2s,transform .2s; }
-.orvion-landing .orvion-button-dark { background: var(--ink); color: #fff; }
-.orvion-landing .orvion-button-dark:hover { background: #414743; }
-.orvion-text-link { display: inline-flex; align-items: center; gap: 28px; padding: 12px 0; border-bottom: 1px solid currentColor; font-size: 14px; }
+.orvion-landing :is(a,button) { -webkit-tap-highlight-color: transparent; }
+.orvion-landing :is(a,button,input,select,textarea):focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.orvion-landing section { scroll-margin-top: 86px; }
+.orvion-landing :is(section,section > div,dl > div) { min-width: 0; }
+.orvion-landing .orvion-eyebrow { font: 500 10px/1.6 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.orvion-landing .orvion-intro { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 520px; margin-top: 22px; }
+.orvion-section { padding: 72px var(--gutter); }
+.orvion-section-heading { display: grid; grid-template-columns: .68fr 1.5fr; gap: 64px; margin-bottom: 42px; }
+.orvion-section-heading > .orvion-eyebrow { padding-top: 7px; }
+.orvion-landing .orvion-button { min-height: 52px; display: inline-flex; align-items: center; justify-content: space-between; gap: 30px; padding: 15px 23px; border-radius: 2px; font-size: 14px; font-weight: 600; transition: filter .2s,transform .2s; }
+.orvion-landing .orvion-button-dark { background: linear-gradient(115deg,#beaa7e,#e0d3b5); color: #191a1c; }
+.orvion-landing .orvion-button:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.orvion-text-link { display: inline-flex; align-items: center; gap: 28px; padding: 12px 0; border-bottom: 1px solid var(--gold); color: var(--ink); font-size: 14px; }
+.orvion-text-link svg { transition: transform .2s; }
+.orvion-text-link:hover svg { transform: translateX(4px); }
 
-/* The existing office photograph remains the hero's visual anchor. */
-.orvion-landing > header { padding: 0 var(--gutter); height: 84px; background: rgba(12,17,18,.52); border-color: #ffffff21; backdrop-filter: blur(18px); }
-.orvion-landing > header nav { gap: 24px; font-size: 13px; color: #d8dcda; }
-.orvion-landing > header > a > span:last-child { color: #ded6c7; }
-.orvion-landing > header > div > a { border: 1px solid #ffffff66; color: #fff; background: transparent; box-shadow: none; border-radius: 3px; padding: 10px 16px; min-height: 44px; }
+/* Compact persistent navigation, with a separate mobile disclosure. */
+.orvion-landing > header { padding: 0 var(--gutter); height: 76px; background: #191a1cf5; border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
+.orvion-landing > header nav { gap: 23px; font-size: 12px; color: #bdbeba; }
+.orvion-landing > header > a > span:first-child { font-size: 21px; letter-spacing: .19em; }
+.orvion-landing > header > a > span:last-child { color: var(--gold); font-size: 9px; letter-spacing: .24em; }
+.orvion-landing > header > div > a { border: 1px solid #cbb98f70; color: #e0d4b9; background: transparent; box-shadow: none; border-radius: 2px; padding: 10px 14px; min-height: 44px; font-size: 12px; }
+.orvion-landing > header > div > a:hover { background: #cbb98f15; }
 .orvion-landing > header > div > a svg { color: inherit; }
-.orvion-menu-toggle { display: none; color: #fff; background: none; border: 0; padding: 10px; min-height: 44px; font-size: 14px; }
-.orvion-menu { position: fixed; inset: 72px 0 auto; z-index: 39; background: #202725; color: #fff; padding: 24px var(--gutter); box-shadow: 0 18px 30px #0003; }
-.orvion-menu a { display: block; padding: 14px 0; border-bottom: 1px solid #ffffff20; font-size: 18px; }
+.orvion-menu-toggle { display: none; color: var(--ink); background: none; border: 0; padding: 10px; min-height: 44px; font-size: 13px; cursor: pointer; }
+.orvion-menu { position: fixed; inset: 64px 0 auto; z-index: 39; background: #202123; color: var(--ink); padding: 12px var(--gutter) 24px; max-height: calc(100dvh - 64px); overflow-y: auto; border-bottom: 1px solid var(--gold); }
+.orvion-menu a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 17px; }
 .orvion-landing main { padding-bottom: 0; }
-.orvion-landing #topo { min-height: max(820px,100svh); margin-top: -84px; padding: 144px var(--gutter) 80px; border: 0; color: #fff; }
+
+/* One material study, no interface imagery. Text remains the visual priority. */
+.orvion-landing #topo { min-height: min(820px,calc(88svh - 76px)); margin-top: 0; padding: 66px var(--gutter) 48px; border-bottom: 1px solid var(--border); color: var(--ink); background: #18191a; }
 .orvion-landing #topo > .orvion-hero-background { position: absolute; inset: 0; }
 .orvion-hero-background picture { display: block; height: 100%; }
-.orvion-landing #topo .orvion-hero-background img { object-position: right center; }
-.orvion-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg,rgba(8,14,16,.55),rgba(8,14,16,.22) 43%,transparent 72%); }
-.orvion-landing #topo h1 { font-size: clamp(48px,5.35vw,86px); line-height: 1.025; letter-spacing: -.055em; max-width: 800px; margin-bottom: 28px; font-weight: 400; text-wrap: initial; }
-.orvion-landing #topo h1 span { color: #e1d7c8; background: none; -webkit-text-fill-color: currentColor; }
-.orvion-landing #topo .orvion-hero-eyebrow { border: 0; background: none; padding: 0; margin-bottom: 28px; backdrop-filter: none; }
-.orvion-landing #topo .orvion-hero-eyebrow span:last-child { color: #e2d6c1; font: 500 11px/1.6 var(--font-body); letter-spacing: .17em; }
-.orvion-landing #topo p { max-width: 475px; font-size: 17px; color: #d0d5d3; margin-bottom: 32px; line-height: 1.75; }
+.orvion-hero-background img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.orvion-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg,#18191a30,#18191a10 60%,transparent),linear-gradient(0deg,#18191a80,transparent 25%); }
+.orvion-landing #topo h1 { font-size: clamp(46px,4.65vw,72px); line-height: 1.035; letter-spacing: -.05em; max-width: 810px; margin-bottom: 26px; font-weight: 500; text-wrap: initial; }
+.orvion-landing #topo h1 span { font-family: Georgia,'Times New Roman',serif; font-style: italic; font-weight: 400; color: #dfcfa9; background: none; -webkit-text-fill-color: currentColor; letter-spacing: -.05em; }
+.orvion-landing #topo .orvion-hero-eyebrow { padding: 0; margin-bottom: 26px; border: 0; background: none; backdrop-filter: none; gap: 14px; }
+.orvion-landing #topo .orvion-hero-eyebrow span:first-child { width: 28px; height: 1px; border-radius: 0; background: var(--gold); }
+.orvion-landing #topo .orvion-hero-eyebrow span:last-child { color: #d2c5a6; font: 500 10px/1.6 var(--font-body); letter-spacing: .16em; }
+.orvion-landing #topo p { max-width: 490px; font-size: 16px; color: #c8c8c4; margin-bottom: 27px; line-height: 1.7; }
 .orvion-landing #topo .orvion-hero-actions { margin-bottom: 30px; gap: 24px; }
-.orvion-landing #topo .orvion-hero-actions a { border-radius: 3px; box-shadow: none; font-weight: 500; font-size: 15px; min-height: 56px; padding: 16px 24px; }
-.orvion-landing #topo .orvion-hero-actions a:first-child { background: #e4c496; color: #202725; }
-.orvion-landing #topo .orvion-hero-actions a:last-child { background: none; border: 0; padding-inline: 0; }
-.orvion-landing #topo .orvion-hero-microcopy { color: #c2c9c5; font: 400 12px/1.7 var(--font-body); gap: 10px; }
+.orvion-landing #topo .orvion-hero-actions a { border-radius: 2px; box-shadow: none; font-weight: 500; font-size: 14px; min-height: 52px; padding: 15px 20px; }
+.orvion-landing #topo .orvion-hero-actions a:first-child { background: linear-gradient(115deg,#beaa7e,#e0d3b5); color: #191a1c; }
+.orvion-landing #topo .orvion-hero-actions a:last-child { background: none; border: 0; padding-inline: 0; backdrop-filter: none; color: #e2e2dc; }
+.orvion-landing #topo .orvion-hero-microcopy { color: #b0b0ab; font: 400 11px/1.7 var(--font-body); gap: 9px; }
+.orvion-landing #topo .orvion-hero-microcopy > span:first-child { display: none; }
+.orvion-landing #topo .orvion-hero-microcopy > .text-white\/20 { color: #8f8165; }
 
-.orvion-problem { display: grid; grid-template-columns: 53% 47%; }
-.orvion-problem-copy { padding: 90px 64px 90px var(--gutter); }
-.orvion-problem-list { list-style: none; padding: 0; margin-top: 36px !important; }
-.orvion-problem-list li { display: grid; grid-template-columns: 50px 1fr; gap: 24px; padding: 25px 0; border-top: 1px solid #252a2925; }
+/* Diagnosis: heading at left, numbered editorial rows at right. */
+.orvion-problem { padding: 64px var(--gutter); background: #222325; }
+.orvion-problem-copy { display: grid; grid-template-columns: .92fr 1.08fr; column-gap: 10%; align-items: start; }
+.orvion-problem-copy > .orvion-eyebrow { grid-column: 1; }
+.orvion-problem-copy > h2 { grid-column: 1; }
+.orvion-problem-copy > .orvion-intro { grid-column: 1; max-width: 395px; }
+.orvion-problem-list { grid-column: 2; grid-row: 1 / 5; list-style: none; padding: 0; }
+.orvion-problem-list li { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 21px 0; border-top: 1px solid var(--border); }
+.orvion-problem-list li:first-child { padding-top: 0; border-top: 0; }
 .orvion-problem-list li:last-child { padding-bottom: 0; }
-.orvion-number { font: 300 36px/1.1 var(--font-display); color: #868a80; }
-.orvion-problem-list h3 { font-size: 25px; letter-spacing: -.02em; margin-bottom: 8px; }
-.orvion-problem-list p { font-size: 15px; color: var(--muted); }
-.orvion-problem-photo { min-height: 700px; }
-.orvion-problem-photo img { object-position: 60% center; }
-.orvion-process { background: #e6e6de; }
-.orvion-process-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 8%; align-items: stretch; }
-.orvion-process-photo { min-height: 610px; }
-.orvion-process-photo img { object-position: 42% center; }
-.orvion-process-photo figcaption span { font-family: var(--font-body); font-size: 14px; }
-.orvion-steps { padding: 0; list-style: none; }
-.orvion-steps li { padding: 25px 0; border-top: 1px solid #252a2930; }
-.orvion-steps li:first-child { padding-top: 0; border-top: 0; }
-.orvion-step-label { display: block; font-size: 10px; letter-spacing: .16em; margin-bottom: 10px; color: #696e66; }
-.orvion-steps h3 { font-size: 33px; line-height: 1.15; margin-bottom: 10px; letter-spacing: -.035em; }
-.orvion-steps p { color: #60675e; font-size: 16px; max-width: 480px; }
-.orvion-management { display: grid; grid-template-columns: 53% 47%; background: #242e2e; color: #f5f2eb; }
-.orvion-management-copy { padding: 90px 64px 90px var(--gutter); }
-.orvion-management .orvion-eyebrow { color: #c8b291; }
-.orvion-management h2 { font-size: clamp(40px,4.2vw,66px); }
-.orvion-management h2 span { color: #c4ccbd; }
-.orvion-management .orvion-intro { color: #c0c9c4; margin-bottom: 34px; }
-.orvion-pillars > div { border-top: 1px solid #ffffff29; padding: 16px 0; }
-.orvion-pillars dt { font-size: 18px; margin-bottom: 5px; }
-.orvion-pillars dd { color: #bac4be; font-size: 14px; line-height: 1.65; max-width: 420px; }
-.orvion-management-photo { min-height: 800px; }
-.orvion-management-photo img { object-position: 57% center; }
-.orvion-landing .orvion-management-photo figcaption { font-size: 36px; padding: 140px 48px 56px; letter-spacing: -.035em; }
-.orvion-flow { position: relative; isolation: isolate; color: #fff; min-height: 800px; padding: 80px var(--gutter) 54px; display: flex; flex-direction: column; justify-content: space-between; gap: 180px; }
-.orvion-flow-photo { position: absolute; z-index: -2; inset: 0; object-position: center; }
-.orvion-flow::before { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg,rgba(12,21,25,.16) 30%,rgba(12,21,25,.35) 53%,#0c1519 100%),linear-gradient(90deg,rgba(12,21,25,.75),transparent 68%); }
-.orvion-flow-heading { max-width: 650px; }
-.orvion-flow h2 { font-size: clamp(44px,5.4vw,82px); }
-.orvion-flow-heading > p:last-child { margin-top: 24px; color: #e1e4e1; }
-.orvion-flow-stages { display: grid; grid-template-columns: repeat(4,1fr) 1.4fr; gap: 28px; list-style: none; padding: 0; }
-.orvion-flow-stages li { border-top: 1px solid #ffffff80; padding-top: 18px; }
-.orvion-flow-index { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; font-size: 11px; letter-spacing: .1em; color: #c6cfc9; }
-.orvion-flow-stages li:last-child .orvion-flow-index svg { visibility: hidden; }
-.orvion-flow-stages h3 { font-size: 24px; line-height: 1.1; margin-bottom: 10px; }
-.orvion-flow-stages p { color: #ccd3ce; font-size: 13px; line-height: 1.6; }
-.orvion-flow-stages li:last-child h3 { color: #e5c79c; }
-.orvion-ecosystem { background: #f7f5f0; }
-.orvion-ecosystem-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
-.orvion-ecosystem-focus { border-top: 1px solid #252a2970; padding-top: 30px; }
-.orvion-ecosystem-focus > .orvion-eyebrow { display: block; color: #626b62; }
-.orvion-ecosystem-focus h3 { position: relative; font-size: clamp(70px,7.7vw,116px); letter-spacing: -.065em; line-height: .95; margin-bottom: 32px; }
-.orvion-ecosystem-focus h3 span { position: absolute; right: 0; top: 0; font-size: 70px; color: #a17b47; }
-.orvion-ecosystem-focus > p { color: var(--muted); max-width: 350px; margin-bottom: 28px; }
-.orvion-ecosystem-services > div { display: flex; gap: 26px; align-items: flex-start; padding: 24px 0; border-top: 1px solid #252a2928; }
-.orvion-ecosystem-services > div > span { font-size: 11px; color: #788078; padding-top: 9px; }
-.orvion-ecosystem-services > div > div { flex: 1; }
-.orvion-ecosystem-services > div > svg { margin-top: 10px; flex-shrink: 0; color: #737d70; }
-.orvion-ecosystem-services dt { font: 400 29px/1.2 var(--font-display); letter-spacing: -.035em; margin-bottom: 10px; }
-.orvion-ecosystem-services dd { font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 440px; }
-.orvion-studio { display: grid; grid-template-columns: 54% 46%; background: #e7e6df; }
-.orvion-studio > figure { min-height: 640px; }
-.orvion-studio > figure img { object-position: 30% center; }
-.orvion-studio-copy { padding: 84px var(--gutter) 84px 64px; align-self: center; }
-.orvion-studio-copy h2 { font-size: clamp(36px,3.4vw,54px); }
-.orvion-studio-copy > p:not(.orvion-eyebrow) { color: var(--muted); margin-top: 24px; }
-.orvion-studio-copy > .orvion-studio-note { border-top: 1px solid #252a2930; padding-top: 24px; font-size: 14px; }
-.orvion-diagnostic { background: #d9cbb5; padding-block: 100px; }
-.orvion-diagnostic > div { display: grid; grid-template-columns: 1.4fr .8fr; align-items: end; gap: 72px; }
-.orvion-diagnostic h2 { font-size: clamp(44px,5.5vw,84px); }
-.orvion-diagnostic-action p { color: #50544c; margin-bottom: 28px; }
-.orvion-diagnostic-action > span { display: block; margin-top: 20px; font-size: 12px; letter-spacing: .09em; }
-.orvion-faq { background: #f7f5f0; display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
-.orvion-faq .orvion-intro { max-width: 285px; }
-.orvion-faq-item { border-top: 1px solid #252a2938; }
-.orvion-faq-item:last-child { border-bottom: 1px solid #252a2938; }
-.orvion-faq-item h3 { font-size: 21px; letter-spacing: -.015em; }
-.orvion-faq-item button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 28px; padding: 26px 0; text-align: left; line-height: 1.4; background: none; border: 0; cursor: pointer; color: inherit; }
-.orvion-faq-toggle { flex-shrink: 0; font: 300 28px/1 var(--font-body); color: #636e60; }
-.orvion-faq-item p { padding: 0 40px 26px 0; color: var(--muted); font-size: 15px; }
+.orvion-number { font: 400 13px/1.9 var(--font-body); color: var(--gold); }
+.orvion-problem-list h3 { font-size: 23px; letter-spacing: -.025em; margin-bottom: 8px; }
+.orvion-problem-list p { font-size: 14px; color: var(--muted); max-width: 450px; }
+.orvion-landing .orvion-problem-note { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); color: #d7c5a0; font-size: 15px; }
+.orvion-problem-note br { display: none; }
 
-/* Preserve the existing form and conversion handlers; restyle only this route. */
-.orvion-landing #proposta { padding: 104px var(--gutter); background: #222b2b; color: #f5f2eb; border: 0; }
-.orvion-landing #proposta > .absolute { display: none; }
+/* Process: four unboxed columns, disciplined numbering, no tall photography. */
+.orvion-process { background: #191a1c; }
+.orvion-process-layout { display: flex; flex-direction: column; gap: 26px; }
+.orvion-process-note { order: 2; color: #d6c5a2; display: flex; justify-content: space-between; padding-top: 18px; border-top: 1px solid var(--border); }
+.orvion-process-note br { display: none; }
+.orvion-process-note span { color: var(--muted); font-size: 13px; }
+.orvion-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 32px; list-style: none; padding: 0; }
+.orvion-steps li { border-top: 1px solid #cbb98f80; padding-top: 20px; }
+.orvion-step-label { display: block; font-size: 10px; letter-spacing: .12em; color: var(--gold); margin-bottom: 22px; }
+.orvion-steps h3 { font-size: 27px; line-height: 1.15; letter-spacing: -.025em; margin-bottom: 12px; }
+.orvion-steps p { color: var(--muted); font-size: 14px; }
+
+/* Management: a typographic statement beside a numbered service register. */
+.orvion-management { padding: 72px var(--gutter); background: #242527; display: grid; grid-template-columns: .92fr 1.08fr; column-gap: 10%; }
+.orvion-management h2 span { color: #d7c5a0; }
+.orvion-management-copy { grid-column: 1; grid-row: 1; }
+.orvion-management .orvion-intro { max-width: 370px; }
+.orvion-pillars { grid-column: 2; grid-row: 1 / 3; counter-reset: service; }
+.orvion-pillars > div { position: relative; border-top: 1px solid var(--border); padding: 19px 0 19px 42px; counter-increment: service; }
+.orvion-pillars > div::before { content: '0' counter(service); position: absolute; top: 23px; left: 0; color: var(--gold); font-size: 10px; }
+.orvion-pillars > div:first-child { border-top-color: #cbb98f80; }
+.orvion-pillars dt { font: 500 22px/1.2 var(--font-display); letter-spacing: -.02em; margin-bottom: 6px; }
+.orvion-pillars dd { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.orvion-landing .orvion-management-note { grid-column: 1; grid-row: 2; align-self: end; border-left: 1px solid var(--gold); padding-left: 18px; color: #d5d3cb; font-size: 17px; line-height: 1.6; margin-top: 36px; }
+
+/* Conversion path: a compact horizontal band. */
+.orvion-flow { background: #1c1d1f; padding: 56px var(--gutter); }
+.orvion-flow-heading { display: grid; grid-template-columns: .92fr 1.08fr; column-gap: 10%; align-items: end; }
+.orvion-flow-heading > .orvion-eyebrow { grid-column: 1 / -1; }
+.orvion-flow h2 { font-size: clamp(34px,3.1vw,45px); }
+.orvion-flow-heading > p:last-child { color: var(--muted); }
+.orvion-flow-stages { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)) 1.3fr; gap: 24px; list-style: none; padding: 0; margin-top: 38px !important; }
+.orvion-flow-stages li { border-top: 1px solid #cbb98f60; padding-top: 14px; }
+.orvion-flow-index { display: block; margin-bottom: 16px; font-size: 10px; letter-spacing: .1em; color: var(--gold); }
+.orvion-flow-index svg { display: none; }
+.orvion-flow-stages h3 { font-size: 21px; line-height: 1.15; margin-bottom: 7px; }
+.orvion-flow-stages p { color: var(--muted); font-size: 12px; }
+.orvion-flow-stages li:last-child h3 { color: #d7c5a0; }
+
+.orvion-ecosystem { background: #242527; }
+.orvion-ecosystem-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
+.orvion-ecosystem-focus { border-top: 1px solid var(--gold); padding-top: 25px; }
+.orvion-ecosystem-focus > .orvion-eyebrow { display: block; }
+.orvion-ecosystem-focus h3 { position: relative; font-size: clamp(65px,6.9vw,100px); font-weight: 400; letter-spacing: -.065em; line-height: .9; margin-bottom: 28px; }
+.orvion-ecosystem-focus h3 span { position: absolute; right: 20px; top: 0; font-size: 56px; color: var(--gold); }
+.orvion-ecosystem-focus > p { color: var(--muted); max-width: 330px; margin-bottom: 18px; }
+.orvion-ecosystem-services > div { display: flex; gap: 24px; align-items: flex-start; padding: 18px 0; border-top: 1px solid var(--border); }
+.orvion-ecosystem-services > div > span { font-size: 10px; color: var(--gold); padding-top: 6px; }
+.orvion-ecosystem-services > div > div { flex: 1; }
+.orvion-ecosystem-services > div > svg { display: none; }
+.orvion-ecosystem-services dt { font: 500 24px/1.2 var(--font-display); letter-spacing: -.025em; margin-bottom: 7px; }
+.orvion-ecosystem-services dd { font-size: 14px; line-height: 1.6; color: var(--muted); max-width: 450px; }
+
+/* Authority comes from the existing positioning, never invented client proof. */
+.orvion-studio { padding: 64px var(--gutter); background: #191a1c; }
+.orvion-studio-copy { display: grid; grid-template-columns: .92fr 1.08fr; column-gap: 10%; }
+.orvion-studio-copy > .orvion-eyebrow { grid-column: 1; }
+.orvion-studio-copy > h2 { grid-column: 1; grid-row: 2 / 5; }
+.orvion-studio-copy > p:not(.orvion-eyebrow) { grid-column: 2; color: var(--muted); margin: 0 0 20px; }
+.orvion-studio-copy > .orvion-intro { grid-row: 1 / 3; color: #e0d3b5 !important; font-size: 23px; line-height: 1.4; letter-spacing: -.02em; }
+.orvion-studio-copy > .orvion-studio-note { border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 0 !important; font-size: 13px; }
+.orvion-diagnostic { background: #28282a; border-block: 1px solid var(--border); padding-block: 56px; }
+.orvion-diagnostic > div { display: grid; grid-template-columns: 1.4fr .8fr; align-items: end; gap: 70px; }
+.orvion-diagnostic h2 { font-size: clamp(38px,4.2vw,62px); }
+.orvion-diagnostic-action p { color: #bcbcb6; margin-bottom: 24px; max-width: 340px; }
+.orvion-diagnostic-action > span { display: block; margin-top: 16px; font-size: 12px; letter-spacing: .06em; color: var(--muted); }
+.orvion-faq { background: #1c1d1f; display: grid; grid-template-columns: .8fr 1.2fr; gap: 12%; }
+.orvion-faq .orvion-intro { max-width: 285px; }
+.orvion-faq-item { border-top: 1px solid var(--border); }
+.orvion-faq-item:last-child { border-bottom: 1px solid var(--border); }
+.orvion-faq-item h3 { font-size: 20px; letter-spacing: -.02em; }
+.orvion-faq-item button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 25px; padding: 20px 0; text-align: left; line-height: 1.4; background: none; border: 0; cursor: pointer; color: inherit; }
+.orvion-faq-item button:hover { color: #dfcfa9; }
+.orvion-faq-toggle { flex-shrink: 0; font: 300 25px/1 var(--font-body); color: var(--gold); }
+.orvion-faq-item p { padding: 0 32px 20px 0; color: var(--muted); font-size: 14px; }
+
+/* Preserve conversion handlers and form semantics. */
+.orvion-landing #proposta { padding: 64px var(--gutter); background: #252628; color: var(--ink); border: 0; }
 .orvion-landing #proposta > .relative > div { border: 0; padding: 0; background: none; box-shadow: none; border-radius: 0; backdrop-filter: none; }
 .orvion-landing #proposta .orvion-contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; align-items: start; }
-.orvion-landing #proposta .orvion-contact-copy { grid-column: auto; text-align: left; }
-.orvion-landing #proposta .orvion-contact-copy > div:first-child { justify-content: flex-start; margin-bottom: 28px; }
+.orvion-landing #proposta .orvion-contact-copy { text-align: left; }
+.orvion-landing #proposta .orvion-contact-copy > div:first-child { justify-content: flex-start; margin-bottom: 22px; }
 .orvion-landing #proposta .orvion-contact-copy > div:first-child > span:first-child { display: none; }
-.orvion-landing #proposta .orvion-contact-copy > div:first-child > span:last-child { color: #c8b291; font-size: 11px; font-family: var(--font-body); }
-.orvion-landing #proposta h2 { font-size: clamp(36px,4.1vw,62px); font-weight: 400; line-height: 1.08; letter-spacing: -.04em; margin-bottom: 26px; }
-.orvion-landing #proposta .orvion-contact-copy > p { color: #c1cac4; font-size: 17px; margin-bottom: 32px; }
-.orvion-landing #proposta .orvion-contact-actions { flex-wrap: wrap; justify-content: flex-start; }
-.orvion-landing #proposta .orvion-contact-actions a { border-radius: 3px; background: none; box-shadow: none; color: #f5f2eb; font-weight: 400; font-size: 15px; padding: 14px 0; border: 0; border-bottom: 1px solid #bcc6be; }
+.orvion-landing #proposta .orvion-contact-copy > div:first-child > span:last-child { color: var(--gold); font-size: 10px; font-family: var(--font-body); }
+.orvion-landing #proposta h2 { font-size: clamp(36px,3.7vw,54px); font-weight: 500; line-height: 1.08; letter-spacing: -.04em; margin-bottom: 24px; }
+.orvion-landing #proposta .orvion-contact-copy > p { color: var(--muted); font-size: 16px; margin-bottom: 26px; }
+.orvion-landing #proposta .orvion-contact-actions { flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; }
+.orvion-landing #proposta .orvion-contact-actions a { border-radius: 0; background: none; box-shadow: none; color: #e0d3b5; font-weight: 500; font-size: 14px; padding: 12px 0; border: 0; border-bottom: 1px solid #cbb98f80; width: auto; }
 .orvion-landing #proposta .orvion-contact-actions a:last-child { display: none; }
-.orvion-landing #proposta .orvion-contact-form { grid-column: auto; padding: 0; border: 0; }
-.orvion-landing #proposta h3 { font-size: 26px; font-weight: 400; margin-bottom: 10px; }
-.orvion-landing #proposta .orvion-contact-form > div > p { font-size: 14px; color: #c1cac4; }
-.orvion-landing #proposta form { margin-top: 32px; }
-.orvion-landing #proposta label { color: #e4e7e0; font: 400 14px/1.5 var(--font-body); text-transform: none; letter-spacing: 0; margin-bottom: 9px; }
-.orvion-landing #proposta label span { color: #b7c1b9; }
-.orvion-landing #proposta :is(input,select,textarea) { font-size: 16px; color: #f5f2eb; background: #ffffff05; border: 1px solid #b3c2ba66; border-radius: 2px; min-height: 50px; box-shadow: none; padding: 12px 14px; }
-.orvion-landing #proposta :is(input,textarea)::placeholder { color: #aab6ad; }
-.orvion-landing #proposta [aria-invalid="true"] { border-color: #fca5a5; }
-.orvion-landing #proposta form > button { margin-top: 24px; border-radius: 3px; box-shadow: none; background: #e4c496; font-size: 15px; min-height: 56px; color: #202725; }
-.orvion-landing > footer { background: #1a2222; border-top: 1px solid #ffffff26; padding: 64px var(--gutter); }
-.orvion-landing > footer p { font-size: 14px; color: #b3bdb5; }
-.orvion-landing > footer :is(ul,.space-y-1\.5) { font-size: 14px; line-height: 1.8; color: #bbc6bd; }
-.orvion-landing > footer a { color: #d8d7cc; }
+.orvion-landing #proposta .orvion-contact-form { padding: 0; border: 0; }
+.orvion-landing #proposta h3 { font-size: 25px; font-weight: 500; margin-bottom: 10px; }
+.orvion-landing #proposta .orvion-contact-form > div > p { font-size: 13px; color: var(--muted); }
+.orvion-landing #proposta form { margin-top: 26px; }
+.orvion-landing #proposta label { color: #dcddd7; font: 400 13px/1.5 var(--font-body); text-transform: none; letter-spacing: 0; margin-bottom: 7px; }
+.orvion-landing #proposta label span { color: #aaa9a2; }
+.orvion-landing #proposta :is(input,select,textarea) { font-size: 16px; color: var(--ink); background: #1d1e20; border: 1px solid #ffffff38; border-radius: 2px; min-height: 48px; box-shadow: none; padding: 11px 13px; }
+.orvion-landing #proposta :is(input,textarea)::placeholder { color: #a2a29e; }
+.orvion-landing #proposta select option { background: #1d1e20; }
+.orvion-landing #proposta [aria-invalid="true"] { border-color: var(--gold); }
+.orvion-landing #proposta [role="alert"] { font-size: 13px; color: #e7d7ae; padding-top: 5px; }
+.orvion-landing #proposta form > button { margin-top: 24px; border-radius: 2px; box-shadow: none; background: linear-gradient(115deg,#beaa7e,#e0d3b5); font-size: 14px; min-height: 52px; color: #191a1c; padding-inline: 15px; }
+.orvion-landing #proposta .orvion-form-feedback { font-size: 13px; color: #dfd1b1; margin-top: 15px; }
+.orvion-form-feedback a { text-decoration: underline; text-underline-offset: 3px; }
+.orvion-landing > footer { background: #17181a; border-top: 1px solid var(--border); padding: 40px var(--gutter); }
+.orvion-landing > footer p { font-size: 13px; color: #aaa9a4; }
+.orvion-landing > footer :is(ul,.space-y-1\.5) { font-size: 13px; line-height: 1.8; color: #b6b6af; }
+.orvion-landing > footer a,.orvion-landing > footer svg { color: var(--gold); }
 .orvion-landing > footer .font-mono { font-family: var(--font-body); }
-.orvion-mobile-contact { background: #222b2bf5; padding: 12px 20px calc(12px + env(safe-area-inset-bottom,0px)); }
-.orvion-landing .orvion-mobile-contact a { background: #e4c496; box-shadow: none; border-radius: 3px; font-size: 13px; color: #202725; }
+.orvion-landing > footer .text-\[\#D4AF37\] { color: var(--gold); }
+.orvion-mobile-contact { background: #202123f5; padding: 10px 20px calc(10px + env(safe-area-inset-bottom,0px)); backdrop-filter: blur(8px); }
+.orvion-landing .orvion-mobile-contact a { background: #d0bd96; box-shadow: none; border-radius: 2px; font-size: 13px; color: #191a1c; }
 .orvion-mobile-contact[hidden] { display: none; }
+.orvion-landing ~ [aria-label="Aviso de cookies"] { border-radius: 3px; box-shadow: none; border-color: #cbb98f40; }
+.orvion-landing ~ [aria-label="Aviso de cookies"] button { background: #d0bd96 !important; border-radius: 2px; box-shadow: none; min-height: 44px; }
+.orvion-landing ~ [aria-label="Aviso de cookies"] a { color: #dfcfa9; }
 
-/* Preserve the section frames while fitting the campaign-specific photographs. */
-.orvion-landing :is(.orvion-problem-photo,.orvion-process-photo,.orvion-management-photo,.orvion-studio > figure) > img { position: absolute; inset: 0; object-position: 50% 44%; }
-.orvion-landing figure figcaption small { display: block; margin-top: 14px; font: 400 12px/1.6 var(--font-body); letter-spacing: 0; color: #dce1df; }
-.orvion-landing figure .orvion-illustrative-caption { font: 400 12px/1.6 var(--font-body); padding: 60px 24px 24px; }
-
-@media(min-width:1800px) {
-  .orvion-landing { --gutter: max(112px,calc((100vw - 1550px)/2)); }
-}
-@media(max-width:1199px) {
+@media (min-width:1200px) { .orvion-menu { display: none; } }
+@media (max-width:1199px) {
+  .orvion-landing { --gutter: 40px; }
+  .orvion-landing > header { height: 64px; }
   .orvion-landing > header nav { display: none; }
-  .orvion-menu-toggle { display: inline-flex; }
-  .orvion-landing > header > div { gap: 14px; }
-  .orvion-problem-copy,.orvion-management-copy { padding-right: 40px; }
-  .orvion-section-heading { grid-template-columns: .65fr 1.4fr; gap: 40px; }
-  .orvion-studio-copy { padding-left: 40px; }
+  .orvion-menu-toggle { display: inline-flex; align-items: center; }
+  .orvion-landing > header > div { gap: 12px; }
+  .orvion-landing #topo { min-height: 680px; padding-top: 56px; }
+  .orvion-section-heading { gap: 40px; }
+  .orvion-steps { gap: 24px; }
   .orvion-diagnostic > div { gap: 40px; }
-  .orvion-diagnostic .orvion-button { gap: 12px; padding-inline: 20px; }
 }
-@media(max-width:899px) {
-  .orvion-landing > header { height: 72px; }
-  .orvion-landing #topo { margin-top: -72px; min-height: 900px; padding-top: 150px; }
-  .orvion-landing #topo h1 { font-size: 64px; }
-  .orvion-section { padding-block: 76px; }
-  .orvion-section-heading { display: block; margin-bottom: 40px; }
-  .orvion-problem,.orvion-management,.orvion-studio { grid-template-columns: 1fr; }
-  .orvion-problem-copy,.orvion-management-copy { padding: 76px var(--gutter); }
-  .orvion-problem-photo { min-height: 0; height: 480px; }
-  .orvion-process-layout { gap: 40px; }
-  .orvion-process-photo { min-height: 650px; }
-  .orvion-management-photo { min-height: 0; height: 520px; }
-  .orvion-pillars { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
-  .orvion-flow { min-height: 760px; padding-top: 64px; gap: 130px; }
-  .orvion-flow-stages { gap: 16px; }
-  .orvion-flow-stages h3 { font-size: 21px; }
-  .orvion-ecosystem-layout { gap: 8%; }
-  .orvion-studio > figure { min-height: 0; height: 500px; }
-  .orvion-studio-copy { padding: 70px var(--gutter); }
-  .orvion-diagnostic > div { grid-template-columns: 1fr; gap: 36px; }
-  .orvion-diagnostic-action { max-width: 440px; }
-  .orvion-faq { gap: 7%; grid-template-columns: .7fr 1.3fr; }
-  .orvion-landing #proposta { padding-block: 76px; }
-  .orvion-landing #proposta .orvion-contact-layout { gap: 7%; }
+@media (max-width:899px) {
+  .orvion-landing { --gutter: 32px; }
+  .orvion-landing #topo h1 { font-size: 57px; max-width: 680px; }
+  .orvion-hero-shade { background: linear-gradient(90deg,#18191a80, #18191a40 70%,#18191a10); }
+  .orvion-section { padding-block: 56px; }
+  .orvion-section-heading { display: block; margin-bottom: 34px; }
+  .orvion-steps { grid-template-columns: 1fr 1fr; gap: 26px 32px; }
+  .orvion-problem-copy,.orvion-management,.orvion-studio-copy { column-gap: 6%; }
+  .orvion-problem,.orvion-management,.orvion-studio { padding-block: 56px; }
+  .orvion-ecosystem-layout,.orvion-faq { gap: 7%; }
+  .orvion-flow-stages { gap: 14px; }
+  .orvion-flow-stages h3 { font-size: 18px; }
+  .orvion-diagnostic > div { grid-template-columns: 1.2fr 1fr; gap: 30px; }
+  .orvion-diagnostic .orvion-button { padding-inline: 18px; gap: 14px; }
+  .orvion-landing #proposta .orvion-contact-layout { gap: 6%; }
 }
-@media(max-width:639px) {
-  .orvion-landing { --gutter: 24px; }
-  .orvion-landing section { scroll-margin-top: 86px; }
-  .orvion-landing > header { padding-inline: 20px; }
-  .orvion-landing > header > a { gap: 7px; }
-  .orvion-landing > header > a span:first-child { font-size: 17px; letter-spacing: .15em; }
-  .orvion-landing > header > a span:last-child { font-size: 8px; letter-spacing: .18em; }
+@media (max-width:639px) {
+  .orvion-landing { --gutter: 22px; }
+  .orvion-landing section { scroll-margin-top: 78px; }
+  .orvion-landing > header { padding-inline: 18px; height: 64px; }
+  .orvion-landing > header > a { gap: 6px; }
+  .orvion-landing > header > a > span:first-child { font-size: 17px; letter-spacing: .14em; }
+  .orvion-landing > header > a > span:last-child { font-size: 8px; letter-spacing: .12em; }
   .orvion-landing > header > div { gap: 3px; }
-  .orvion-landing > header > div > a { padding: 8px 11px; font-size: 11px; }
+  .orvion-landing > header > div > a { padding: 8px 10px; min-height: 40px; font-size: 11px; }
   .orvion-landing > header > div > a svg { display: none; }
   .orvion-menu-toggle { font-size: 12px; padding: 8px; }
-  .orvion-landing #topo { min-height: max(870px,100svh); padding: 120px var(--gutter) 72px; align-items: flex-start; }
-  .orvion-landing #topo .orvion-hero-background img { object-position: 70% bottom; }
-  .orvion-hero-shade { background: linear-gradient(180deg,#101b20a6 0%,#101b20c7 49%,#101b2040 75%,transparent 100%); }
-  .orvion-landing #topo h1 { font-size: clamp(38px,10.7vw,64px); line-height: 1.07; max-width: 100%; margin-bottom: 24px; }
-  .orvion-landing #topo .orvion-hero-eyebrow { margin-bottom: 25px; }
-  .orvion-landing #topo .orvion-hero-eyebrow span:last-child { font-size: 9px; letter-spacing: .12em; }
-  .orvion-landing #topo p { font-size: 16px; line-height: 1.7; margin-bottom: 24px; max-width: 370px; }
-  .orvion-landing #topo .orvion-hero-actions { align-items: stretch; gap: 4px; margin-bottom: 16px; }
-  .orvion-landing #topo .orvion-hero-actions a { font-size: 14px; white-space: normal; }
-  .orvion-landing #topo .orvion-hero-actions a:last-child { justify-content: flex-start; min-height: 46px; }
-  .orvion-landing #topo .orvion-hero-microcopy { gap: 7px; font-size: 11px; max-width: 310px; }
-  .orvion-landing h2 { font-size: clamp(34px,9.3vw,48px); line-height: 1.1; }
-  .orvion-landing .orvion-eyebrow { font-size: 10px; margin-bottom: 24px; letter-spacing: .13em; }
-  .orvion-landing .orvion-intro { font-size: 16px; margin-top: 20px; }
-  .orvion-section { padding: 64px var(--gutter); }
-  .orvion-section-heading { margin-bottom: 36px; }
-  .orvion-problem-copy,.orvion-management-copy { padding: 64px var(--gutter); }
-  .orvion-problem-list { margin-top: 32px !important; }
-  .orvion-problem-list li { grid-template-columns: 35px 1fr; gap: 19px; padding-block: 24px; }
-  .orvion-number { font-size: 29px; }
-  .orvion-problem-list h3 { font-size: 23px; }
-  .orvion-problem-list p { font-size: 15px; }
-  .orvion-problem-photo { height: 440px; }
-  .orvion-landing figure figcaption { padding: 72px 24px 28px; font-size: 23px; }
-  .orvion-process-layout { grid-template-columns: 1fr; gap: 38px; }
-  .orvion-process-photo { min-height: 0; height: 430px; margin-inline: -24px !important; }
-  .orvion-steps li { padding-block: 24px; }
-  .orvion-steps li:last-child { padding-bottom: 0; }
-  .orvion-steps h3 { font-size: 30px; }
-  .orvion-steps p { font-size: 16px; }
-  .orvion-management h2 { font-size: 43px; }
-  .orvion-management h2 br:nth-child(2) { display: block; }
-  .orvion-pillars { display: block; }
-  .orvion-pillars > div { padding-block: 18px; }
-  .orvion-pillars dt { font-size: 19px; }
-  .orvion-pillars dd { font-size: 15px; }
-  .orvion-management-photo { height: 470px; }
-  .orvion-landing .orvion-management-photo figcaption { padding: 80px 24px 32px; font-size: 32px; }
-  .orvion-flow { min-height: 1020px; padding: 64px var(--gutter) 44px; gap: 180px; }
-  .orvion-flow-photo { object-position: 53% top; }
-  .orvion-flow::before { background: linear-gradient(180deg,rgba(12,21,25,.65),rgba(12,21,25,.15) 25%,rgba(12,21,25,.9) 53%,#0c1519 100%); }
-  .orvion-flow h2 { font-size: 47px; }
-  .orvion-flow-heading > p:last-child { font-size: 15px; }
-  .orvion-flow-stages { display: block; padding-left: 0; }
-  .orvion-flow-stages li { position: relative; padding: 18px 0 18px 46px; border: 0; border-left: 1px solid #ffffff66; margin-left: 12px; }
-  .orvion-flow-index { position: absolute; left: -12px; top: 24px; margin: 0; padding: 4px 3px; color: #e5c79c; background: #111e22; font-size: 10px; }
-  .orvion-flow-index svg { display: none; }
-  .orvion-flow-stages h3 { font-size: 25px; margin-bottom: 5px; }
-  .orvion-flow-stages p { font-size: 14px; }
-  .orvion-ecosystem-layout { grid-template-columns: 1fr; gap: 40px; }
-  .orvion-ecosystem-focus h3 { font-size: 92px; margin-bottom: 22px; }
-  .orvion-ecosystem-focus h3 span { right: 18px; }
-  .orvion-ecosystem-focus > p { margin-bottom: 14px; }
-  .orvion-ecosystem-services > div { gap: 20px; padding-block: 23px; }
-  .orvion-ecosystem-services dt { font-size: 26px; }
-  .orvion-ecosystem-services dd { font-size: 15px; }
-  .orvion-studio > figure { height: 430px; }
-  .orvion-studio-copy { padding: 64px var(--gutter); }
-  .orvion-diagnostic h2 { font-size: 43px; }
-  .orvion-diagnostic .orvion-button { width: 100%; gap: 16px; font-size: 14px; }
-  .orvion-faq { grid-template-columns: 1fr; gap: 36px; }
+  .orvion-landing #topo { min-height: 0; padding: 39px var(--gutter) 32px; align-items: flex-start; }
+  .orvion-hero-background img { object-position: 62% center; opacity: .24; }
+  .orvion-hero-shade { background: linear-gradient(90deg,#18191adc,#18191a40),linear-gradient(0deg,#18191a,transparent 45%); }
+  .orvion-landing #topo h1 { font-size: clamp(36px,9.8vw,45px); line-height: 1.075; letter-spacing: -.045em; margin-bottom: 22px; max-width: 410px; }
+  .orvion-desktop-break { display: none; }
+  .orvion-landing #topo h1 span { letter-spacing: -.04em; }
+  .orvion-landing #topo .orvion-hero-eyebrow { margin-bottom: 23px; gap: 8px; }
+  .orvion-landing #topo .orvion-hero-eyebrow span:first-child { width: 14px; }
+  .orvion-landing #topo .orvion-hero-eyebrow span:last-child { font-size: 9px; letter-spacing: .1em; }
+  .orvion-landing #topo p { font-size: 15px; line-height: 1.65; max-width: 370px; margin-bottom: 23px; }
+  .orvion-landing #topo .orvion-hero-actions { align-items: stretch; gap: 4px; margin-bottom: 17px; }
+  .orvion-landing #topo .orvion-hero-actions a { font-size: 14px; white-space: normal; min-height: 50px; }
+  .orvion-landing #topo .orvion-hero-actions a:last-child { justify-content: flex-start; min-height: 44px; padding-block: 10px; font-size: 13px; }
+  .orvion-landing #topo .orvion-hero-microcopy { gap: 4px 8px; font-size: 10px; max-width: 345px; }
+  .orvion-landing h2 { font-size: clamp(32px,8.7vw,39px); line-height: 1.1; }
+  .orvion-landing .orvion-eyebrow { font-size: 9px; margin-bottom: 18px; letter-spacing: .13em; }
+  .orvion-landing .orvion-intro { font-size: 15px; line-height: 1.65; margin-top: 18px; }
+  .orvion-section,.orvion-problem,.orvion-management,.orvion-flow,.orvion-studio { padding: 36px var(--gutter); }
+  .orvion-section-heading { margin-bottom: 29px; }
+  .orvion-problem-copy { display: block; }
+  .orvion-problem-list { margin-top: 27px !important; }
+  .orvion-problem-list li { grid-template-columns: 24px 1fr; gap: 12px; padding-block: 17px; }
+  .orvion-problem-list h3 { font-size: 22px; margin-bottom: 6px; }
+  .orvion-problem-list p { font-size: 14px; line-height: 1.65; }
+  .orvion-landing .orvion-problem-note { margin-top: 24px; padding-top: 17px; font-size: 14px; }
+  .orvion-steps { display: block; }
+  .orvion-steps li { position: relative; padding: 14px 0 14px 40px; border-top-color: var(--border); }
+  .orvion-step-label { position: absolute; left: 0; top: 18px; font-size: 9px; width: 26px; line-height: 1.6; letter-spacing: 0; }
+  .orvion-steps h3 { font-size: 25px; margin-bottom: 7px; }
+  .orvion-steps p { font-size: 14px; line-height: 1.65; }
+  .orvion-process-layout { gap: 10px; }
+  .orvion-process-note { display: block; font-size: 14px !important; }
+  .orvion-process-note span { display: block; font-size: 12px; margin-top: 4px; }
+  .orvion-management { display: flex; flex-direction: column; }
+  .orvion-management h2 br:nth-child(2) { display: none; }
+  .orvion-pillars { margin-top: 28px !important; }
+  .orvion-pillars > div { padding: 12px 0 12px 33px; }
+  .orvion-pillars > div::before { top: 16px; }
+  .orvion-pillars dt { font-size: 21px; }
+  .orvion-pillars dd { font-size: 14px; }
+  .orvion-landing .orvion-management-note { margin-top: 22px; align-self: flex-start; font-size: 15px; }
+  .orvion-flow-heading { display: block; }
+  .orvion-flow-heading > p:last-child { margin-top: 18px; font-size: 14px; }
+  .orvion-flow-stages { display: block; margin-top: 25px !important; }
+  .orvion-flow-stages li { display: grid; grid-template-columns: 30px 1fr; gap: 3px 10px; padding: 13px 0; border-top-color: var(--border); }
+  .orvion-flow-index { grid-row: 1 / 3; margin: 4px 0 0; }
+  .orvion-flow-stages h3 { font-size: 21px; margin: 0; }
+  .orvion-flow-stages p { font-size: 13px; grid-column: 2; }
+  .orvion-ecosystem-layout { grid-template-columns: 1fr; gap: 28px; }
+  .orvion-ecosystem-focus { padding-top: 20px; }
+  .orvion-ecosystem-focus h3 { font-size: 65px; margin-bottom: 20px; }
+  .orvion-ecosystem-focus h3 br { display: none; }
+  .orvion-ecosystem-focus h3 span { right: 0; font-size: 39px; }
+  .orvion-ecosystem-focus > p { margin-bottom: 10px; font-size: 14px; }
+  .orvion-ecosystem-services > div { gap: 16px; padding-block: 12px; }
+  .orvion-ecosystem-services dt { font-size: 23px; }
+  .orvion-ecosystem-services dd { font-size: 14px; }
+  .orvion-studio-copy { display: block; }
+  .orvion-studio-copy > p:not(.orvion-eyebrow) { margin-top: 22px; margin-bottom: 0; font-size: 15px; }
+  .orvion-studio-copy > .orvion-intro { font-size: 20px !important; }
+  .orvion-studio-copy > .orvion-studio-note { font-size: 13px !important; }
+  .orvion-diagnostic > div { grid-template-columns: 1fr; gap: 25px; }
+  .orvion-diagnostic h2 { font-size: 38px; }
+  .orvion-diagnostic-action p { font-size: 15px; margin-bottom: 20px; }
+  .orvion-diagnostic .orvion-button { width: auto; gap: 26px; font-size: 14px; }
+  .orvion-faq { grid-template-columns: 1fr; gap: 28px; }
+  .orvion-faq h2 br { display: none; }
   .orvion-faq .orvion-intro { max-width: none; }
-  .orvion-faq-item h3 { font-size: 21px; }
-  .orvion-faq-item button { padding-block: 23px; gap: 20px; }
-  .orvion-faq-item p { padding-right: 20px; font-size: 15px; }
-  .orvion-landing #proposta { padding: 64px var(--gutter); }
-  .orvion-landing #proposta .orvion-contact-layout { grid-template-columns: 1fr; gap: 48px; }
-  .orvion-landing #proposta h2 { font-size: 38px; }
-  .orvion-landing #proposta .orvion-contact-actions a { width: auto; }
-  .orvion-landing > footer { padding: 48px var(--gutter) calc(114px + env(safe-area-inset-bottom,0px)); }
-  .orvion-landing > footer .text-\[10px\] { font-size: 11px; color: #c5cec8; }
-  .orvion-landing > footer .font-mono p { font-size: 12px; text-align: center; }
-  .orvion-landing ~ .fixed { bottom: calc(88px + env(safe-area-inset-bottom,0px)); left: 16px; max-width: calc(100vw - 32px); }
+  .orvion-faq-item h3 { font-size: 19px; }
+  .orvion-faq-item button { padding-block: 18px; gap: 16px; }
+  .orvion-faq-item p { padding-right: 15px; }
+  .orvion-landing #proposta { padding: 42px var(--gutter); }
+  .orvion-landing #proposta .orvion-contact-layout { grid-template-columns: 1fr; gap: 34px; }
+  .orvion-landing #proposta h2 { font-size: 35px; }
+  .orvion-landing #proposta .orvion-contact-copy > p { font-size: 15px; margin-bottom: 16px; }
+  .orvion-landing #proposta h3 { font-size: 23px; }
+  .orvion-landing #proposta form { margin-top: 20px; }
+  .orvion-landing > footer { padding: 34px var(--gutter) calc(98px + env(safe-area-inset-bottom,0px)); }
+  .orvion-landing > footer .text-\[10px\] { font-size: 10px; color: #c4c3bd; }
+  .orvion-landing > footer .font-mono p { font-size: 11px; text-align: center; }
+  .orvion-landing ~ [aria-label="Aviso de cookies"] { bottom: calc(80px + env(safe-area-inset-bottom,0px)); left: 16px; max-width: calc(100vw - 32px); }
 }
-@media(min-width:1200px) {
-  .orvion-menu { display: none; }
+@media(max-width:359px) {
+  .orvion-landing { --gutter: 18px; }
+  .orvion-landing > header { padding-inline: 12px; }
+  .orvion-landing > header > a > span:first-child { font-size: 15px; }
+  .orvion-landing > header > a > span:last-child { font-size: 7px; }
+  .orvion-landing #topo h1 { font-size: 34px; }
+  .orvion-landing #topo .orvion-hero-eyebrow span:last-child { letter-spacing: .04em; }
+  .orvion-ecosystem-focus h3 { font-size: 59px; }
 }
 @media(prefers-reduced-motion:reduce) {
   .orvion-landing *, .orvion-landing *::before { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
