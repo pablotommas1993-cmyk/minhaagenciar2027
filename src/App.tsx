@@ -14,12 +14,15 @@ export default function App() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const handlePopState = () => {
       setCurrentPath(window.location.pathname);
     };
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    const timer = window.setTimeout(() => setMounted(true), 1200);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.clearTimeout(timer);
+    };
   }, []);
 
   const isPrivacy = currentPath === '/privacidade' || currentPath === '/privacidade/';

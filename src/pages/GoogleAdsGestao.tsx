@@ -433,8 +433,22 @@ export default function GoogleAdsGestao() {
         >
           <div className="orvion-hero-background" aria-hidden="true">
             <picture>
-              <source srcSet="/images/orvion-champagne-metal.webp" type="image/webp" />
-              <img src="/images/orvion-champagne-metal.webp" alt="" width="1672" height="940" fetchPriority="high" loading="eager" />
+              <source
+                srcSet="/images/orvion-champagne-metal-mobile.webp 800w, /images/orvion-champagne-metal.webp 1672w"
+                sizes="100vw"
+                type="image/webp"
+              />
+              <img
+                src="/images/orvion-champagne-metal.webp"
+                srcSet="/images/orvion-champagne-metal-mobile.webp 800w, /images/orvion-champagne-metal.webp 1672w"
+                sizes="100vw"
+                alt=""
+                width="1672"
+                height="940"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
             </picture>
             <div className="orvion-hero-shade" />
           </div>

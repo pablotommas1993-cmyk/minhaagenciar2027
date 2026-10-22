@@ -104,21 +104,21 @@ googleAdsHtml = googleAdsHtml.replace(
   '<meta property="twitter:image" content="https://orvionstudio.com.br/orvion-google-ads-og.png" />'
 );
 
-// Preload Hero Image and inline critical stylesheet to eliminate render-blocking CSS round-trip
+// Preload Hero Image (responsive srcset/sizes) and prioritize CSS before module scripts
 googleAdsHtml = googleAdsHtml.replace(/<link rel="preload" href="\/assets\/outfit-latin-600[^"]+"[^>]*>\s*/i, '');
 googleAdsHtml = googleAdsHtml.replace(/<link rel="modulepreload" crossorigin href="\/assets\/motion-[^"]+">\s*/i, '');
+const heroPreloadTag = '<link rel="preload" as="image" href="/images/orvion-champagne-metal-mobile.webp" imagesrcset="/images/orvion-champagne-metal-mobile.webp 800w, /images/orvion-champagne-metal.webp 1672w" imagesizes="100vw" type="image/webp" fetchpriority="high" />';
 const cssMatch = googleAdsHtml.match(/<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/i);
 if (cssMatch) {
-  const cssContent = fs.readFileSync(path.join(distDir, cssMatch[1]), 'utf-8');
   googleAdsHtml = googleAdsHtml.replace(cssMatch[0], '');
   googleAdsHtml = googleAdsHtml.replace(
     '<!-- Preload Critical Hero Fonts -->',
-    `<link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" fetchpriority="high" />\n    <style>${cssContent}</style>\n    <!-- Preload Critical Hero Fonts -->`
+    `${heroPreloadTag}\n    ${cssMatch[0]}\n    <!-- Preload Critical Hero Fonts -->`
   );
 } else {
   googleAdsHtml = googleAdsHtml.replace(
     '</head>',
-    '    <link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" fetchpriority="high" />\n  </head>'
+    `    ${heroPreloadTag}\n  </head>`
   );
 }
 
