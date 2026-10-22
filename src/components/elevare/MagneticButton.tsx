@@ -1,6 +1,6 @@
 import { motion, useMotionValue } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { trackWhatsAppConversion } from '@/utils/gtag';
+import { buildWhatsAppUrl, trackWhatsAppConversion } from '@/utils/gtag';
 
 interface MagneticButtonProps {
   children?: React.ReactNode;
@@ -11,12 +11,13 @@ interface MagneticButtonProps {
 
 export default function MagneticButton({
   children = 'Solicitar Diagnóstico Gratuito',
-  href = 'https://wa.me/5511979991680',
+  href,
   target = '_blank',
   rel = 'noopener noreferrer',
 }: MagneticButtonProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const resolvedHref = href || buildWhatsAppUrl();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -33,7 +34,7 @@ export default function MagneticButton({
 
   return (
     <motion.a
-      href={href}
+      href={resolvedHref}
       target={target}
       rel={rel}
       onClick={trackWhatsAppConversion}

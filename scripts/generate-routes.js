@@ -78,6 +78,11 @@ googleAdsHtml = googleAdsHtml.replace(
   '<meta property="og:url" content="https://orvionstudio.com.br/google-ads/gestao" />'
 );
 
+googleAdsHtml = googleAdsHtml.replace(
+  /<meta\s+property="og:image"\s+content=".*?"\s*\/?>/i,
+  '<meta property="og:image" content="https://orvionstudio.com.br/orvion-google-ads-og.png" />'
+);
+
 // Twitter Cards
 googleAdsHtml = googleAdsHtml.replace(
   /<meta\s+property="twitter:title"\s+content=".*?"\s*\/?>/i,
@@ -94,11 +99,28 @@ googleAdsHtml = googleAdsHtml.replace(
   '<meta property="twitter:url" content="https://orvionstudio.com.br/google-ads/gestao" />'
 );
 
-// Preload Hero Image
 googleAdsHtml = googleAdsHtml.replace(
-  '</head>',
-  '    <link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" />\n  </head>'
+  /<meta\s+property="twitter:image"\s+content=".*?"\s*\/?>/i,
+  '<meta property="twitter:image" content="https://orvionstudio.com.br/orvion-google-ads-og.png" />'
 );
+
+// Preload Hero Image and inline critical stylesheet to eliminate render-blocking CSS round-trip
+googleAdsHtml = googleAdsHtml.replace(/<link rel="preload" href="\/assets\/outfit-latin-600[^"]+"[^>]*>\s*/i, '');
+googleAdsHtml = googleAdsHtml.replace(/<link rel="modulepreload" crossorigin href="\/assets\/motion-[^"]+">\s*/i, '');
+const cssMatch = googleAdsHtml.match(/<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/i);
+if (cssMatch) {
+  const cssContent = fs.readFileSync(path.join(distDir, cssMatch[1]), 'utf-8');
+  googleAdsHtml = googleAdsHtml.replace(cssMatch[0], '');
+  googleAdsHtml = googleAdsHtml.replace(
+    '<!-- Preload Critical Hero Fonts -->',
+    `<link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" fetchpriority="high" />\n    <style>${cssContent}</style>\n    <!-- Preload Critical Hero Fonts -->`
+  );
+} else {
+  googleAdsHtml = googleAdsHtml.replace(
+    '</head>',
+    '    <link rel="preload" href="/images/orvion-champagne-metal.webp" as="image" type="image/webp" fetchpriority="high" />\n  </head>'
+  );
+}
 
 // Inject prerendered component inside <div id="root">
 if (prerenderedGoogleAdsBody) {
@@ -220,4 +242,3 @@ if (prerenderedNovaBody) {
 fs.writeFileSync(path.join(novaDir, 'index.html'), novaHtml, 'utf-8');
 fs.writeFileSync(path.join(distDir, 'nova.html'), novaHtml, 'utf-8');
 console.log('✓ Generated dist/nova/index.html and dist/nova.html with route-specific metadata and prerendered content');
-

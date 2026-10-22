@@ -1,10 +1,13 @@
 import { useEffect, lazy, Suspense } from 'react';
 import WhatsAppFloatingButton from '@/components/elevare/WhatsAppFloatingButton';
 import { ArrowLeft, Shield, Lock, Eye, FileText, CheckCircle } from 'lucide-react';
+import { buildWhatsAppUrl, trackWhatsAppConversion } from '@/utils/gtag';
 
 const Footer = lazy(() => import('@/components/elevare/Footer'));
 
 export default function PrivacyPolicy() {
+  const whatsappHref = buildWhatsAppUrl();
+
   useEffect(() => {
     const previousTitle = document.title;
     document.title = 'Política de Privacidade — ORVION Studio';
@@ -106,7 +109,7 @@ export default function PrivacyPolicy() {
                   contato@orvionstudio.com.br
                 </a>{' '}
                 ou via WhatsApp no{' '}
-                <a href="https://wa.me/5511979991680" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppConversion} className="text-[#D4AF37] hover:underline">
                   +55 11 97999-1680
                 </a>
                 .

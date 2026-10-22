@@ -8,7 +8,7 @@ const stats = [
     prefix: '',
     suffix: '',
     decimals: 0,
-    label: 'Contatos gerados*',
+    label: 'contatos gerados',
   },
   {
     value: 'R$ 2,36 mil',
@@ -16,7 +16,7 @@ const stats = [
     prefix: 'R$ ',
     suffix: ' mil',
     decimals: 2,
-    label: 'Investidos em mídia (90 dias)*',
+    label: 'investidos',
   },
   {
     value: 'R$ 9,63',
@@ -24,7 +24,7 @@ const stats = [
     prefix: 'R$ ',
     suffix: '',
     decimals: 2,
-    label: 'Custo médio por contato*',
+    label: 'custo por contato',
   },
   {
     value: '5,21 mil',
@@ -32,7 +32,7 @@ const stats = [
     prefix: '',
     suffix: ' mil',
     decimals: 2,
-    label: 'Impressões geradas*',
+    label: 'impressões',
   },
 ];
 
@@ -75,7 +75,7 @@ function Counter({
     <span
       ref={ref}
       className="font-display font-semibold text-white tracking-[-0.02em]"
-      style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)' }}
+      style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontVariantNumeric: 'tabular-nums' }}
     >
       {display}
     </span>
@@ -113,8 +113,8 @@ export default function StatsBar() {
             </div>
           ))}
         </div>
-        <p className="mt-4 px-4 md:px-8 text-[10px] md:text-[11px] text-white/40 tracking-wide">
-          *Resultados de campanha gerenciada pela ORVION Studio, período de 90 dias.
+        <p className="mt-4 px-4 md:px-8 text-[10px] md:text-[11px] text-[#BDBDBD]/80 tracking-wide">
+          Resultados de campanhas gerenciadas pela Orvion em contas de clientes (dados anonimizados). Período: 1 jul a 27 set de 2026. Resultados variam conforme segmento e investimento.
         </p>
       </div>
     </motion.div>

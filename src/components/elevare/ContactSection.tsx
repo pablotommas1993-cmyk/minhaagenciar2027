@@ -1,30 +1,9 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
-import { trackWhatsAppConversion, openWhatsAppWithTracking } from '@/utils/gtag';
+import { buildWhatsAppUrl, trackWhatsAppConversion, openWhatsAppWithTracking } from '@/utils/gtag';
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const contactItems = [
-  {
-    icon: Mail,
-    label: 'E-mail',
-    value: 'contato@orvionstudio.com.br',
-    href: 'mailto:contato@orvionstudio.com.br',
-  },
-  {
-    icon: Phone,
-    label: 'WhatsApp',
-    value: '+55 11 97999-1680',
-    href: 'https://wa.me/5511979991680',
-  },
-  {
-    icon: MessageSquare,
-    label: 'Resposta em',
-    value: 'Até 24 horas úteis',
-    href: null,
-  },
-];
 
 type FormState = {
   name: string;
@@ -47,6 +26,28 @@ const services = [
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const whatsappHref = buildWhatsAppUrl();
+
+  const contactItems = [
+    {
+      icon: Mail,
+      label: 'E-mail',
+      value: 'contato@orvionstudio.com.br',
+      href: 'mailto:contato@orvionstudio.com.br',
+    },
+    {
+      icon: Phone,
+      label: 'WhatsApp',
+      value: '+55 11 97999-1680',
+      href: whatsappHref,
+    },
+    {
+      icon: MessageSquare,
+      label: 'Resposta em',
+      value: 'Até 24 horas úteis',
+      href: null,
+    },
+  ];
 
   const [form, setForm] = useState<FormState>({
     name: '',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { trackWhatsAppConversion } from '@/utils/gtag';
+import { buildWhatsAppUrl, trackWhatsAppConversion } from '@/utils/gtag';
 
 const navItems = ['Serviços', 'Portfólio', 'Processo', 'Sobre', 'Contato'];
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -13,6 +13,7 @@ interface NavigationProps {
 export default function Navigation({ onSectionClick }: NavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const whatsappHref = buildWhatsAppUrl();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +88,7 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
           </button>
         ))}
         <a
-          href="https://wa.me/5511979991680"
+          href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
           onClick={trackWhatsAppConversion}
@@ -132,7 +133,7 @@ export default function Navigation({ onSectionClick }: NavigationProps) {
                 </button>
               ))}
               <a
-                href="https://wa.me/5511979991680"
+                href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={trackWhatsAppConversion}

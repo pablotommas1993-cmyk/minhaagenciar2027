@@ -6,7 +6,7 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const projects = [
   {
-    category: 'Projeto Conceitual',
+    category: 'Conceitos de projeto',
     title: 'Advocacia Premium',
     description:
       'Website institucional desenvolvido para posicionamento de autoridade, experiência premium e alta performance técnica.',
@@ -18,7 +18,7 @@ const projects = [
     size: 'large',
   },
   {
-    category: 'Projeto Conceitual',
+    category: 'Conceitos de projeto',
     title: 'Maison Beauté',
     description:
       'Experiência de e-commerce criada para reduzir atrito entre descoberta, consideração e decisão de compra.',
@@ -30,7 +30,7 @@ const projects = [
     size: 'small',
   },
   {
-    category: 'Projeto Conceitual',
+    category: 'Conceitos de projeto',
     title: 'TechFlow Consultoria',
     description:
       'Ecossistema de automação pensado para captar, qualificar e direcionar oportunidades comerciais com maior eficiência.',
@@ -42,7 +42,7 @@ const projects = [
     size: 'small',
   },
   {
-    category: 'Projeto Conceitual',
+    category: 'Conceitos de projeto',
     title: 'Clínica Renovare',
     description:
       'Estrutura digital preparada para aquisição local, campanhas de Google Ads e geração de oportunidades.',
@@ -102,18 +102,18 @@ export default function PortfolioSection() {
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
               <span className="text-[11px] tracking-[0.35em] uppercase text-[#D4AF37] font-medium">
-                Portfólio
+                Conceitos de projeto
               </span>
             </div>
             <h2
               className="font-display font-medium text-white tracking-[-0.02em]"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
             >
-              Projetos que demonstram nossa abordagem em performance digital.
+              Conceitos de projeto que demonstram nossa abordagem em performance digital.
             </h2>
           </div>
-          <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[320px] lg:text-right">
-            Uma seleção de projetos conceituais desenvolvidos para demonstrar como aplicamos estratégia, design, tecnologia e conversão.
+          <p className="text-[#BDBDBD] text-sm leading-relaxed max-w-[360px] lg:text-right">
+            Exemplos conceituais de direção visual, não representam clientes da Orvion.
           </p>
         </motion.div>
 
@@ -228,12 +228,16 @@ export default function PortfolioSection() {
           ))}
         </motion.div>
 
+        <p className="mt-8 text-center text-xs text-[#BDBDBD]/80">
+          Exemplos conceituais de direção visual, não representam clientes da Orvion.
+        </p>
+
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.7, delay: 0.5, ease: easeOut }}
-          className="mt-12 text-center"
+          className="mt-10 text-center"
         >
           <p className="text-[#BDBDBD] text-sm mb-6">
             Pronto para construir o próximo projeto?

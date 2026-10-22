@@ -1,8 +1,8 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 
 import GoogleAdsGestao from '@/pages/GoogleAdsGestao';
-import Nova from '@/pages/Nova';
 
+const Nova = lazy(() => import('@/pages/Nova'));
 const Home = lazy(() => import('@/pages/Home'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const CookieBanner = lazy(() => import('@/components/elevare/CookieBanner'));
@@ -11,8 +11,10 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState(
     typeof window !== 'undefined' ? window.location.pathname : '/'
   );
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handlePopState = () => {
       setCurrentPath(window.location.pathname);
     };
@@ -34,15 +36,19 @@ export default function App() {
       ) : isGoogleAds ? (
         <GoogleAdsGestao />
       ) : isNova ? (
-        <Nova />
+        <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
+          <Nova />
+        </Suspense>
       ) : (
         <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
           <Home />
         </Suspense>
       )}
-      <Suspense fallback={null}>
-        <CookieBanner />
-      </Suspense>
+      {mounted && (
+        <Suspense fallback={null}>
+          <CookieBanner />
+        </Suspense>
+      )}
     </>
   );
 }
