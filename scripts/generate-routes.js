@@ -111,21 +111,10 @@ const heroPreloadTag = '<link rel="preload" as="image" href="/images/orvion-cham
 const cssMatch = googleAdsHtml.match(/<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/i);
 if (cssMatch) {
   const cssHref = cssMatch[1];
-  const builtCss = fs.readFileSync(path.join(distDir, cssHref), 'utf-8');
-  const fontFaces = (builtCss.match(/@font-face\{[^}]+\}/g) || []).join('');
-  const landingCssRaw = fs.readFileSync(path.resolve(__dirname, '../src/pages/GoogleAdsGestao.css'), 'utf-8');
-  const landingCssMin = landingCssRaw
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/\s+/g, ' ')
-    .replace(/\s*([{}:;,])\s*/g, '$1')
+  const builtCss = fs.readFileSync(path.join(distDir, cssHref), 'utf-8')
+    .replace(/^@charset\s+["'][^"']+["'];?\s*/i, '')
     .trim();
-  const baseCritical = [
-    ':root{--font-heading:"Outfit",ui-sans-serif,system-ui,sans-serif;--font-body:"Inter",ui-sans-serif,system-ui,sans-serif;--font-display:"Outfit",ui-sans-serif,system-ui,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}',
-    '*,::before,::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}body{margin:0;padding:0;font-family:var(--font-body);background-color:#050505;color:#fff;overflow-x:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-display)}.font-display{font-family:var(--font-display)}.font-body{font-family:var(--font-body)}.font-mono{font-family:var(--font-mono)}',
-    '.relative{position:relative}.sticky{position:sticky}.fixed{position:fixed}.top-0{top:0}.bottom-0{bottom:0}.inset-x-0{left:0;right:0}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.flex-col{flex-direction:column}.items-center{align-items:center}.items-baseline{align-items:baseline}.items-stretch{align-items:stretch}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.shrink-0{flex-shrink:0}.gap-1\\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\\.5{gap:.625rem}.gap-4{gap:1rem}.gap-7{gap:1.75rem}.gap-8{gap:2rem}.w-full{width:100%}.mx-auto{margin-inline:auto}.max-w-\\[1360px\\]{max-width:1360px}.max-w-\\[1240px\\]{max-width:1240px}.max-w-\\[780px\\]{max-width:780px}.max-w-\\[560px\\]{max-width:560px}.max-w-\\[420px\\]{max-width:420px}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.uppercase{text-transform:uppercase}.no-underline{text-decoration:none}.antialiased{-webkit-font-smoothing:antialiased}',
-    '@media(min-width:640px){.sm\\:inline{display:inline}.sm\\:hidden{display:none}.sm\\:flex-row{flex-direction:row}.sm\\:items-center{align-items:center}.sm\\:w-auto{width:auto}.sm\\:pb-0{padding-bottom:0}}@media(min-width:768px){.md\\:flex{display:flex}}',
-  ].join('');
-  const criticalStyleTag = `<style id="orvion-critical">${fontFaces}${baseCritical}${landingCssMin}</style>`;
+  const criticalStyleTag = `<style id="orvion-critical">${builtCss}</style>`;
   const deferredCssTag = `<link rel="stylesheet" crossorigin href="${cssHref}" media="print" onload="this.media='all'" />\n    <noscript><link rel="stylesheet" crossorigin href="${cssHref}" /></noscript>`;
   googleAdsHtml = googleAdsHtml.replace(cssMatch[0], '');
   googleAdsHtml = googleAdsHtml.replace(
